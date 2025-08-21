@@ -91,8 +91,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="overview-image">
-                    <img src="figures/OPERA-Figure-1-7.png" alt="OPERA Overview">
+                <div class="overview-image" style="width: 100%; max-width: 900px; margin: 0 auto;">
+                    <img src="figures/OPERA-Figure-1-7.png" alt="OPERA Overview" style="width: 100%; height: auto;">
                     <p class="image-caption">OPERA's MAPGRPO training framework and performance comparison</p>
                 </div>
             </div>
@@ -490,8 +490,9 @@ for epoch in range(E3):
                 </div>
             </div>
 
-            <div class="code-grid">
-                <div class="code-example">
+            <!-- Code Examples - Stacked Vertically -->
+            <div style="display: flex; flex-direction: column; gap: 2rem;">
+                <div class="code-example" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md);">
                     <h3>Implementation Example</h3>
                     <pre><code class="language-python">
 from src.core.orchestrator import OPERAOrchestrator
@@ -533,7 +534,7 @@ question = "What is the GDP per capita of the country where the headquarters of 
 result = orchestrator.process_question(question)
                     </code></pre>
                 </div>
-                <div class="code-features">
+                <div class="code-features" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md);">
                     <h3>MAPGRPO Training</h3>
                     <pre><code class="language-python">
 from src.training.mapgrpo_trainer import MAPGRPOTrainer
