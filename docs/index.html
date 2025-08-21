@@ -183,72 +183,132 @@ for epoch in range(E3):
     <section id="results" class="section section-alt">
         <div class="container">
             <h2 class="section-title">Experimental Results</h2>
-            <div class="results-grid">
-                <div class="result-card">
-                    <h3>MuSiQue Benchmark</h3>
-                    <div class="result-chart">
-                        <div class="chart-bars">
-                            <div class="chart-row">
-                                <span class="method-name">Vanilla RAG</span>
-                                <div class="bar-container">
-                                    <div class="bar" style="width: 57%">28.5%</div>
-                                </div>
-                            </div>
-                            <div class="chart-row">
-                                <span class="method-name">ReAct</span>
-                                <div class="bar-container">
-                                    <div class="bar" style="width: 64%">32.1%</div>
-                                </div>
-                            </div>
-                            <div class="chart-row">
-                                <span class="method-name"><strong>OPERA</strong></span>
-                                <div class="bar-container">
-                                    <div class="bar bar-primary" style="width: 82%"><strong>41.3%</strong></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="metric-label">EM Score</p>
-                </div>
-                <div class="result-card">
-                    <h3>HotpotQA Benchmark</h3>
-                    <div class="result-chart">
-                        <div class="chart-bars">
-                            <div class="chart-row">
-                                <span class="method-name">Vanilla RAG</span>
-                                <div class="bar-container">
-                                    <div class="bar" style="width: 62%">31.2%</div>
-                                </div>
-                            </div>
-                            <div class="chart-row">
-                                <span class="method-name">ReAct</span>
-                                <div class="bar-container">
-                                    <div class="bar" style="width: 71%">35.8%</div>
-                                </div>
-                            </div>
-                            <div class="chart-row">
-                                <span class="method-name"><strong>OPERA</strong></span>
-                                <div class="bar-container">
-                                    <div class="bar bar-primary" style="width: 89%"><strong>44.6%</strong></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="metric-label">EM Score</p>
-                </div>
+            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-color);">
+                Performance on three multi-hop reasoning benchmarks. All methods use Qwen2.5-7B as backbone.
+            </p>
+            
+            <!-- Main Results Table -->
+            <div style="overflow-x: auto; margin-bottom: 3rem;">
+                <table style="width: 100%; border-collapse: collapse; background: white; box-shadow: var(--shadow-md); border-radius: 8px; overflow: hidden;">
+                    <thead style="background: var(--primary-color); color: white;">
+                        <tr>
+                            <th rowspan="2" style="padding: 1rem; text-align: left; border-right: 1px solid rgba(255,255,255,0.2);">Method</th>
+                            <th colspan="2" style="padding: 0.5rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.2);">HotpotQA</th>
+                            <th colspan="2" style="padding: 0.5rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.2);">2WikiMultiHopQA</th>
+                            <th colspan="2" style="padding: 0.5rem 1rem; text-align: center;">MuSiQue</th>
+                        </tr>
+                        <tr>
+                            <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">EM (%)</th>
+                            <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">F1 (%)</th>
+                            <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">EM (%)</th>
+                            <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">F1 (%)</th>
+                            <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">EM (%)</th>
+                            <th style="padding: 0.5rem;">F1 (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Qwen2.5-7B (No Retrieval)</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">18.5</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">26.8</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">16.2</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">23.7</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">4.1</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">9.1</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Single-Step RAG</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">31.5</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">44.2</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">25.9</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">37.6</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">14.1</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">18.4</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">IRCoT</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">42.7</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">54.8</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">43.3</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">56.2</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">18.8</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">23.9</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">OPERA (CoT)</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">44.9</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">58.5</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">42.3</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">50.7</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">21.2</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">26.4</td>
+                        </tr>
+                        <tr style="background: #f9fafb;">
+                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Adaptive-RAG</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">45.7</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">56.9</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">30.1</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">39.3</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">24.3</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">35.7</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">BGM</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">41.5</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">53.8</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">44.3</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">55.8</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">19.6</td>
+                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">26.8</td>
+                        </tr>
+                        <tr style="background: #eff6ff;">
+                            <td style="padding: 0.75rem 1rem; font-weight: bold; color: var(--primary-color);">OPERA (MAPGRPO)</td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">57.3<sup style="font-size: 0.7em;">(+11.6)</sup></td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">69.5<sup style="font-size: 0.7em;">(+11.0)</sup></td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">60.2<sup style="font-size: 0.7em;">(+15.9)</sup></td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">72.7<sup style="font-size: 0.7em;">(+16.5)</sup></td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">39.7<sup style="font-size: 0.7em;">(+15.4)</sup></td>
+                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">51.9<sup style="font-size: 0.7em;">(+16.2)</sup></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p style="text-align: center; margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;">
+                    <em>Numbers in parentheses show improvement over best baseline (underlined values)</em>
+                </p>
             </div>
+
+            <!-- Key Findings -->
             <div class="performance-summary">
                 <div class="summary-item">
-                    <div class="summary-value">+44.8%</div>
-                    <div class="summary-label">Average improvement over Vanilla RAG</div>
+                    <div class="summary-value">25.4%</div>
+                    <div class="summary-label">Relative improvement on HotpotQA</div>
                 </div>
                 <div class="summary-item">
-                    <div class="summary-value">+26.5%</div>
-                    <div class="summary-label">Average improvement over ReAct</div>
+                    <div class="summary-value">63.4%</div>
+                    <div class="summary-label">Relative improvement on MuSiQue</div>
                 </div>
                 <div class="summary-item">
-                    <div class="summary-value">SOTA</div>
-                    <div class="summary-label">On multi-hop reasoning benchmarks</div>
+                    <div class="summary-value">39.7%</div>
+                    <div class="summary-label">EM score on challenging MuSiQue dataset</div>
+                </div>
+            </div>
+
+            <!-- Key Insights -->
+            <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: var(--shadow-md);">
+                <h3 style="margin-bottom: 1.5rem; color: var(--dark-color);">Key Insights</h3>
+                <div style="space-y: 1rem;">
+                    <div style="margin-bottom: 1rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">🎯 Performance Scales with Difficulty</h4>
+                        <p>OPERA shows larger improvements on more challenging datasets—63.4% relative improvement on MuSiQue versus 25.4% on HotpotQA, suggesting our approach excels at complex multi-hop reasoning.</p>
+                    </div>
+                    <div style="margin-bottom: 1rem;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">🚀 Outperforms RL Baselines</h4>
+                        <p>While BGM achieves only 19.6% EM on MuSiQue, OPERA reaches 39.7% EM, demonstrating that specialized agent architecture provides benefits beyond RL optimization alone.</p>
+                    </div>
+                    <div>
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">📊 Consistent Improvements</h4>
+                        <p>OPERA achieves state-of-the-art results across different reasoning patterns—comparison, entity traversal, and compositional reasoning—showing broad applicability.</p>
+                    </div>
                 </div>
             </div>
         </div>
