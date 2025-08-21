@@ -318,60 +318,174 @@ for epoch in range(E3):
     <section id="code" class="section">
         <div class="container">
             <h2 class="section-title">Code Implementation</h2>
-            <div class="code-grid">
-                <div class="code-example">
-                    <h3>Quick Start</h3>
-                    <pre><code class="language-python">
-from src.core.orchestrator import OPERAOrchestrator
-from src.agents import PlanAgent, AnalysisAnswerAgent, RewriteAgent
-
-# Initialize OPERA
-orchestrator = OPERAOrchestrator(
-    plan_agent=PlanAgent(model_name="gpt-4"),
-    analysis_agent=AnalysisAnswerAgent(model_name="gpt-3.5-turbo"),
-    rewrite_agent=RewriteAgent(model_name="gpt-3.5-turbo")
-)
-
-# Process a complex multi-hop question
-question = "What was the previous occupation of the person who succeeded the founder of the company that acquired WhatsApp?"
-result = orchestrator.process_question(question)
-
-print(f"Answer: {result.answer}")
-print(f"Reasoning Steps: {result.trajectory}")
-                    </code></pre>
-                </div>
-                <div class="code-features">
-                    <h3>Key Features</h3>
-                    <div class="feature-grid">
-                        <div class="feature-item">
-                            <i class="fas fa-puzzle-piece"></i>
-                            <h4>Modular Design</h4>
-                            <p>Easily swap or customize individual agents</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-chart-line"></i>
-                            <h4>Training Framework</h4>
-                            <p>Complete MAPGRPO implementation included</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-history"></i>
-                            <h4>Trajectory Logging</h4>
-                            <p>Full execution traces for debugging</p>
-                        </div>
-                        <div class="feature-item">
-                            <i class="fas fa-cog"></i>
-                            <h4>Configurable</h4>
-                            <p>YAML-based configuration system</p>
-                        </div>
+            
+            <!-- Key Innovation: Multi-Dimensional Reward Functions -->
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 12px; margin-bottom: 3rem;">
+                <h3 style="color: white; margin-bottom: 1.5rem;">🌟 Key Innovation: Agent-Specific Multi-Dimensional Reward Functions</h3>
+                <p style="margin-bottom: 1.5rem; opacity: 0.95;">
+                    Unlike traditional RL approaches that use a single scalar reward, OPERA introduces specialized multi-dimensional reward functions 
+                    tailored to each agent's role, enabling fine-grained credit assignment and more effective training.
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 8px;">
+                        <h4 style="color: white; margin-bottom: 0.75rem;">Plan Agent Reward</h4>
+                        <code style="background: rgba(0, 0, 0, 0.3); padding: 0.5rem; border-radius: 4px; display: block; font-size: 0.85rem;">
+r_plan = λ₁·f_logic + λ₂·f_struct + λ₃·f_exec
+                        </code>
+                        <ul style="margin-top: 0.75rem; font-size: 0.9rem; list-style: none; padding-left: 0;">
+                            <li>✓ Decomposition validity</li>
+                            <li>✓ Placeholder syntax</li>
+                            <li>✓ End-to-end execution</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 8px;">
+                        <h4 style="color: white; margin-bottom: 0.75rem;">Analysis-Answer Reward</h4>
+                        <code style="background: rgba(0, 0, 0, 0.3); padding: 0.5rem; border-radius: 4px; display: block; font-size: 0.85rem;">
+r_ana = α·I[φ=φ*] + β·EM(a,a*) + γ·f_format
+                        </code>
+                        <ul style="margin-top: 0.75rem; font-size: 0.9rem; list-style: none; padding-left: 0;">
+                            <li>✓ Sufficiency assessment</li>
+                            <li>✓ Answer accuracy (EM)</li>
+                            <li>✓ Output formatting</li>
+                        </ul>
+                    </div>
+                    <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 8px;">
+                        <h4 style="color: white; margin-bottom: 0.75rem;">Rewrite Agent Reward</h4>
+                        <code style="background: rgba(0, 0, 0, 0.3); padding: 0.5rem; border-radius: 4px; display: block; font-size: 0.85rem;">
+r_rew = ω₁·√NDCG@k + ω₂·f_format
+                        </code>
+                        <ul style="margin-top: 0.75rem; font-size: 0.9rem; list-style: none; padding-left: 0;">
+                            <li>✓ Retrieval effectiveness</li>
+                            <li>✓ Query quality</li>
+                            <li>✓ Format compliance</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-            <div class="code-buttons">
+
+            <div class="code-grid">
+                <div class="code-example">
+                    <h3>Implementation Example</h3>
+                    <pre><code class="language-python">
+from src.core.orchestrator import OPERAOrchestrator
+from src.training.reward_functions import (
+    PlanRewardFunction,
+    AnalysisRewardFunction, 
+    RewriteRewardFunction
+)
+
+# Initialize OPERA with custom reward functions
+orchestrator = OPERAOrchestrator(
+    plan_agent=PlanAgent(
+        model="Qwen2.5-7B-Instruct",
+        reward_fn=PlanRewardFunction(
+            λ1=0.4,  # Logic weight
+            λ2=0.2,  # Structure weight  
+            λ3=0.4   # Execution weight
+        )
+    ),
+    analysis_agent=AnalysisAnswerAgent(
+        model="Qwen2.5-7B-Instruct",
+        reward_fn=AnalysisRewardFunction(
+            α=0.3,   # Sufficiency weight
+            β=0.5,   # Accuracy weight
+            γ=0.2    # Format weight
+        )
+    ),
+    rewrite_agent=RewriteAgent(
+        model="Qwen2.5-3B-Instruct",
+        reward_fn=RewriteRewardFunction(
+            ω1=0.8,  # Retrieval weight
+            ω2=0.2   # Format weight
+        )
+    )
+)
+
+# Process complex multi-hop question
+question = "What is the GDP per capita of the country where the headquarters of the company that acquired GitHub is located?"
+result = orchestrator.process_question(question)
+                    </code></pre>
+                </div>
+                <div class="code-features">
+                    <h3>MAPGRPO Training</h3>
+                    <pre><code class="language-python">
+from src.training.mapgrpo_trainer import MAPGRPOTrainer
+
+# Initialize MAPGRPO with high-score sample selection
+trainer = MAPGRPOTrainer(
+    group_size=8,
+    kl_coeff=0.05,
+    use_high_score_selection=True,
+    prescored_dataset="data/expert_demonstrations.json"
+)
+
+# Stage 1: Train Plan Agent
+trainer.train_plan_agent(
+    epochs=10,
+    reward_components=['logic', 'structure', 'execution']
+)
+
+# Stage 2: Train Analysis-Answer Agent  
+trainer.train_analysis_agent(
+    epochs=10,
+    reward_components=['sufficiency', 'accuracy', 'format']
+)
+
+# Stage 3: Train Rewrite Agent
+trainer.train_rewrite_agent(
+    epochs=5,
+    reward_components=['retrieval', 'quality']
+)
+                    </code></pre>
+                </div>
+            </div>
+
+            <!-- Core Features -->
+            <div style="margin-top: 3rem;">
+                <h3 style="text-align: center; margin-bottom: 2rem;">Core Implementation Features</h3>
+                <div class="feature-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div class="feature-item" style="text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: var(--shadow-md);">
+                        <i class="fas fa-brain" style="font-size: 2.5rem; color: var(--primary-color); margin-bottom: 1rem;"></i>
+                        <h4>Three-Agent Architecture</h4>
+                        <p>Specialized agents for planning, analysis-answering, and query rewriting</p>
+                    </div>
+                    <div class="feature-item" style="text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: var(--shadow-md);">
+                        <i class="fas fa-trophy" style="font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;"></i>
+                        <h4>Multi-Dimensional Rewards</h4>
+                        <p>Role-specific reward functions for fine-grained credit assignment</p>
+                    </div>
+                    <div class="feature-item" style="text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: var(--shadow-md);">
+                        <i class="fas fa-link" style="font-size: 2.5rem; color: var(--secondary-color); margin-bottom: 1rem;"></i>
+                        <h4>Placeholder Mechanism</h4>
+                        <p>Dynamic dependency tracking with [entity from step X] references</p>
+                    </div>
+                    <div class="feature-item" style="text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: var(--shadow-md);">
+                        <i class="fas fa-database" style="font-size: 2.5rem; color: #8b5cf6; margin-bottom: 1rem;"></i>
+                        <h4>High-Score Selection</h4>
+                        <p>Pre-scored expert samples to address reward sparsity</p>
+                    </div>
+                    <div class="feature-item" style="text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: var(--shadow-md);">
+                        <i class="fas fa-history" style="font-size: 2.5rem; color: #ec4899; margin-bottom: 1rem;"></i>
+                        <h4>Trajectory Memory</h4>
+                        <p>Complete execution traces for interpretability</p>
+                    </div>
+                    <div class="feature-item" style="text-align: center; padding: 1.5rem; background: white; border-radius: 12px; box-shadow: var(--shadow-md);">
+                        <i class="fas fa-cogs" style="font-size: 2.5rem; color: #06b6d4; margin-bottom: 1rem;"></i>
+                        <h4>Progressive Training</h4>
+                        <p>Sequential optimization with distribution adaptation</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="code-buttons" style="text-align: center; margin-top: 3rem;">
                 <a href="https://github.com/Ameame1/OPERA" class="btn btn-primary">
-                    <i class="fab fa-github"></i> View on GitHub
+                    <i class="fab fa-github"></i> View Full Implementation
                 </a>
                 <a href="https://github.com/Ameame1/OPERA/archive/refs/heads/main.zip" class="btn btn-secondary">
                     <i class="fas fa-download"></i> Download Code
+                </a>
+                <a href="https://github.com/Ameame1/OPERA/tree/main/src/training" class="btn btn-outline" style="background: transparent; color: var(--primary-color); border: 2px solid var(--primary-color);">
+                    <i class="fas fa-graduation-cap"></i> Training Code
                 </a>
             </div>
         </div>
