@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPERA Workflow Animation Demo</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .demo-container {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .demo-header h1 {
+            color: #2d3748;
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+        }
+        
+        .demo-header p {
+            color: #718096;
+            font-size: 1.1rem;
+        }
+        
+        .workflow-container {
+            position: relative;
+            height: 600px;
+            background: #f7fafc;
+            border-radius: 15px;
+            padding: 30px;
+            overflow: hidden;
+        }
+        
+        .query-box {
+            position: absolute;
+            top: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            font-weight: 600;
+            box-shadow: 0 4px 20px rgba(102, 126, 234, 0.4);
+            opacity: 0;
+            animation: fadeInDown 1s forwards;
+            max-width: 600px;
+            text-align: center;
+        }
+        
+        .agent-container {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 150px;
+            gap: 30px;
+        }
+        
+        .agent-box {
+            flex: 1;
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            opacity: 0;
+            transform: translateY(20px);
+            position: relative;
+            min-height: 200px;
+        }
+        
+        .agent-box.plan-agent {
+            animation: fadeInUp 1s 1s forwards;
+            border-top: 4px solid #10b981;
+        }
+        
+        .agent-box.analysis-agent {
+            animation: fadeInUp 1s 2s forwards;
+            border-top: 4px solid #f59e0b;
+        }
+        
+        .agent-box.rewrite-agent {
+            animation: fadeInUp 1s 3s forwards;
+            border-top: 4px solid #8b5cf6;
+        }
+        
+        .agent-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        
+        .agent-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            font-size: 1.5rem;
+        }
+        
+        .plan-agent .agent-icon {
+            background: #10b98120;
+            color: #10b981;
+        }
+        
+        .analysis-agent .agent-icon {
+            background: #f59e0b20;
+            color: #f59e0b;
+        }
+        
+        .rewrite-agent .agent-icon {
+            background: #8b5cf620;
+            color: #8b5cf6;
+        }
+        
+        .agent-title {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #2d3748;
+        }
+        
+        .agent-content {
+            color: #4a5568;
+            line-height: 1.6;
+            opacity: 0;
+        }
+        
+        .agent-content.show {
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        .step-item {
+            background: #f7fafc;
+            padding: 10px 15px;
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 3px solid transparent;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+        
+        .step-item.show {
+            animation: slideIn 0.5s forwards;
+        }
+        
+        .plan-agent .step-item {
+            border-left-color: #10b981;
+        }
+        
+        .analysis-agent .step-item {
+            border-left-color: #f59e0b;
+        }
+        
+        .rewrite-agent .step-item {
+            border-left-color: #8b5cf6;
+        }
+        
+        .retriever-box {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #06b6d4, #0891b2);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 12px;
+            opacity: 0;
+            animation: fadeInUp 1s 4s forwards;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .retriever-icon {
+            font-size: 1.5rem;
+        }
+        
+        .flow-arrow {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, #cbd5e0, transparent);
+            opacity: 0;
+        }
+        
+        .arrow-1 {
+            top: 100px;
+            left: 25%;
+            height: 50px;
+            animation: flowDown 1s 1.5s forwards;
+        }
+        
+        .arrow-2 {
+            top: 100px;
+            left: 50%;
+            height: 50px;
+            animation: flowDown 1s 2.5s forwards;
+        }
+        
+        .arrow-3 {
+            top: 100px;
+            left: 75%;
+            height: 50px;
+            animation: flowDown 1s 3.5s forwards;
+        }
+        
+        .final-answer {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #22c55e, #16a34a);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 12px;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeInUp 1s 6s forwards;
+            text-align: center;
+            box-shadow: 0 4px 20px rgba(34, 197, 94, 0.4);
+        }
+        
+        .controls {
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .btn {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes flowDown {
+            to {
+                opacity: 1;
+                height: 100px;
+            }
+        }
+        
+        .placeholder {
+            color: #805ad5;
+            font-weight: 600;
+            background: #f7fafc;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🎭 OPERA Workflow Demo</h1>
+            <p>Orchestrated Planner-Executor Reasoning Architecture</p>
+        </div>
+        
+        <div class="workflow-container">
+            <!-- User Query -->
+            <div class="query-box">
+                <div>📝 Complex Query:</div>
+                <div style="margin-top: 10px; font-size: 0.95rem;">
+                    "What is the GDP per capita of the country where the headquarters of the company that acquired GitHub is located?"
+                </div>
+            </div>
+            
+            <!-- Flow Arrows -->
+            <div class="flow-arrow arrow-1"></div>
+            <div class="flow-arrow arrow-2"></div>
+            <div class="flow-arrow arrow-3"></div>
+            
+            <!-- Agent Container -->
+            <div class="agent-container">
+                <!-- Plan Agent -->
+                <div class="agent-box plan-agent">
+                    <div class="agent-header">
+                        <div class="agent-icon">📋</div>
+                        <div class="agent-title">Plan Agent</div>
+                    </div>
+                    <div class="agent-content" id="plan-content">
+                        <div class="step-item" data-delay="2000">
+                            Step 1: Which company acquired GitHub?
+                        </div>
+                        <div class="step-item" data-delay="2500">
+                            Step 2: Where is <span class="placeholder">[company from step 1]</span> headquartered?
+                        </div>
+                        <div class="step-item" data-delay="3000">
+                            Step 3: What country is <span class="placeholder">[location from step 2]</span> in?
+                        </div>
+                        <div class="step-item" data-delay="3500">
+                            Step 4: What is the GDP per capita of <span class="placeholder">[country from step 3]</span>?
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Analysis-Answer Agent -->
+                <div class="agent-box analysis-agent">
+                    <div class="agent-header">
+                        <div class="agent-icon">🔍</div>
+                        <div class="agent-title">Analysis-Answer Agent</div>
+                    </div>
+                    <div class="agent-content" id="analysis-content">
+                        <div class="step-item" data-delay="4000">
+                            ✅ Executing Step 1: Microsoft acquired GitHub
+                        </div>
+                        <div class="step-item" data-delay="4500">
+                            ✅ Executing Step 2: Microsoft HQ in Redmond, WA
+                        </div>
+                        <div class="step-item" data-delay="5000">
+                            ✅ Executing Step 3: United States
+                        </div>
+                        <div class="step-item" data-delay="5500">
+                            ✅ Executing Step 4: GDP per capita ~$76,000
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Rewrite Agent -->
+                <div class="agent-box rewrite-agent">
+                    <div class="agent-header">
+                        <div class="agent-icon">✏️</div>
+                        <div class="agent-title">Rewrite Agent</div>
+                    </div>
+                    <div class="agent-content" id="rewrite-content">
+                        <div class="step-item" data-delay="4200">
+                            Query 1: "Microsoft headquarters location"
+                        </div>
+                        <div class="step-item" data-delay="4700">
+                            Query 2: "Redmond Washington country"
+                        </div>
+                        <div class="step-item" data-delay="5200">
+                            Query 3: "United States GDP per capita 2024"
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Retriever -->
+            <div class="retriever-box">
+                <div class="retriever-icon">🔎</div>
+                <div>
+                    <div style="font-weight: 700;">BGE-M3 Dense Retriever</div>
+                    <div style="font-size: 0.9rem; opacity: 0.9;">Fetching relevant documents...</div>
+                </div>
+            </div>
+            
+            <!-- Final Answer -->
+            <div class="final-answer">
+                <div style="font-size: 1.2rem; margin-bottom: 5px;">✨ Final Answer</div>
+                <div>The GDP per capita of the United States is approximately $76,000</div>
+            </div>
+        </div>
+        
+        <div class="controls">
+            <button class="btn" onclick="restartAnimation()">🔄 Restart Animation</button>
+        </div>
+    </div>
+    
+    <script>
+        function showSteps() {
+            // Show Plan Agent content
+            setTimeout(() => {
+                document.getElementById('plan-content').classList.add('show');
+                const planSteps = document.querySelectorAll('#plan-content .step-item');
+                planSteps.forEach(step => {
+                    setTimeout(() => {
+                        step.classList.add('show');
+                    }, parseInt(step.dataset.delay));
+                });
+            }, 1500);
+            
+            // Show Analysis Agent content
+            setTimeout(() => {
+                document.getElementById('analysis-content').classList.add('show');
+                const analysisSteps = document.querySelectorAll('#analysis-content .step-item');
+                analysisSteps.forEach(step => {
+                    setTimeout(() => {
+                        step.classList.add('show');
+                    }, parseInt(step.dataset.delay));
+                });
+            }, 2500);
+            
+            // Show Rewrite Agent content
+            setTimeout(() => {
+                document.getElementById('rewrite-content').classList.add('show');
+                const rewriteSteps = document.querySelectorAll('#rewrite-content .step-item');
+                rewriteSteps.forEach(step => {
+                    setTimeout(() => {
+                        step.classList.add('show');
+                    }, parseInt(step.dataset.delay));
+                });
+            }, 3500);
+        }
+        
+        function restartAnimation() {
+            // Remove all animation classes
+            document.querySelectorAll('.agent-content').forEach(el => {
+                el.classList.remove('show');
+            });
+            document.querySelectorAll('.step-item').forEach(el => {
+                el.classList.remove('show');
+            });
+            
+            // Restart animations by removing and re-adding elements
+            const container = document.querySelector('.workflow-container');
+            const clone = container.cloneNode(true);
+            container.parentNode.replaceChild(clone, container);
+            
+            // Re-trigger step animations
+            showSteps();
+        }
+        
+        // Start animation on page load
+        window.addEventListener('load', () => {
+            showSteps();
+        });
+    </script>
+</body>
+</html>
