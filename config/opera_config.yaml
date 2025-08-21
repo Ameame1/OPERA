@@ -1,0 +1,91 @@
+# OPERA-MAPGRPO Configuration
+# Complete system configuration matching paper specifications
+
+# Agent Models Configuration
+agents:
+  plan_agent:
+    model_name: "Qwen/Qwen2.5-7B-Instruct"
+    device: "cuda"
+    max_length: 2048
+    temperature: 0.7
+    
+  analysis_answer_agent:
+    model_name: "Qwen/Qwen2.5-7B-Instruct"
+    device: "cuda"
+    max_length: 2048
+    temperature: 0.7
+    
+  rewrite_agent:
+    model_name: "Qwen/Qwen2.5-3B-Instruct"
+    device: "cuda"
+    max_length: 1024
+    temperature: 0.5
+
+# Retriever Configuration (BGE-M3 as specified)
+retriever:
+  type: "faiss"
+  model_name: "BAAI/bge-m3"  # Paper: "BGE-M3 serves as our dense retriever"
+  device: "cuda"
+  use_fp16: true
+  index_type: "Flat"
+  top_k: 5  # Paper: "top-5 document retrieval"
+
+# MAPGRPO Training Configuration (matching paper values)
+mapgrpo:
+  # Group size
+  group_size: 8  # Paper Table 2
+  batch_size: 16  # Paper specifies batch 16
+  
+  # Learning rates (from paper)
+  learning_rates:
+    plan: 5e-6     # Plan Agent LR
+    analysis: 1e-5  # Analysis-Answer Agent LR
+    rewrite: 2e-5   # Rewrite Agent LR
+    
+  # KL coefficients
+  kl_coefficients:
+    plan: 0.05      # Plan and Analysis agents
+    analysis: 0.05
+    rewrite: 0.04   # Rewrite agent
+    
+  # Training epochs
+  epochs:
+    plan: 3         # Plan Agent epochs
+    analysis: 2     # Analysis-Answer Agent epochs  
+    rewrite: 2      # Rewrite Agent epochs
+    
+  # Gradient accumulation for effective batch size 64
+  gradient_accumulation_steps: 4  # 16 * 4 = 64
+  
+  # Reward function weights (from paper)
+  reward_weights:
+    plan:
+      logic: 0.4      # λ₁
+      structure: 0.3  # λ₂
+      execution: 0.3  # λ₃
+    analysis:
+      judgment: 0.25  # α
+      answer_em: 0.65 # β
+      format: 0.10    # γ
+    rewrite:
+      retrieval: 0.9  # ω₁
+      format: 0.1     # ω₂
+
+# Orchestrator Configuration
+orchestrator:
+  max_retries: 3
+  retry_delay: 1.0
+  enable_trajectory_memory: true
+  
+# System Configuration
+system:
+  log_level: "INFO"
+  seed: 42
+  num_workers: 4
+  mixed_precision: true
+  
+# Evaluation Configuration
+evaluation:
+  datasets: ["hotpotqa", "2wikimultihopqa", "musique"]
+  metrics: ["em", "f1", "ndcg"]
+  batch_size: 32

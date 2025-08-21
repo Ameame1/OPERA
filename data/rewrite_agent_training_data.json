@@ -1,0 +1,774 @@
+{
+  "metadata": {
+    "agent": "rewrite",
+    "total_samples": 30,
+    "strategy_sophistication": "context_aware_intelligent"
+  },
+  "samples": [
+    {
+      "input": {
+        "original_query": "What is the population density of [entity from step 2]?",
+        "failure_info": "The documents provide general geographic information but lack specific population density statistics."
+      },
+      "output": {
+        "rewritten_query": "population density demographic statistics census data inhabitants per square kilometer [entity from step 2] demographics population distribution urban density rural density statistical data",
+        "strategy": "statistical_expansion",
+        "keywords": [
+          "population",
+          "density",
+          "demographics",
+          "statistics",
+          "census",
+          "inhabitants",
+          "square kilometer"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 0
+      }
+    },
+    {
+      "input": {
+        "original_query": "Which company owns Instagram?",
+        "failure_info": "The retrieved documents discuss social media but do not mention Instagram's ownership structure."
+      },
+      "output": {
+        "rewritten_query": "Instagram ownership acquisition parent company Meta Facebook social media platform business ownership corporate structure subsidiary acquisition history",
+        "strategy": "corporate_context_expansion",
+        "keywords": [
+          "Instagram",
+          "ownership",
+          "acquisition",
+          "parent",
+          "company",
+          "Meta",
+          "Facebook"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 1
+      }
+    },
+    {
+      "input": {
+        "original_query": "What architectural style characterizes the buildings in [entity from step 2]?",
+        "failure_info": "The documents mention the location but do not describe architectural features or building styles."
+      },
+      "output": {
+        "rewritten_query": "architectural style building design construction style [entity from step 2] architecture urban planning building characteristics design elements structural style historical architecture contemporary architecture",
+        "strategy": "architectural_context_expansion",
+        "keywords": [
+          "architectural",
+          "style",
+          "building",
+          "design",
+          "construction",
+          "urban",
+          "planning"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 2
+      }
+    },
+    {
+      "input": {
+        "original_query": "Who was the Prime Minister during the 2008 financial crisis?",
+        "failure_info": "The documents discuss the financial crisis but do not specify which country's Prime Minister or the exact timeframe."
+      },
+      "output": {
+        "rewritten_query": "Prime Minister 2008 financial crisis economic recession government leadership political leader head of government 2008-2009 financial downturn economic collapse political leadership during crisis",
+        "strategy": "temporal_political_expansion",
+        "keywords": [
+          "Prime Minister",
+          "2008",
+          "financial crisis",
+          "economic",
+          "recession",
+          "government",
+          "leadership"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 3
+      }
+    },
+    {
+      "input": {
+        "original_query": "What percentage of the world's oil reserves does [entity from step 1] control?",
+        "failure_info": "The documents identify the entity but do not provide quantitative data about oil reserves or global resource distribution."
+      },
+      "output": {
+        "rewritten_query": "oil reserves petroleum resources global energy statistics [entity from step 1] crude oil natural resources energy reserves proven reserves global oil distribution percentage world oil supply",
+        "strategy": "energy_statistics_expansion",
+        "keywords": [
+          "oil",
+          "reserves",
+          "petroleum",
+          "energy",
+          "statistics",
+          "crude",
+          "proven",
+          "global"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 4
+      }
+    },
+    {
+      "input": {
+        "original_query": "What economic system was practiced by [entity from step 1] during the Cold War?",
+        "failure_info": "The documents mention the country but do not discuss its economic system or Cold War period policies."
+      },
+      "output": {
+        "rewritten_query": "economic system Cold War period [entity from step 1] political economy socialism capitalism communist system planned economy market economy economic ideology political system economic model",
+        "strategy": "economic_historical_expansion",
+        "keywords": [
+          "economic",
+          "system",
+          "Cold War",
+          "socialism",
+          "capitalism",
+          "planned",
+          "economy"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 5
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the time zone of [entity from step 1]?",
+        "failure_info": "The documents identify the location but do not provide time zone information or geographic coordinates."
+      },
+      "output": {
+        "rewritten_query": "time zone geographic coordinates UTC offset [entity from step 1] standard time daylight saving time geographical location longitude latitude temporal zone regional time",
+        "strategy": "geographic_temporal_expansion",
+        "keywords": [
+          "time",
+          "zone",
+          "UTC",
+          "offset",
+          "coordinates",
+          "longitude",
+          "latitude",
+          "temporal"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 6
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the main religion practiced in [entity from step 2]?",
+        "failure_info": "The documents provide general cultural information but do not specify religious demographics or practices."
+      },
+      "output": {
+        "rewritten_query": "main religion religious demographics [entity from step 2] predominant faith religious practice spiritual beliefs religious statistics cultural religion religious majority religious tradition",
+        "strategy": "religious_demographic_expansion",
+        "keywords": [
+          "religion",
+          "religious",
+          "demographics",
+          "faith",
+          "practice",
+          "spiritual",
+          "beliefs",
+          "tradition"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 7
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the elevation of [entity from step 3]?",
+        "failure_info": "The documents mention the geographic feature but do not provide specific elevation measurements or topographic data."
+      },
+      "output": {
+        "rewritten_query": "elevation altitude height above sea level [entity from step 3] topographic data geographic measurements mountain elevation topography meters feet elevation statistics geographic altitude",
+        "strategy": "topographic_expansion",
+        "keywords": [
+          "elevation",
+          "altitude",
+          "height",
+          "sea level",
+          "topographic",
+          "measurements",
+          "meters",
+          "feet"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 8
+      }
+    },
+    {
+      "input": {
+        "original_query": "What language is spoken in [entity from step 3]?",
+        "failure_info": "The documents identify the country but do not specify language information or linguistic demographics."
+      },
+      "output": {
+        "rewritten_query": "official language spoken language [entity from step 3] linguistic demographics primary language national language communication language policy multilingual society language statistics cultural language",
+        "strategy": "linguistic_expansion",
+        "keywords": [
+          "language",
+          "spoken",
+          "official",
+          "linguistic",
+          "demographics",
+          "primary",
+          "national",
+          "communication"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 9
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the population density of [entity from step 2]?",
+        "failure_info": "The documents provide general geographic information but lack specific population density statistics."
+      },
+      "output": {
+        "rewritten_query": "population density demographic statistics census data inhabitants per square kilometer [entity from step 2] demographics population distribution urban density rural density statistical data",
+        "strategy": "statistical_expansion",
+        "keywords": [
+          "population",
+          "density",
+          "demographics",
+          "statistics",
+          "census",
+          "inhabitants",
+          "square kilometer"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 10
+      }
+    },
+    {
+      "input": {
+        "original_query": "Which company owns Instagram?",
+        "failure_info": "The retrieved documents discuss social media but do not mention Instagram's ownership structure."
+      },
+      "output": {
+        "rewritten_query": "Instagram ownership acquisition parent company Meta Facebook social media platform business ownership corporate structure subsidiary acquisition history",
+        "strategy": "corporate_context_expansion",
+        "keywords": [
+          "Instagram",
+          "ownership",
+          "acquisition",
+          "parent",
+          "company",
+          "Meta",
+          "Facebook"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 11
+      }
+    },
+    {
+      "input": {
+        "original_query": "What architectural style characterizes the buildings in [entity from step 2]?",
+        "failure_info": "The documents mention the location but do not describe architectural features or building styles."
+      },
+      "output": {
+        "rewritten_query": "architectural style building design construction style [entity from step 2] architecture urban planning building characteristics design elements structural style historical architecture contemporary architecture",
+        "strategy": "architectural_context_expansion",
+        "keywords": [
+          "architectural",
+          "style",
+          "building",
+          "design",
+          "construction",
+          "urban",
+          "planning"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 12
+      }
+    },
+    {
+      "input": {
+        "original_query": "Who was the Prime Minister during the 2008 financial crisis?",
+        "failure_info": "The documents discuss the financial crisis but do not specify which country's Prime Minister or the exact timeframe."
+      },
+      "output": {
+        "rewritten_query": "Prime Minister 2008 financial crisis economic recession government leadership political leader head of government 2008-2009 financial downturn economic collapse political leadership during crisis",
+        "strategy": "temporal_political_expansion",
+        "keywords": [
+          "Prime Minister",
+          "2008",
+          "financial crisis",
+          "economic",
+          "recession",
+          "government",
+          "leadership"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 13
+      }
+    },
+    {
+      "input": {
+        "original_query": "What percentage of the world's oil reserves does [entity from step 1] control?",
+        "failure_info": "The documents identify the entity but do not provide quantitative data about oil reserves or global resource distribution."
+      },
+      "output": {
+        "rewritten_query": "oil reserves petroleum resources global energy statistics [entity from step 1] crude oil natural resources energy reserves proven reserves global oil distribution percentage world oil supply",
+        "strategy": "energy_statistics_expansion",
+        "keywords": [
+          "oil",
+          "reserves",
+          "petroleum",
+          "energy",
+          "statistics",
+          "crude",
+          "proven",
+          "global"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 14
+      }
+    },
+    {
+      "input": {
+        "original_query": "What economic system was practiced by [entity from step 1] during the Cold War?",
+        "failure_info": "The documents mention the country but do not discuss its economic system or Cold War period policies."
+      },
+      "output": {
+        "rewritten_query": "economic system Cold War period [entity from step 1] political economy socialism capitalism communist system planned economy market economy economic ideology political system economic model",
+        "strategy": "economic_historical_expansion",
+        "keywords": [
+          "economic",
+          "system",
+          "Cold War",
+          "socialism",
+          "capitalism",
+          "planned",
+          "economy"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 15
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the time zone of [entity from step 1]?",
+        "failure_info": "The documents identify the location but do not provide time zone information or geographic coordinates."
+      },
+      "output": {
+        "rewritten_query": "time zone geographic coordinates UTC offset [entity from step 1] standard time daylight saving time geographical location longitude latitude temporal zone regional time",
+        "strategy": "geographic_temporal_expansion",
+        "keywords": [
+          "time",
+          "zone",
+          "UTC",
+          "offset",
+          "coordinates",
+          "longitude",
+          "latitude",
+          "temporal"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 16
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the main religion practiced in [entity from step 2]?",
+        "failure_info": "The documents provide general cultural information but do not specify religious demographics or practices."
+      },
+      "output": {
+        "rewritten_query": "main religion religious demographics [entity from step 2] predominant faith religious practice spiritual beliefs religious statistics cultural religion religious majority religious tradition",
+        "strategy": "religious_demographic_expansion",
+        "keywords": [
+          "religion",
+          "religious",
+          "demographics",
+          "faith",
+          "practice",
+          "spiritual",
+          "beliefs",
+          "tradition"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 17
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the elevation of [entity from step 3]?",
+        "failure_info": "The documents mention the geographic feature but do not provide specific elevation measurements or topographic data."
+      },
+      "output": {
+        "rewritten_query": "elevation altitude height above sea level [entity from step 3] topographic data geographic measurements mountain elevation topography meters feet elevation statistics geographic altitude",
+        "strategy": "topographic_expansion",
+        "keywords": [
+          "elevation",
+          "altitude",
+          "height",
+          "sea level",
+          "topographic",
+          "measurements",
+          "meters",
+          "feet"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 18
+      }
+    },
+    {
+      "input": {
+        "original_query": "What language is spoken in [entity from step 3]?",
+        "failure_info": "The documents identify the country but do not specify language information or linguistic demographics."
+      },
+      "output": {
+        "rewritten_query": "official language spoken language [entity from step 3] linguistic demographics primary language national language communication language policy multilingual society language statistics cultural language",
+        "strategy": "linguistic_expansion",
+        "keywords": [
+          "language",
+          "spoken",
+          "official",
+          "linguistic",
+          "demographics",
+          "primary",
+          "national",
+          "communication"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 19
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the population density of [entity from step 2]?",
+        "failure_info": "The documents provide general geographic information but lack specific population density statistics."
+      },
+      "output": {
+        "rewritten_query": "population density demographic statistics census data inhabitants per square kilometer [entity from step 2] demographics population distribution urban density rural density statistical data",
+        "strategy": "statistical_expansion",
+        "keywords": [
+          "population",
+          "density",
+          "demographics",
+          "statistics",
+          "census",
+          "inhabitants",
+          "square kilometer"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 20
+      }
+    },
+    {
+      "input": {
+        "original_query": "Which company owns Instagram?",
+        "failure_info": "The retrieved documents discuss social media but do not mention Instagram's ownership structure."
+      },
+      "output": {
+        "rewritten_query": "Instagram ownership acquisition parent company Meta Facebook social media platform business ownership corporate structure subsidiary acquisition history",
+        "strategy": "corporate_context_expansion",
+        "keywords": [
+          "Instagram",
+          "ownership",
+          "acquisition",
+          "parent",
+          "company",
+          "Meta",
+          "Facebook"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 21
+      }
+    },
+    {
+      "input": {
+        "original_query": "What architectural style characterizes the buildings in [entity from step 2]?",
+        "failure_info": "The documents mention the location but do not describe architectural features or building styles."
+      },
+      "output": {
+        "rewritten_query": "architectural style building design construction style [entity from step 2] architecture urban planning building characteristics design elements structural style historical architecture contemporary architecture",
+        "strategy": "architectural_context_expansion",
+        "keywords": [
+          "architectural",
+          "style",
+          "building",
+          "design",
+          "construction",
+          "urban",
+          "planning"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 22
+      }
+    },
+    {
+      "input": {
+        "original_query": "Who was the Prime Minister during the 2008 financial crisis?",
+        "failure_info": "The documents discuss the financial crisis but do not specify which country's Prime Minister or the exact timeframe."
+      },
+      "output": {
+        "rewritten_query": "Prime Minister 2008 financial crisis economic recession government leadership political leader head of government 2008-2009 financial downturn economic collapse political leadership during crisis",
+        "strategy": "temporal_political_expansion",
+        "keywords": [
+          "Prime Minister",
+          "2008",
+          "financial crisis",
+          "economic",
+          "recession",
+          "government",
+          "leadership"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 23
+      }
+    },
+    {
+      "input": {
+        "original_query": "What percentage of the world's oil reserves does [entity from step 1] control?",
+        "failure_info": "The documents identify the entity but do not provide quantitative data about oil reserves or global resource distribution."
+      },
+      "output": {
+        "rewritten_query": "oil reserves petroleum resources global energy statistics [entity from step 1] crude oil natural resources energy reserves proven reserves global oil distribution percentage world oil supply",
+        "strategy": "energy_statistics_expansion",
+        "keywords": [
+          "oil",
+          "reserves",
+          "petroleum",
+          "energy",
+          "statistics",
+          "crude",
+          "proven",
+          "global"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 24
+      }
+    },
+    {
+      "input": {
+        "original_query": "What economic system was practiced by [entity from step 1] during the Cold War?",
+        "failure_info": "The documents mention the country but do not discuss its economic system or Cold War period policies."
+      },
+      "output": {
+        "rewritten_query": "economic system Cold War period [entity from step 1] political economy socialism capitalism communist system planned economy market economy economic ideology political system economic model",
+        "strategy": "economic_historical_expansion",
+        "keywords": [
+          "economic",
+          "system",
+          "Cold War",
+          "socialism",
+          "capitalism",
+          "planned",
+          "economy"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 25
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the time zone of [entity from step 1]?",
+        "failure_info": "The documents identify the location but do not provide time zone information or geographic coordinates."
+      },
+      "output": {
+        "rewritten_query": "time zone geographic coordinates UTC offset [entity from step 1] standard time daylight saving time geographical location longitude latitude temporal zone regional time",
+        "strategy": "geographic_temporal_expansion",
+        "keywords": [
+          "time",
+          "zone",
+          "UTC",
+          "offset",
+          "coordinates",
+          "longitude",
+          "latitude",
+          "temporal"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 26
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the main religion practiced in [entity from step 2]?",
+        "failure_info": "The documents provide general cultural information but do not specify religious demographics or practices."
+      },
+      "output": {
+        "rewritten_query": "main religion religious demographics [entity from step 2] predominant faith religious practice spiritual beliefs religious statistics cultural religion religious majority religious tradition",
+        "strategy": "religious_demographic_expansion",
+        "keywords": [
+          "religion",
+          "religious",
+          "demographics",
+          "faith",
+          "practice",
+          "spiritual",
+          "beliefs",
+          "tradition"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 27
+      }
+    },
+    {
+      "input": {
+        "original_query": "What is the elevation of [entity from step 3]?",
+        "failure_info": "The documents mention the geographic feature but do not provide specific elevation measurements or topographic data."
+      },
+      "output": {
+        "rewritten_query": "elevation altitude height above sea level [entity from step 3] topographic data geographic measurements mountain elevation topography meters feet elevation statistics geographic altitude",
+        "strategy": "topographic_expansion",
+        "keywords": [
+          "elevation",
+          "altitude",
+          "height",
+          "sea level",
+          "topographic",
+          "measurements",
+          "meters",
+          "feet"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 28
+      }
+    },
+    {
+      "input": {
+        "original_query": "What language is spoken in [entity from step 3]?",
+        "failure_info": "The documents identify the country but do not specify language information or linguistic demographics."
+      },
+      "output": {
+        "rewritten_query": "official language spoken language [entity from step 3] linguistic demographics primary language national language communication language policy multilingual society language statistics cultural language",
+        "strategy": "linguistic_expansion",
+        "keywords": [
+          "language",
+          "spoken",
+          "official",
+          "linguistic",
+          "demographics",
+          "primary",
+          "national",
+          "communication"
+        ]
+      },
+      "metadata": {
+        "sophistication_level": "high",
+        "strategy_type": "context_aware_expansion",
+        "quality_score": 1.0,
+        "sample_index": 29
+      }
+    }
+  ]
+}

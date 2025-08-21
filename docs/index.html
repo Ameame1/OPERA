@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OPERA: Orchestrated Planner-Executor Reasoning Architecture</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>OPERA</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#results">Results</a></li>
+                <li><a href="#code">Code</a></li>
+                <li><a href="#paper">Paper</a></li>
+                <li><a href="#team">Team</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">OPERA</h1>
+                <h2 class="hero-subtitle">Orchestrated Planner-Executor Reasoning Architecture</h2>
+                <p class="hero-description">
+                    A Reinforcement Learning-Enhanced Framework for Reasoning-Oriented Multi-Hop Retrieval
+                </p>
+                <div class="hero-badges">
+                    <span class="badge badge-conference">AAAI 2026</span>
+                    <span class="badge badge-status">Paper Under Review</span>
+                </div>
+                <div class="hero-buttons">
+                    <a href="#paper" class="btn btn-primary">
+                        <i class="fas fa-file-pdf"></i> Read Paper
+                    </a>
+                    <a href="https://github.com/Ameame1/OPERA" class="btn btn-secondary">
+                        <i class="fab fa-github"></i> View Code
+                    </a>
+                    <a href="#results" class="btn btn-outline">
+                        <i class="fas fa-chart-bar"></i> See Results
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview Section -->
+    <section id="overview" class="section">
+        <div class="container">
+            <h2 class="section-title">Overview</h2>
+            <div class="overview-grid">
+                <div class="overview-text">
+                    <p class="lead">
+                        OPERA addresses fundamental limitations in current RAG (Retrieval-Augmented Generation) systems 
+                        by introducing a hierarchical architecture that systematically decouples strategic planning 
+                        from tactical execution.
+                    </p>
+                    <div class="challenges">
+                        <h3>Key Challenges Addressed:</h3>
+                        <div class="challenge-item">
+                            <div class="challenge-number">1</div>
+                            <div class="challenge-content">
+                                <h4>Ineffective Reasoning-Oriented Planning</h4>
+                                <p>Prior methods struggle to generate robust multi-step plans for complex queries</p>
+                            </div>
+                        </div>
+                        <div class="challenge-item">
+                            <div class="challenge-number">2</div>
+                            <div class="challenge-content">
+                                <h4>Suboptimal Reasoning-Driven Retrieval</h4>
+                                <p>Limited query reformulation leads to iterative loops that fail to locate golden documents</p>
+                            </div>
+                        </div>
+                        <div class="challenge-item">
+                            <div class="challenge-number">3</div>
+                            <div class="challenge-content">
+                                <h4>Insufficient Reasoning-Guided Filtering</h4>
+                                <p>Lack of fine-grained reasoning to effectively filter salient information from noisy results</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="overview-image">
+                    <img src="figures/OPERA-Figure-1-7.png" alt="OPERA Overview">
+                    <p class="image-caption">OPERA's MAPGRPO training framework and performance comparison</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Architecture Section -->
+    <section id="architecture" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Architecture</h2>
+            <div class="architecture-diagram">
+                <img src="figures/OPERA-Figure-2-2.png" alt="OPERA Architecture">
+            </div>
+            <div class="architecture-grid">
+                <div class="architecture-module">
+                    <div class="module-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Goal Planning Module (GPM)</h3>
+                    <p><strong>Plan Agent:</strong> Decomposes complex queries into executable sub-goals with placeholder dependencies for strategic multi-hop reasoning.</p>
+                </div>
+                <div class="architecture-module">
+                    <div class="module-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3>Reason-Execute Module (REM)</h3>
+                    <p><strong>Analysis-Answer Agent:</strong> Performs information sufficiency assessment and precise answer extraction from retrieved documents.</p>
+                    <p><strong>Rewrite Agent:</strong> Reformulates queries adaptively when information is insufficient.</p>
+                </div>
+                <div class="architecture-module">
+                    <div class="module-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <h3>Trajectory Memory Component</h3>
+                    <p>Records complete execution traces with action rationales for enhanced interpretability and debugging.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAPGRPO Section -->
+    <section id="mapgrpo" class="section">
+        <div class="container">
+            <h2 class="section-title">MAPGRPO Training Algorithm</h2>
+            <div class="mapgrpo-content">
+                <div class="mapgrpo-description">
+                    <h3>Multi-Agents Progressive Group Relative Policy Optimization</h3>
+                    <p>Our novel training algorithm enables fine-grained, role-specific credit assignment through:</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle"></i> Progressive training of specialized agents</li>
+                        <li><i class="fas fa-check-circle"></i> Group-based advantage computation</li>
+                        <li><i class="fas fa-check-circle"></i> Execution-based plan evaluation</li>
+                        <li><i class="fas fa-check-circle"></i> Agent-specific reward functions</li>
+                    </ul>
+                </div>
+                <div class="algorithm-box">
+                    <h4>Algorithm 1: MAPGRPO Training</h4>
+                    <pre><code class="language-python">
+# Stage 1: Plan Agent Training
+for epoch in range(E1):
+    for batch in dataset:
+        candidates = generate_candidates(plan_agent, query)
+        best = select_best_prescored(query)
+        candidates.add(best)
+        rewards = compute_plan_rewards(candidates)
+        update_plan_agent(rewards)
+
+# Stage 2: Analysis-Answer Agent Training  
+for epoch in range(E2):
+    for batch in exec_dataset:
+        candidates = generate_candidates(analysis_agent, context)
+        rewards = compute_analysis_rewards(candidates)
+        update_analysis_agent(rewards)
+
+# Stage 3: Rewrite Agent Training
+for epoch in range(E3):
+    for batch in rewrite_dataset:
+        candidates = generate_candidates(rewrite_agent, query)
+        rewards = compute_rewrite_rewards(candidates)
+        update_rewrite_agent(rewards)
+                    </code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Experimental Results</h2>
+            <div class="results-grid">
+                <div class="result-card">
+                    <h3>MuSiQue Benchmark</h3>
+                    <div class="result-chart">
+                        <div class="chart-bars">
+                            <div class="chart-row">
+                                <span class="method-name">Vanilla RAG</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 57%">28.5%</div>
+                                </div>
+                            </div>
+                            <div class="chart-row">
+                                <span class="method-name">ReAct</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 64%">32.1%</div>
+                                </div>
+                            </div>
+                            <div class="chart-row">
+                                <span class="method-name"><strong>OPERA</strong></span>
+                                <div class="bar-container">
+                                    <div class="bar bar-primary" style="width: 82%"><strong>41.3%</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="metric-label">EM Score</p>
+                </div>
+                <div class="result-card">
+                    <h3>HotpotQA Benchmark</h3>
+                    <div class="result-chart">
+                        <div class="chart-bars">
+                            <div class="chart-row">
+                                <span class="method-name">Vanilla RAG</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 62%">31.2%</div>
+                                </div>
+                            </div>
+                            <div class="chart-row">
+                                <span class="method-name">ReAct</span>
+                                <div class="bar-container">
+                                    <div class="bar" style="width: 71%">35.8%</div>
+                                </div>
+                            </div>
+                            <div class="chart-row">
+                                <span class="method-name"><strong>OPERA</strong></span>
+                                <div class="bar-container">
+                                    <div class="bar bar-primary" style="width: 89%"><strong>44.6%</strong></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="metric-label">EM Score</p>
+                </div>
+            </div>
+            <div class="performance-summary">
+                <div class="summary-item">
+                    <div class="summary-value">+44.8%</div>
+                    <div class="summary-label">Average improvement over Vanilla RAG</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value">+26.5%</div>
+                    <div class="summary-label">Average improvement over ReAct</div>
+                </div>
+                <div class="summary-item">
+                    <div class="summary-value">SOTA</div>
+                    <div class="summary-label">On multi-hop reasoning benchmarks</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Code Section -->
+    <section id="code" class="section">
+        <div class="container">
+            <h2 class="section-title">Code Implementation</h2>
+            <div class="code-grid">
+                <div class="code-example">
+                    <h3>Quick Start</h3>
+                    <pre><code class="language-python">
+from src.core.orchestrator import OPERAOrchestrator
+from src.agents import PlanAgent, AnalysisAnswerAgent, RewriteAgent
+
+# Initialize OPERA
+orchestrator = OPERAOrchestrator(
+    plan_agent=PlanAgent(model_name="gpt-4"),
+    analysis_agent=AnalysisAnswerAgent(model_name="gpt-3.5-turbo"),
+    rewrite_agent=RewriteAgent(model_name="gpt-3.5-turbo")
+)
+
+# Process a complex multi-hop question
+question = "What was the previous occupation of the person who succeeded the founder of the company that acquired WhatsApp?"
+result = orchestrator.process_question(question)
+
+print(f"Answer: {result.answer}")
+print(f"Reasoning Steps: {result.trajectory}")
+                    </code></pre>
+                </div>
+                <div class="code-features">
+                    <h3>Key Features</h3>
+                    <div class="feature-grid">
+                        <div class="feature-item">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <h4>Modular Design</h4>
+                            <p>Easily swap or customize individual agents</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-chart-line"></i>
+                            <h4>Training Framework</h4>
+                            <p>Complete MAPGRPO implementation included</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-history"></i>
+                            <h4>Trajectory Logging</h4>
+                            <p>Full execution traces for debugging</p>
+                        </div>
+                        <div class="feature-item">
+                            <i class="fas fa-cog"></i>
+                            <h4>Configurable</h4>
+                            <p>YAML-based configuration system</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="code-buttons">
+                <a href="https://github.com/Ameame1/OPERA" class="btn btn-primary">
+                    <i class="fab fa-github"></i> View on GitHub
+                </a>
+                <a href="https://github.com/Ameame1/OPERA/archive/refs/heads/main.zip" class="btn btn-secondary">
+                    <i class="fas fa-download"></i> Download Code
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Paper Section -->
+    <section id="paper" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">Paper</h2>
+            <div class="paper-content">
+                <div class="paper-preview">
+                    <img src="figures/paper-preview.png" alt="Paper Preview" style="width: 100%; max-width: 400px;">
+                </div>
+                <div class="paper-info">
+                    <h3>OPERA: A Reinforcement Learning-Enhanced Orchestrated Planner-Executor Architecture for Reasoning-Oriented Multi-Hop Retrieval</h3>
+                    <p class="paper-venue">
+                        <i class="fas fa-conference"></i> AAAI Conference on Artificial Intelligence 2026
+                    </p>
+                    <div class="paper-abstract">
+                        <h4>Abstract</h4>
+                        <p>
+                            Recent advances in large language models (LLMs) and dense retrievers have driven significant progress in retrieval-augmented generation (RAG).
+                            However, existing approaches face significant challenges in complex reasoning-oriented multi-hop retrieval tasks. 
+                            We introduce OPERA, a novel reasoning-driven retrieval framework that systematically decouples high-level strategic planning 
+                            from low-level tactical execution through specialized agents. To train OPERA, we propose Multi-Agents Progressive Group 
+                            Relative Policy Optimization (MAPGRPO), a novel variant of GRPO. Experiments on complex multi-hop benchmarks 
+                            show OPERA's superior performance, validating both the MAPGRPO method and OPERA's design.
+                        </p>
+                    </div>
+                    <div class="paper-buttons">
+                        <a href="paper/OPERA_AAAI2026.pdf" class="btn btn-primary">
+                            <i class="fas fa-file-pdf"></i> Download PDF
+                        </a>
+                        <a href="#" class="btn btn-secondary">
+                            <i class="fas fa-quote-right"></i> Cite Paper
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="citation-box">
+                <h4>Citation</h4>
+                <pre><code class="language-bibtex">
+@inproceedings{opera2026,
+  title={OPERA: A Reinforcement Learning-Enhanced Orchestrated 
+         Planner-Executor Architecture for Reasoning-Oriented 
+         Multi-Hop Retrieval},
+  author={Anonymous Authors},
+  booktitle={Proceedings of the 40th AAAI Conference on 
+             Artificial Intelligence},
+  year={2026}
+}
+                </code></pre>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="section">
+        <div class="container">
+            <h2 class="section-title">Research Team</h2>
+            <div class="team-grid">
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Anonymous Author 1</h3>
+                    <p>Institution Name</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Anonymous Author 2</h3>
+                    <p>Institution Name</p>
+                </div>
+                <div class="team-member">
+                    <div class="member-avatar">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3>Anonymous Author 3</h3>
+                    <p>Institution Name</p>
+                </div>
+            </div>
+            <p class="team-note">
+                <i class="fas fa-info-circle"></i> Author information is anonymized for double-blind review
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>OPERA</h4>
+                    <p>Orchestrated Planner-Executor Reasoning Architecture</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="https://github.com/Ameame1/OPERA">GitHub Repository</a></li>
+                        <li><a href="#paper">Paper PDF</a></li>
+                        <li><a href="#results">Results</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Contact</h4>
+                    <p>For questions about this research, please open an issue on GitHub</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 OPERA Research Team. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Add active class to navigation on scroll
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').slice(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
