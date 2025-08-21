@@ -2,7 +2,7 @@
 
 ## Overview
 
-This repository contains code implementation for OPERA system described in our AAAI 2026 paper. The code includes the three-agent architecture and MAPGRPO (Multi-Agent Progressive Group Relative Policy Optimization) training framework.
+This repository contains code implementation for OPERA system. The code includes the three-agent architecture and MAPGRPO (Multi-Agent Progressive Group Relative Policy Optimization) training framework.
 
 ## Components
 
@@ -143,17 +143,17 @@ System configuration is provided in `config/opera_config.yaml` with parameters m
 
 ## Note
 
-This is the core implementation accompanying our AAAI 2026 paper submission. For questions about the research, please refer to the paper.
+This is the core implementation of the OPERA system. For questions about the research, please refer to our paper.
 
 ## Citation
 
 If you use this code in your research, please cite:
 
 ```bibtex
-@inproceedings{opera2026,
+@article{opera2024,
   title={OPERA: Orchestrated Planner-Executor Reasoning Architecture for Reasoning-Centric Retrieval},
   author={Anonymous},
-  booktitle={Proceedings of AAAI},
-  year={2026}
+  journal={arXiv preprint},
+  year={2024}
 }
 ```
