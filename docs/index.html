@@ -91,9 +91,9 @@
                         </div>
                     </div>
                 </div>
-                <div class="overview-image" style="width: 100%; max-width: 900px; margin: 0 auto;">
-                    <img src="figures/OPERA-Figure-1-7.png" alt="OPERA Overview" style="width: 100%; height: auto;">
-                    <p class="image-caption">OPERA's MAPGRPO training framework and performance comparison</p>
+                <div class="overview-image" style="width: 100%; max-width: 1200px; margin: 2rem auto;">
+                    <img src="figures/OPERA-Figure-1-7.png" alt="OPERA Overview" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+                    <p class="image-caption" style="font-size: 1rem; margin-top: 1rem;">OPERA's MAPGRPO training framework and performance comparison</p>
                 </div>
             </div>
         </div>
@@ -490,10 +490,10 @@ for epoch in range(E3):
                 </div>
             </div>
 
-            <!-- Code Examples - Stacked Vertically -->
-            <div style="display: flex; flex-direction: column; gap: 2rem;">
-                <div class="code-example" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md);">
-                    <h3>Implementation Example</h3>
+            <!-- Code Examples - Stacked Vertically with Better Spacing -->
+            <div style="display: flex; flex-direction: column; gap: 3rem; margin-top: 3rem;">
+                <div class="code-example" style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary-color); font-size: 1.5rem;">Implementation Example</h3>
                     <pre><code class="language-python">
 from src.core.orchestrator import OPERAOrchestrator
 from src.training.reward_functions import (
@@ -534,8 +534,14 @@ question = "What is the GDP per capita of the country where the headquarters of 
 result = orchestrator.process_question(question)
                     </code></pre>
                 </div>
-                <div class="code-features" style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md);">
-                    <h3>MAPGRPO Training</h3>
+                
+                <!-- Visual Separator -->
+                <div style="text-align: center; margin: 2rem 0;">
+                    <div style="display: inline-block; width: 60%; height: 1px; background: linear-gradient(90deg, transparent, #e5e7eb, transparent);"></div>
+                </div>
+                
+                <div class="code-features" style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+                    <h3 style="margin-bottom: 1.5rem; color: var(--primary-color); font-size: 1.5rem;">MAPGRPO Training Framework</h3>
                     <pre><code class="language-python">
 from src.training.mapgrpo_trainer import MAPGRPOTrainer
 
