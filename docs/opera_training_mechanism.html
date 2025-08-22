@@ -318,21 +318,29 @@
         
         .frozen-indicator {
             position: absolute;
-            top: 10px;
-            right: 10px;
-            background: #94a3b8;
+            top: 5px;
+            right: 5px;
+            background: rgba(148, 163, 184, 0.95);
             color: white;
-            padding: 3px 10px;
-            border-radius: 12px;
-            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.7rem;
             font-weight: 600;
             display: none;
+            z-index: 10;
         }
         
         .stage-2 .frozen-plan,
-        .stage-3 .frozen-plan,
+        .stage-3 .frozen-plan {
+            display: block;
+            top: 5px;
+            right: 5px;
+        }
+        
         .stage-3 .frozen-analysis {
             display: block;
+            top: 28px;
+            right: 5px;
         }
         
         /* Group Selection Visualization */
@@ -512,7 +520,7 @@
                             Uses pre-scored dataset 𝒟<sub>scored</sub> with samples already evaluated by end-to-end execution
                         </div>
                         <div class="reward-formula">
-                            R = 0.5×Logic + 0.3×Structure + 0.2×Execution
+                            r<sub>plan</sub> = λ₁·f<sub>logic</sub> + λ₂·f<sub>struct</sub> + λ₃·f<sub>exec</sub>
                         </div>
                     </div>
                     
@@ -544,7 +552,7 @@
                             Evaluates answer correctness and evidence quality using ground truth
                         </div>
                         <div class="reward-formula">
-                            R = 0.6×Correctness + 0.25×Evidence + 0.15×Format
+                            r<sub>ana</sub> = α·𝕀[φ=φ*] + β·EM(a,a*) + γ·f<sub>format</sub>
                         </div>
                     </div>
                     
@@ -559,7 +567,7 @@
                 <!-- Stage 3: Rewrite Agent -->
                 <div class="training-stage stage-3">
                     <div class="frozen-indicator frozen-plan">Plan Agent Frozen ❄️</div>
-                    <div class="frozen-indicator frozen-analysis" style="top: 35px;">Analysis Agent Frozen ❄️</div>
+                    <div class="frozen-indicator frozen-analysis">Analysis Agent Frozen ❄️</div>
                     <div class="stage-header">
                         <div class="stage-number">3</div>
                         <div class="stage-info">
@@ -577,7 +585,7 @@
                             BGE-M3 retriever evaluates query quality through NDCG@k scores
                         </div>
                         <div class="reward-formula">
-                            R = 0.7×√NDCG@k + 0.3×Format
+                            r<sub>rew</sub> = ω₁·√NDCG@k + ω₂·f<sub>format</sub>
                         </div>
                     </div>
                     
