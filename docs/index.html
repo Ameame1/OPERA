@@ -17,7 +17,7 @@
                 <h1>OPERA</h1>
             </div>
             <ul class="nav-menu">
-                <li><a href="#overview">Overview</a></li>
+                <li><a href="#abstract">Abstract</a></li>
                 <li><a href="#architecture">Architecture</a></li>
                 <li><a href="#training">Training</a></li>
                 <li><a href="#results">Results</a></li>
@@ -55,40 +55,45 @@
         </div>
     </section>
 
-    <!-- Overview Section -->
-    <section id="overview" class="section">
+    <!-- Abstract Section -->
+    <section id="abstract" class="section">
         <div class="container">
-            <h2 class="section-title">Overview</h2>
+            <h2 class="section-title">Abstract</h2>
             
-            <div class="overview-text" style="max-width: 1200px; margin: 0 auto;">
-                <p class="lead">
-                    OPERA addresses fundamental limitations in current RAG (Retrieval-Augmented Generation) systems 
-                    by introducing a hierarchical architecture that systematically decouples strategic planning 
-                    from tactical execution.
+            <div class="abstract-text" style="max-width: 1000px; margin: 0 auto; text-align: justify; line-height: 1.8;">
+                <p style="font-size: 1.05rem; color: #4a5568;">
+                    Recent advances in large language models (LLMs) and dense retrievers have driven significant progress in retrieval-augmented generation (RAG). 
+                    However, existing approaches face significant challenges in complex reasoning-oriented multi-hop retrieval tasks:
                 </p>
-                <div class="challenges">
-                    <h3>Key Challenges Addressed:</h3>
-                    <div class="challenge-item">
-                        <div class="challenge-number">1</div>
-                        <div class="challenge-content">
-                            <h4>Ineffective Reasoning-Oriented Planning</h4>
-                            <p>Prior methods struggle to generate robust multi-step plans for complex queries</p>
-                        </div>
-                    </div>
-                    <div class="challenge-item">
-                        <div class="challenge-number">2</div>
-                        <div class="challenge-content">
-                            <h4>Suboptimal Reasoning-Driven Retrieval</h4>
-                            <p>Limited query reformulation leads to iterative loops that fail to locate golden documents</p>
-                        </div>
-                    </div>
-                    <div class="challenge-item">
-                        <div class="challenge-number">3</div>
-                        <div class="challenge-content">
-                            <h4>Insufficient Reasoning-Guided Filtering</h4>
-                            <p>Lack of fine-grained reasoning to effectively filter salient information from noisy results</p>
-                        </div>
-                    </div>
+                
+                <div style="margin: 2rem 0; padding-left: 2rem;">
+                    <p style="margin-bottom: 1rem; color: #2d3748;">
+                        <strong>1) Ineffective reasoning-oriented planning:</strong> Prior methods struggle to generate robust multi-step plans for complex queries, 
+                        as rule-based decomposers perform poorly on out-of-template questions.
+                    </p>
+                    <p style="margin-bottom: 1rem; color: #2d3748;">
+                        <strong>2) Suboptimal reasoning-driven retrieval:</strong> Related methods employ limited query reformulation, 
+                        leading to iterative retrieval loops that often fail to locate golden documents.
+                    </p>
+                    <p style="margin-bottom: 1rem; color: #2d3748;">
+                        <strong>3) Insufficient reasoning-guided filtering:</strong> Prevailing methods lack the fine-grained reasoning 
+                        to effectively filter salient information from noisy results, hindering utilization of retrieved knowledge.
+                    </p>
+                </div>
+                
+                <p style="font-size: 1.05rem; color: #4a5568; margin-bottom: 1.5rem;">
+                    Fundamentally, these limitations all stem from the weak coupling between retrieval and reasoning in current RAG architectures. 
+                    We introduce the <strong>Orchestrated Planner-Executor Reasoning Architecture (OPERA)</strong>, a novel reasoning-driven retrieval framework. 
+                    OPERA's Goal Planning Module (GPM) decomposes questions into sub-goals, which are executed by a Reason-Execute Module (REM) 
+                    with specialized components for precise reasoning and effective retrieval. To train OPERA, we propose 
+                    Multi-Agents Progressive Group Relative Policy Optimization (MAPGRPO), a novel variant of GRPO. 
+                    Experiments on complex multi-hop benchmarks show OPERA's superior performance, validating both the MAPGRPO method and OPERA's design.
+                </p>
+                
+                <div style="text-align: center; margin-top: 2rem;">
+                    <a href="https://github.com/Ameame1/OPERA" class="btn btn-primary" style="text-decoration: none;">
+                        <i class="fab fa-github"></i> Code Available on GitHub
+                    </a>
                 </div>
             </div>
             
@@ -372,177 +377,6 @@ for epoch in range(E3):
     <section id="code" class="section">
         <div class="container">
             <h2 class="section-title">Code Implementation</h2>
-            
-            <!-- Key Innovation: Multi-Dimensional Reward Functions -->
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 2rem; border-radius: 12px; margin-bottom: 3rem;">
-                <h3 style="color: white; margin-bottom: 1.5rem; text-align: center;">🌟 Key Innovation: Progressive Multi-Agent Training with Specialized Rewards</h3>
-                <p style="margin-bottom: 2rem; opacity: 0.95; text-align: center; max-width: 800px; margin-left: auto; margin-right: auto;">
-                    OPERA employs a three-stage progressive training pipeline where each agent is optimized with its own multi-dimensional reward function, 
-                    enabling precise credit assignment and role-specific skill development.
-                </p>
-                
-                <!-- Training Pipeline Visualization -->
-                <div style="position: relative; padding: 2rem 0;">
-                    <!-- Stage Indicators -->
-                    <div style="display: flex; justify-content: space-between; margin-bottom: 3rem;">
-                        <div style="text-align: center; flex: 1;">
-                            <div style="background: rgba(255, 255, 255, 0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.5rem; font-weight: bold; border: 3px solid rgba(255, 255, 255, 0.8);">1</div>
-                            <h4 style="color: white; margin: 0;">Stage 1</h4>
-                            <p style="opacity: 0.9; font-size: 0.9rem; margin: 0;">Plan Agent Training</p>
-                        </div>
-                        <div style="position: absolute; top: 30px; left: 20%; right: 20%; height: 3px; background: linear-gradient(90deg, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0.4) 50%, rgba(255,255,255,0.8) 100%); z-index: 0;"></div>
-                        <div style="text-align: center; flex: 1;">
-                            <div style="background: rgba(255, 255, 255, 0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.5rem; font-weight: bold; border: 3px solid rgba(255, 255, 255, 0.8);">2</div>
-                            <h4 style="color: white; margin: 0;">Stage 2</h4>
-                            <p style="opacity: 0.9; font-size: 0.9rem; margin: 0;">Analysis-Answer Training</p>
-                        </div>
-                        <div style="text-align: center; flex: 1;">
-                            <div style="background: rgba(255, 255, 255, 0.2); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.5rem; font-size: 1.5rem; font-weight: bold; border: 3px solid rgba(255, 255, 255, 0.8);">3</div>
-                            <h4 style="color: white; margin: 0;">Stage 3</h4>
-                            <p style="opacity: 0.9; font-size: 0.9rem; margin: 0;">Rewrite Agent Training</p>
-                        </div>
-                    </div>
-                    
-                    <!-- Reward Function Cards -->
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
-                        <!-- Plan Agent Card -->
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 12px; border: 2px solid rgba(255, 255, 255, 0.3); position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #10b981 0%, #06b6d4 100%);"></div>
-                            <h4 style="color: white; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="background: #10b981; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">📋</span>
-                                Plan Agent Reward
-                            </h4>
-                            <div style="background: rgba(0, 0, 0, 0.4); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; font-family: monospace;">
-                                <div style="color: #10b981; font-size: 0.9rem; margin-bottom: 0.5rem;">r_plan = </div>
-                                <div style="display: flex; flex-direction: column; gap: 0.25rem; padding-left: 1rem;">
-                                    <div style="color: #fbbf24;">λ₁ · f_logic(q, P)</div>
-                                    <div style="color: #a78bfa;">+ λ₂ · f_struct(P)</div>
-                                    <div style="color: #60a5fa;">+ λ₃ · f_exec(P, E)</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 40px; height: 6px; background: #fbbf24; border-radius: 3px;"></div>
-                                    <span style="font-size: 0.85rem; opacity: 0.9;">Logic validity (40%)</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 20px; height: 6px; background: #a78bfa; border-radius: 3px;"></div>
-                                    <span style="font-size: 0.85rem; opacity: 0.9;">Structure (20%)</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 40px; height: 6px; background: #60a5fa; border-radius: 3px;"></div>
-                                    <span style="font-size: 0.85rem; opacity: 0.9;">Execution (40%)</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Analysis-Answer Agent Card -->
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 12px; border: 2px solid rgba(255, 255, 255, 0.3); position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #f59e0b 0%, #ef4444 100%);"></div>
-                            <h4 style="color: white; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="background: #f59e0b; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">🔍</span>
-                                Analysis-Answer Reward
-                            </h4>
-                            <div style="background: rgba(0, 0, 0, 0.4); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; font-family: monospace;">
-                                <div style="color: #f59e0b; font-size: 0.9rem; margin-bottom: 0.5rem;">r_ana = </div>
-                                <div style="display: flex; flex-direction: column; gap: 0.25rem; padding-left: 1rem;">
-                                    <div style="color: #fb923c;">α · I[φ=φ*]</div>
-                                    <div style="color: #f87171;">+ β · EM(a, a*)</div>
-                                    <div style="color: #c084fc;">+ γ · f_format(o)</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 30px; height: 6px; background: #fb923c; border-radius: 3px;"></div>
-                                    <span style="font-size: 0.85rem; opacity: 0.9;">Sufficiency (30%)</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 50px; height: 6px; background: #f87171; border-radius: 3px;"></div>
-                                    <span style="font-size: 0.85rem; opacity: 0.9;">Accuracy (50%)</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 20px; height: 6px; background: #c084fc; border-radius: 3px;"></div>
-                                    <span style="font-size: 0.85rem; opacity: 0.9;">Format (20%)</span>
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <!-- Rewrite Agent Card -->
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1.5rem; border-radius: 12px; border: 2px solid rgba(255, 255, 255, 0.3); position: relative; overflow: hidden;">
-                            <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #8b5cf6 0%, #ec4899 100%);"></div>
-                            <h4 style="color: white; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem;">
-                                <span style="background: #8b5cf6; width: 30px; height: 30px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">✏️</span>
-                                Rewrite Agent Reward
-                            </h4>
-                            <div style="background: rgba(0, 0, 0, 0.4); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; font-family: monospace;">
-                                <div style="color: #8b5cf6; font-size: 0.9rem; margin-bottom: 0.5rem;">r_rew = </div>
-                                <div style="display: flex; flex-direction: column; gap: 0.25rem; padding-left: 1rem;">
-                                    <div style="color: #a855f7;">ω₁ · √NDCG@k(R, G)</div>
-                                    <div style="color: #ec4899;">+ ω₂ · f_format(q')</div>
-                                </div>
-                            </div>
-                            <div style="display: flex; flex-direction: column; gap: 0.5rem;">
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 80px; height: 6px; background: #a855f7; border-radius: 3px;"></div>
-                                    <span style="font-size: 0.85rem; opacity: 0.9;">Retrieval (80%)</span>
-                                </div>
-                                <div style="display: flex; align-items: center; gap: 0.5rem;">
-                                    <div style="width: 20px; height: 6px; background: #ec4899; border-radius: 3px;"></div>
-                                    <span style="font-size: 0.85rem; opacity: 0.9;">Format (20%)</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Training Flow -->
-                <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
-                    <h4 style="color: white; text-align: center; margin-bottom: 1rem;">Progressive Training Flow</h4>
-                    <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 0.5rem 1rem; border-radius: 20px; display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="color: #10b981;">●</span> Train Plan Agent
-                        </div>
-                        <span style="color: rgba(255, 255, 255, 0.6);">→</span>
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 0.5rem 1rem; border-radius: 20px; display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="color: #f59e0b;">●</span> Freeze Plan, Train Analysis
-                        </div>
-                        <span style="color: rgba(255, 255, 255, 0.6);">→</span>
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 0.5rem 1rem; border-radius: 20px; display: flex; align-items: center; gap: 0.5rem;">
-                            <span style="color: #8b5cf6;">●</span> Freeze Both, Train Rewrite
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Reward Evaluation Panel -->
-                <div style="margin-top: 2rem; background: rgba(255, 255, 255, 0.05); padding: 1.5rem; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.2);">
-                    <h4 style="color: white; text-align: center; margin-bottom: 1rem;">
-                        <span style="color: #fbbf24;">⚖️</span> Multi-Judge LLM Panel for Reward Scoring
-                    </h4>
-                    <p style="text-align: center; opacity: 0.9; margin-bottom: 1rem;">
-                        Rewards are evaluated by specialized judge models during offline dataset creation
-                    </p>
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
-                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">🎯</div>
-                            <h5 style="color: #10b981; margin-bottom: 0.25rem;">Logic Judge</h5>
-                            <p style="font-size: 0.85rem; opacity: 0.8;">Evaluates decomposition validity</p>
-                        </div>
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
-                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">✅</div>
-                            <h5 style="color: #f59e0b; margin-bottom: 0.25rem;">Execution Judge</h5>
-                            <p style="font-size: 0.85rem; opacity: 0.8;">Tests end-to-end success</p>
-                        </div>
-                        <div style="background: rgba(255, 255, 255, 0.1); padding: 1rem; border-radius: 8px; text-align: center;">
-                            <div style="font-size: 1.5rem; margin-bottom: 0.5rem;">📊</div>
-                            <h5 style="color: #8b5cf6; margin-bottom: 0.25rem;">Retrieval Judge</h5>
-                            <p style="font-size: 0.85rem; opacity: 0.8;">Measures NDCG@k scores</p>
-                        </div>
-                    </div>
-                    <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem; opacity: 0.8;">
-                        Judge Model: <strong>DeepSeek R1 API</strong> for high-quality reward annotation
-                    </p>
-                </div>
-            </div>
 
             <!-- Code Examples - Stacked Vertically with Better Spacing -->
             <div style="display: flex; flex-direction: column; gap: 3rem; margin-top: 3rem;">
