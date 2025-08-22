@@ -27,8 +27,8 @@ Revolutionary dependency tracking through `[entity from step X]` references that
 Multi-Agent Progressive Group Relative Policy Optimization with role-specific reward functions:
 
 <div align="center">
-  <img src="docs/figures/opera_stages.png" alt="Training Pipeline" width="80%">
-  <p><i>Progressive training pipeline with stage-wise agent optimization</i></p>
+  <img src="docs/figures/OPERA-Figure-2.png" alt="MAPGRPO Training Framework" width="90%">
+  <p><i>Figure 2: MAPGRPO training framework with progressive agent optimization and multi-dimensional rewards</i></p>
 </div>
 
 ## 📊 Performance
