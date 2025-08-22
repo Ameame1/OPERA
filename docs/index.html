@@ -19,10 +19,10 @@
             <ul class="nav-menu">
                 <li><a href="#overview">Overview</a></li>
                 <li><a href="#architecture">Architecture</a></li>
+                <li><a href="#judge-system">Evaluation</a></li>
                 <li><a href="#results">Results</a></li>
                 <li><a href="#code">Code</a></li>
                 <li><a href="#paper">Paper</a></li>
-                <li><a href="#team">Team</a></li>
             </ul>
         </div>
     </nav>
@@ -158,6 +158,31 @@
                         <!-- Steps will be revealed by JavaScript -->
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Judge System Section -->
+    <section id="judge-system" class="section" style="background: #f8f9fa;">
+        <div class="container">
+            <h2 class="section-title">⚖️ Multi-Agent Evaluation System</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                Each agent in OPERA is evaluated by DeepSeek R1 with role-specific reward functions, 
+                ensuring specialized optimization for planning, reasoning, and retrieval capabilities.
+            </p>
+            
+            <!-- Embedded Judge Visualization -->
+            <div style="width: 100%; height: 800px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                <iframe src="opera_judge_system.html" 
+                        style="width: 100%; height: 100%; border: none;"
+                        title="OPERA Judge System Visualization">
+                </iframe>
+            </div>
+            
+            <div style="margin-top: 2rem; text-align: center;">
+                <a href="opera_judge_system.html" target="_blank" class="btn btn-outline" style="text-decoration: none;">
+                    <i class="fas fa-external-link-alt"></i> View Full Screen
+                </a>
             </div>
         </div>
     </section>
