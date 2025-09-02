@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "type": "initial_question_dataset",
+    "description": "Complex multi-hop questions for OPERA system input"
+  },
+  "question_categories": {
+    "corporate_chain": [
+      {
+        "qid": "corp_001",
+        "question": "What is the stock symbol of the parent company of the brand that makes the Galaxy smartphone?",
+        "complexity": 3,
+        "domains": [
+          "technology",
+          "finance",
+          "corporate_structure"
+        ]
+      },
+      {
+        "qid": "corp_002",
+        "question": "In what year was the company founded that now owns the luxury brand that makes the Phantom automobile?",
+        "complexity": 3,
+        "domains": [
+          "automotive",
+          "luxury_goods",
+          "corporate_history"
+        ]
+      },
+      {
+        "qid": "corp_003",
+        "question": "What is the nationality of the current CEO of the company that acquired Whole Foods?",
+        "complexity": 3,
+        "domains": [
+          "retail",
+          "leadership",
+          "acquisitions"
+        ]
+      }
+    ],
+    "geographic_chain": [
+      {
+        "qid": "geo_001",
+        "question": "What is the official language of the country where the city that hosts the headquarters of CERN is located?",
+        "complexity": 3,
+        "domains": [
+          "science",
+          "geography",
+          "linguistics"
+        ]
+      },
+      {
+        "qid": "geo_002",
+        "question": "What is the population density of the state where the university that developed ARPANET is located?",
+        "complexity": 4,
+        "domains": [
+          "technology_history",
+          "education",
+          "demographics"
+        ]
+      },
+      {
+        "qid": "geo_003",
+        "question": "What ocean borders the country where the company that created Pokemon is headquartered?",
+        "complexity": 3,
+        "domains": [
+          "gaming",
+          "geography",
+          "oceanography"
+        ]
+      }
+    ],
+    "temporal_chain": [
+      {
+        "qid": "temp_001",
+        "question": "Who was the president of the United States when the company that created the iPhone was founded?",
+        "complexity": 3,
+        "domains": [
+          "technology",
+          "politics",
+          "history"
+        ]
+      },
+      {
+        "qid": "temp_002",
+        "question": "What was the world population when the inventor of the World Wide Web was born?",
+        "complexity": 4,
+        "domains": [
+          "technology",
+          "demographics",
+          "history"
+        ]
+      },
+      {
+        "qid": "temp_003",
+        "question": "How old was the founder of Facebook when Twitter was launched?",
+        "complexity": 4,
+        "domains": [
+          "social_media",
+          "entrepreneurship",
+          "chronology"
+        ]
+      }
+    ],
+    "scientific_chain": [
+      {
+        "qid": "sci_001",
+        "question": "What is the atomic number of the element named after the scientist who developed the theory of relativity?",
+        "complexity": 3,
+        "domains": [
+          "chemistry",
+          "physics",
+          "scientific_history"
+        ]
+      },
+      {
+        "qid": "sci_002",
+        "question": "In what country was the scientist born who discovered the vaccine for the disease that caused the 1918 pandemic?",
+        "complexity": 4,
+        "domains": [
+          "medicine",
+          "history",
+          "geography"
+        ]
+      },
+      {
+        "qid": "sci_003",
+        "question": "What university did the person attend who proved Fermat's Last Theorem?",
+        "complexity": 2,
+        "domains": [
+          "mathematics",
+          "education"
+        ]
+      }
+    ],
+    "cultural_chain": [
+      {
+        "qid": "cult_001",
+        "question": "What is the native language of the director who made the first film to win Best Picture at the Oscars?",
+        "complexity": 3,
+        "domains": [
+          "film",
+          "history",
+          "linguistics"
+        ]
+      },
+      {
+        "qid": "cult_002",
+        "question": "In what city is the museum located that houses the painting that Leonardo da Vinci is most famous for?",
+        "complexity": 3,
+        "domains": [
+          "art",
+          "geography",
+          "culture"
+        ]
+      },
+      {
+        "qid": "cult_003",
+        "question": "What instrument did the composer primarily play who wrote the national anthem of Germany?",
+        "complexity": 4,
+        "domains": [
+          "music",
+          "history",
+          "national_symbols"
+        ]
+      }
+    ],
+    "mixed_domain": [
+      {
+        "qid": "mix_001",
+        "question": "What is the GDP per capita of the country where the athlete who broke the 4-minute mile barrier was born?",
+        "complexity": 4,
+        "domains": [
+          "sports",
+          "geography",
+          "economics"
+        ]
+      },
+      {
+        "qid": "mix_002",
+        "question": "How many employees does the company have that owns the search engine used by the browser that comes pre-installed on Mac computers?",
+        "complexity": 5,
+        "domains": [
+          "technology",
+          "corporate",
+          "software"
+        ]
+      },
+      {
+        "qid": "mix_003",
+        "question": "What year was the peace treaty signed that ended the war in which the grandfather of Queen Elizabeth II was the monarch?",
+        "complexity": 5,
+        "domains": [
+          "history",
+          "royalty",
+          "international_relations"
+        ]
+      }
+    ]
+  },
+  "statistics": {
+    "total_questions": 18,
+    "complexity_distribution": {
+      "2-hop": 1,
+      "3-hop": 10,
+      "4-hop": 5,
+      "5-hop": 2
+    },
+    "domain_coverage": [
+      "technology",
+      "geography",
+      "history",
+      "corporate",
+      "science",
+      "culture",
+      "economics",
+      "politics"
+    ],
+    "average_complexity": 3.4
+  }
+}

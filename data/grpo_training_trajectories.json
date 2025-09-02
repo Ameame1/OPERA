@@ -1,0 +1,288 @@
+{
+  "metadata": {
+    "type": "grpo_training_trajectories",
+    "description": "Complete execution trajectories for GRPO training showing full agent interactions"
+  },
+  "trajectories": [
+    {
+      "trajectory_id": "traj_001",
+      "question": "What is the GDP per capita of the country where the headquarters of the company that acquired GitHub is located?",
+      "final_answer": "approximately $65,000",
+      "reward_score": 0.95,
+      "execution_traces": [
+        {
+          "step": 1,
+          "agent": "PLAN",
+          "action": "decompose_question",
+          "input": "What is the GDP per capita of the country where the headquarters of the company that acquired GitHub is located?",
+          "output": {
+            "subgoals": [
+              {
+                "id": 1,
+                "subgoal": "Which company acquired GitHub?",
+                "dependencies": []
+              },
+              {
+                "id": 2,
+                "subgoal": "Where is [entity from step 1] headquartered?",
+                "dependencies": [
+                  1
+                ]
+              },
+              {
+                "id": 3,
+                "subgoal": "In which country is [entity from step 2] located?",
+                "dependencies": [
+                  2
+                ]
+              },
+              {
+                "id": 4,
+                "subgoal": "What is the GDP per capita of [entity from step 3]?",
+                "dependencies": [
+                  3
+                ]
+              }
+            ]
+          },
+          "reward_component": {
+            "logic": 0.95,
+            "efficiency": 0.9
+          }
+        },
+        {
+          "step": 2,
+          "agent": "Analysis-Answer",
+          "action": "analyze_documents",
+          "input": {
+            "sub_question": "Which company acquired GitHub?",
+            "documents": [
+              "Microsoft Corporation acquired GitHub in 2018 for $7.5 billion..."
+            ]
+          },
+          "output": {
+            "status": "yes",
+            "answer": "Microsoft",
+            "analysis": "Documents clearly state Microsoft acquired GitHub in 2018"
+          },
+          "reward_component": {
+            "accuracy": 1.0
+          }
+        },
+        {
+          "step": 3,
+          "agent": "Analysis-Answer",
+          "action": "analyze_documents",
+          "input": {
+            "sub_question": "Where is Microsoft headquartered?",
+            "documents": [
+              "Microsoft Corporation is headquartered in Redmond, Washington, United States..."
+            ]
+          },
+          "output": {
+            "status": "yes",
+            "answer": "Redmond, Washington",
+            "analysis": "Corporate documentation confirms Microsoft's headquarters location"
+          },
+          "reward_component": {
+            "accuracy": 1.0
+          }
+        },
+        {
+          "step": 4,
+          "agent": "Analysis-Answer",
+          "action": "analyze_documents",
+          "input": {
+            "sub_question": "In which country is Redmond, Washington located?",
+            "documents": [
+              "Redmond is a city in King County, Washington, United States..."
+            ]
+          },
+          "output": {
+            "status": "yes",
+            "answer": "United States",
+            "analysis": "Geographic data confirms Redmond, Washington is in the United States"
+          },
+          "reward_component": {
+            "accuracy": 1.0
+          }
+        },
+        {
+          "step": 5,
+          "agent": "Analysis-Answer",
+          "action": "analyze_documents",
+          "input": {
+            "sub_question": "What is the GDP per capita of United States?",
+            "documents": [
+              "The United States GDP per capita was approximately $65,000 in 2022..."
+            ]
+          },
+          "output": {
+            "status": "yes",
+            "answer": "approximately $65,000",
+            "analysis": "Economic data provides current US GDP per capita statistics"
+          },
+          "reward_component": {
+            "accuracy": 0.95
+          }
+        }
+      ],
+      "metrics": {
+        "total_steps": 5,
+        "successful_steps": 5,
+        "retrieval_rounds": 5,
+        "total_time_seconds": 12.4,
+        "final_reward": 0.95
+      }
+    },
+    {
+      "trajectory_id": "traj_002",
+      "question": "Who is the current CEO of the company that created the programming language used to develop Instagram's backend?",
+      "final_answer": "Mark Zuckerberg",
+      "reward_score": 0.88,
+      "execution_traces": [
+        {
+          "step": 1,
+          "agent": "PLAN",
+          "action": "decompose_question",
+          "input": "Who is the current CEO of the company that created the programming language used to develop Instagram's backend?",
+          "output": {
+            "subgoals": [
+              {
+                "id": 1,
+                "subgoal": "What programming language is used for Instagram's backend?",
+                "dependencies": []
+              },
+              {
+                "id": 2,
+                "subgoal": "Which company created [entity from step 1]?",
+                "dependencies": [
+                  1
+                ]
+              },
+              {
+                "id": 3,
+                "subgoal": "Who is the current CEO of [entity from step 2]?",
+                "dependencies": [
+                  2
+                ]
+              }
+            ]
+          },
+          "reward_component": {
+            "logic": 0.92,
+            "efficiency": 0.95
+          }
+        },
+        {
+          "step": 2,
+          "agent": "Analysis-Answer",
+          "action": "analyze_documents",
+          "input": {
+            "sub_question": "What programming language is used for Instagram's backend?",
+            "documents": [
+              "Instagram's backend is primarily built using Python with the Django framework..."
+            ]
+          },
+          "output": {
+            "status": "yes",
+            "answer": "Python",
+            "analysis": "Technical documentation confirms Instagram uses Python for backend development"
+          },
+          "reward_component": {
+            "accuracy": 1.0
+          }
+        },
+        {
+          "step": 3,
+          "agent": "Analysis-Answer",
+          "action": "analyze_documents",
+          "input": {
+            "sub_question": "Which company created Python?",
+            "documents": [
+              "Python was created by Guido van Rossum and is now managed by the Python Software Foundation..."
+            ]
+          },
+          "output": {
+            "status": "no",
+            "answer": "",
+            "analysis": "Python was created by an individual, not a company. It's now managed by a non-profit foundation."
+          },
+          "reward_component": {
+            "accuracy": 0.7
+          }
+        },
+        {
+          "step": 4,
+          "agent": "Rewrite",
+          "action": "rewrite_query",
+          "input": {
+            "original_query": "Which company created Python?",
+            "failure_reason": "Python was created by an individual, not a company"
+          },
+          "output": {
+            "rewritten_query": "Python creator organization employer company affiliation Instagram Meta",
+            "strategy": "context_expansion_with_domain_knowledge",
+            "keywords": [
+              "Python",
+              "Instagram",
+              "Meta",
+              "employer",
+              "organization"
+            ]
+          },
+          "reward_component": {
+            "relevance": 0.85,
+            "diversity": 0.8
+          }
+        },
+        {
+          "step": 5,
+          "agent": "Analysis-Answer",
+          "action": "analyze_documents",
+          "input": {
+            "sub_question": "Which company created Python?",
+            "documents": [
+              "Instagram is owned by Meta Platforms (formerly Facebook), CEO Mark Zuckerberg..."
+            ]
+          },
+          "output": {
+            "status": "yes",
+            "answer": "Meta Platforms",
+            "analysis": "Adjusting interpretation: Instagram (which uses Python) is owned by Meta Platforms"
+          },
+          "reward_component": {
+            "accuracy": 0.8
+          }
+        },
+        {
+          "step": 6,
+          "agent": "Analysis-Answer",
+          "action": "analyze_documents",
+          "input": {
+            "sub_question": "Who is the current CEO of Meta Platforms?",
+            "documents": [
+              "Mark Zuckerberg is the founder, chairman and CEO of Meta Platforms..."
+            ]
+          },
+          "output": {
+            "status": "yes",
+            "answer": "Mark Zuckerberg",
+            "analysis": "Corporate records confirm Mark Zuckerberg as current CEO of Meta"
+          },
+          "reward_component": {
+            "accuracy": 1.0
+          }
+        }
+      ],
+      "metrics": {
+        "total_steps": 6,
+        "successful_steps": 5,
+        "rewrite_attempts": 1,
+        "retrieval_rounds": 6,
+        "total_time_seconds": 15.8,
+        "final_reward": 0.88
+      }
+    }
+  ]
+}

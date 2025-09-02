@@ -1,0 +1,972 @@
+{
+  "metadata": {
+    "agent": "plan",
+    "total_samples": 30,
+    "reasoning_complexity": "expert_multi_hop"
+  },
+  "samples": [
+    {
+      "input": {
+        "question": "What language is spoken in the country where the company that owns Instagram is headquartered?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which company owns Instagram?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "Where is [entity from step 1] headquartered?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What country is [entity from step 2] located in?",
+          "dependencies": [
+            2
+          ]
+        },
+        {
+          "subgoal_id": 4,
+          "subgoal": "What is the official language of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 0
+      }
+    },
+    {
+      "input": {
+        "question": "Who is the current leader of the political party of the Prime Minister who served during the 2008 financial crisis?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Who was the Prime Minister during the 2008 financial crisis?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What political party does [entity from step 1] belong to?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "Who is the current leader of [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 1
+      }
+    },
+    {
+      "input": {
+        "question": "What is the GDP per capita of the country whose flag features the same colors as the jersey of the team that won the 2018 FIFA World Cup?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which team won the 2018 FIFA World Cup?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What colors are in [entity from step 1]'s jersey?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "Which country's flag features the colors [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        },
+        {
+          "subgoal_id": 4,
+          "subgoal": "What is the GDP per capita of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 2
+      }
+    },
+    {
+      "input": {
+        "question": "What architectural style characterizes the buildings in the district where the author of 'The Great Gatsby' lived in New York?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Who wrote 'The Great Gatsby'?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "In which district of New York did [entity from step 1] live?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What architectural style characterizes the buildings in [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 3
+      }
+    },
+    {
+      "input": {
+        "question": "What is the population density of the state where the university that developed the first successful polio vaccine is located?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which university developed the first successful polio vaccine?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "In which state is [entity from step 1] located?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What is the population density of [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 4
+      }
+    },
+    {
+      "input": {
+        "question": "What is the elevation of the mountain range that forms the border between the birthplace of Frida Kahlo and its neighboring country to the north?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Where was Frida Kahlo born?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What country is north of [entity from step 1]?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What mountain range forms the border between [entity from step 1] and [entity from step 2]?",
+          "dependencies": [
+            1,
+            2
+          ]
+        },
+        {
+          "subgoal_id": 4,
+          "subgoal": "What is the elevation of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 5
+      }
+    },
+    {
+      "input": {
+        "question": "What economic system was practiced by the country that was the primary opponent of the United States during the Cold War?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which country was the primary opponent of the United States during the Cold War?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What economic system was practiced by [entity from step 1] during the Cold War?",
+          "dependencies": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 6
+      }
+    },
+    {
+      "input": {
+        "question": "What is the time zone of the city where the Nobel Prize in Literature ceremony takes place?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Where does the Nobel Prize in Literature ceremony take place?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What is the time zone of [entity from step 1]?",
+          "dependencies": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 7
+      }
+    },
+    {
+      "input": {
+        "question": "What percentage of the world's oil reserves does the country with the longest coastline control?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which country has the longest coastline in the world?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What percentage of the world's oil reserves does [entity from step 1] control?",
+          "dependencies": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 8
+      }
+    },
+    {
+      "input": {
+        "question": "What is the main religion practiced in the country whose national animal is the same as the mascot of the Chicago Bulls?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "What is the mascot of the Chicago Bulls?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "Which country has [entity from step 1] as its national animal?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What is the main religion practiced in [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 9
+      }
+    },
+    {
+      "input": {
+        "question": "What language is spoken in the country where the company that owns Instagram is headquartered?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which company owns Instagram?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "Where is [entity from step 1] headquartered?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What country is [entity from step 2] located in?",
+          "dependencies": [
+            2
+          ]
+        },
+        {
+          "subgoal_id": 4,
+          "subgoal": "What is the official language of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 10
+      }
+    },
+    {
+      "input": {
+        "question": "Who is the current leader of the political party of the Prime Minister who served during the 2008 financial crisis?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Who was the Prime Minister during the 2008 financial crisis?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What political party does [entity from step 1] belong to?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "Who is the current leader of [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 11
+      }
+    },
+    {
+      "input": {
+        "question": "What is the GDP per capita of the country whose flag features the same colors as the jersey of the team that won the 2018 FIFA World Cup?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which team won the 2018 FIFA World Cup?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What colors are in [entity from step 1]'s jersey?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "Which country's flag features the colors [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        },
+        {
+          "subgoal_id": 4,
+          "subgoal": "What is the GDP per capita of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 12
+      }
+    },
+    {
+      "input": {
+        "question": "What architectural style characterizes the buildings in the district where the author of 'The Great Gatsby' lived in New York?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Who wrote 'The Great Gatsby'?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "In which district of New York did [entity from step 1] live?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What architectural style characterizes the buildings in [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 13
+      }
+    },
+    {
+      "input": {
+        "question": "What is the population density of the state where the university that developed the first successful polio vaccine is located?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which university developed the first successful polio vaccine?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "In which state is [entity from step 1] located?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What is the population density of [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 14
+      }
+    },
+    {
+      "input": {
+        "question": "What is the elevation of the mountain range that forms the border between the birthplace of Frida Kahlo and its neighboring country to the north?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Where was Frida Kahlo born?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What country is north of [entity from step 1]?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What mountain range forms the border between [entity from step 1] and [entity from step 2]?",
+          "dependencies": [
+            1,
+            2
+          ]
+        },
+        {
+          "subgoal_id": 4,
+          "subgoal": "What is the elevation of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 15
+      }
+    },
+    {
+      "input": {
+        "question": "What economic system was practiced by the country that was the primary opponent of the United States during the Cold War?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which country was the primary opponent of the United States during the Cold War?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What economic system was practiced by [entity from step 1] during the Cold War?",
+          "dependencies": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 16
+      }
+    },
+    {
+      "input": {
+        "question": "What is the time zone of the city where the Nobel Prize in Literature ceremony takes place?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Where does the Nobel Prize in Literature ceremony take place?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What is the time zone of [entity from step 1]?",
+          "dependencies": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 17
+      }
+    },
+    {
+      "input": {
+        "question": "What percentage of the world's oil reserves does the country with the longest coastline control?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which country has the longest coastline in the world?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What percentage of the world's oil reserves does [entity from step 1] control?",
+          "dependencies": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 18
+      }
+    },
+    {
+      "input": {
+        "question": "What is the main religion practiced in the country whose national animal is the same as the mascot of the Chicago Bulls?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "What is the mascot of the Chicago Bulls?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "Which country has [entity from step 1] as its national animal?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What is the main religion practiced in [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 19
+      }
+    },
+    {
+      "input": {
+        "question": "What language is spoken in the country where the company that owns Instagram is headquartered?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which company owns Instagram?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "Where is [entity from step 1] headquartered?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What country is [entity from step 2] located in?",
+          "dependencies": [
+            2
+          ]
+        },
+        {
+          "subgoal_id": 4,
+          "subgoal": "What is the official language of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 20
+      }
+    },
+    {
+      "input": {
+        "question": "Who is the current leader of the political party of the Prime Minister who served during the 2008 financial crisis?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Who was the Prime Minister during the 2008 financial crisis?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What political party does [entity from step 1] belong to?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "Who is the current leader of [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 21
+      }
+    },
+    {
+      "input": {
+        "question": "What is the GDP per capita of the country whose flag features the same colors as the jersey of the team that won the 2018 FIFA World Cup?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which team won the 2018 FIFA World Cup?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What colors are in [entity from step 1]'s jersey?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "Which country's flag features the colors [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        },
+        {
+          "subgoal_id": 4,
+          "subgoal": "What is the GDP per capita of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 22
+      }
+    },
+    {
+      "input": {
+        "question": "What architectural style characterizes the buildings in the district where the author of 'The Great Gatsby' lived in New York?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Who wrote 'The Great Gatsby'?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "In which district of New York did [entity from step 1] live?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What architectural style characterizes the buildings in [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 23
+      }
+    },
+    {
+      "input": {
+        "question": "What is the population density of the state where the university that developed the first successful polio vaccine is located?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which university developed the first successful polio vaccine?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "In which state is [entity from step 1] located?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What is the population density of [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 24
+      }
+    },
+    {
+      "input": {
+        "question": "What is the elevation of the mountain range that forms the border between the birthplace of Frida Kahlo and its neighboring country to the north?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Where was Frida Kahlo born?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What country is north of [entity from step 1]?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What mountain range forms the border between [entity from step 1] and [entity from step 2]?",
+          "dependencies": [
+            1,
+            2
+          ]
+        },
+        {
+          "subgoal_id": 4,
+          "subgoal": "What is the elevation of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 25
+      }
+    },
+    {
+      "input": {
+        "question": "What economic system was practiced by the country that was the primary opponent of the United States during the Cold War?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which country was the primary opponent of the United States during the Cold War?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What economic system was practiced by [entity from step 1] during the Cold War?",
+          "dependencies": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 26
+      }
+    },
+    {
+      "input": {
+        "question": "What is the time zone of the city where the Nobel Prize in Literature ceremony takes place?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Where does the Nobel Prize in Literature ceremony take place?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What is the time zone of [entity from step 1]?",
+          "dependencies": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 27
+      }
+    },
+    {
+      "input": {
+        "question": "What percentage of the world's oil reserves does the country with the longest coastline control?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "Which country has the longest coastline in the world?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "What percentage of the world's oil reserves does [entity from step 1] control?",
+          "dependencies": [
+            1
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 28
+      }
+    },
+    {
+      "input": {
+        "question": "What is the main religion practiced in the country whose national animal is the same as the mascot of the Chicago Bulls?"
+      },
+      "output": [
+        {
+          "subgoal_id": 1,
+          "subgoal": "What is the mascot of the Chicago Bulls?",
+          "dependencies": []
+        },
+        {
+          "subgoal_id": 2,
+          "subgoal": "Which country has [entity from step 1] as its national animal?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "subgoal_id": 3,
+          "subgoal": "What is the main religion practiced in [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "metadata": {
+        "complexity": "high",
+        "reasoning_type": "multi_hop_bridging",
+        "quality_score": 1.0,
+        "pattern_index": 29
+      }
+    }
+  ]
+}

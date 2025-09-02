@@ -1,0 +1,9 @@
+# OPERA Requirements
+torch>=2.0.0
+transformers>=4.35.0
+sentence-transformers>=2.2.0
+faiss-cpu>=1.7.4
+numpy>=1.24.0
+pyyaml>=6.0
+tqdm>=4.65.0
+accelerate>=0.20.0

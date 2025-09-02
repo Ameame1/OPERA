@@ -1,0 +1,178 @@
+{
+  "metadata": {
+    "type": "evaluation_test_data",
+    "description": "Standardized test questions with ground truth for OPERA evaluation"
+  },
+  "test_sets": {
+    "complexity_2hop": [
+      {
+        "qid": "2hop_001",
+        "question": "What is the capital of the country where Toyota is headquartered?",
+        "ground_truth": "Tokyo",
+        "reasoning_steps": [
+          "Toyota is headquartered in Japan",
+          "The capital of Japan is Tokyo"
+        ],
+        "difficulty": "easy",
+        "required_knowledge": [
+          "corporate_geography",
+          "world_capitals"
+        ]
+      },
+      {
+        "qid": "2hop_002",
+        "question": "Who directed the movie that won the Academy Award for Best Picture in 2020?",
+        "ground_truth": "Bong Joon-ho",
+        "reasoning_steps": [
+          "Parasite won Best Picture in 2020",
+          "Bong Joon-ho directed Parasite"
+        ],
+        "difficulty": "medium",
+        "required_knowledge": [
+          "film_awards",
+          "directors"
+        ]
+      }
+    ],
+    "complexity_3hop": [
+      {
+        "qid": "3hop_001",
+        "question": "What is the population of the capital city of the country where IKEA was founded?",
+        "ground_truth": "approximately 975,000",
+        "reasoning_steps": [
+          "IKEA was founded in Sweden",
+          "The capital of Sweden is Stockholm",
+          "Stockholm's population is approximately 975,000"
+        ],
+        "difficulty": "medium",
+        "required_knowledge": [
+          "corporate_history",
+          "geography",
+          "demographics"
+        ]
+      },
+      {
+        "qid": "3hop_002",
+        "question": "What year was the university founded where the creator of the Python programming language earned his degree?",
+        "ground_truth": "1632",
+        "reasoning_steps": [
+          "Python was created by Guido van Rossum",
+          "Guido van Rossum earned his degree from University of Amsterdam",
+          "University of Amsterdam was founded in 1632"
+        ],
+        "difficulty": "hard",
+        "required_knowledge": [
+          "programming_history",
+          "education",
+          "institutional_history"
+        ]
+      }
+    ],
+    "complexity_4hop": [
+      {
+        "qid": "4hop_001",
+        "question": "What is the GDP of the country where the headquarters of the company that acquired LinkedIn is located?",
+        "ground_truth": "approximately $25 trillion",
+        "reasoning_steps": [
+          "LinkedIn was acquired by Microsoft",
+          "Microsoft is headquartered in Redmond, Washington",
+          "Redmond is in the United States",
+          "The US GDP is approximately $25 trillion"
+        ],
+        "difficulty": "hard",
+        "required_knowledge": [
+          "tech_acquisitions",
+          "corporate_geography",
+          "economics"
+        ]
+      },
+      {
+        "qid": "4hop_002",
+        "question": "What language is primarily spoken in the country where the company that owns WhatsApp has its largest office outside the US?",
+        "ground_truth": "English",
+        "reasoning_steps": [
+          "WhatsApp is owned by Meta (Facebook)",
+          "Meta's largest office outside the US is in London",
+          "London is in the United Kingdom",
+          "English is primarily spoken in the UK"
+        ],
+        "difficulty": "hard",
+        "required_knowledge": [
+          "tech_ownership",
+          "corporate_offices",
+          "linguistics"
+        ]
+      }
+    ],
+    "temporal_reasoning": [
+      {
+        "qid": "temp_001",
+        "question": "Who was the CEO of Microsoft when Google was founded?",
+        "ground_truth": "Bill Gates",
+        "reasoning_steps": [
+          "Google was founded in 1998",
+          "Bill Gates was CEO of Microsoft in 1998"
+        ],
+        "difficulty": "medium",
+        "required_knowledge": [
+          "tech_history",
+          "corporate_leadership"
+        ]
+      },
+      {
+        "qid": "temp_002",
+        "question": "What was the population of New York City when the Empire State Building was completed?",
+        "ground_truth": "approximately 6.9 million",
+        "reasoning_steps": [
+          "Empire State Building was completed in 1931",
+          "NYC population in 1931 was approximately 6.9 million"
+        ],
+        "difficulty": "hard",
+        "required_knowledge": [
+          "architecture_history",
+          "historical_demographics"
+        ]
+      }
+    ],
+    "comparative_reasoning": [
+      {
+        "qid": "comp_001",
+        "question": "Which is older: the university where Einstein taught or the university where Hawking taught?",
+        "ground_truth": "University of Cambridge (where Hawking taught)",
+        "reasoning_steps": [
+          "Einstein taught at Princeton University",
+          "Hawking taught at University of Cambridge",
+          "Cambridge was founded in 1209",
+          "Princeton was founded in 1746"
+        ],
+        "difficulty": "hard",
+        "required_knowledge": [
+          "academic_history",
+          "scientist_affiliations"
+        ]
+      }
+    ]
+  },
+  "evaluation_metrics": {
+    "total_questions": 10,
+    "complexity_distribution": {
+      "2-hop": 2,
+      "3-hop": 2,
+      "4-hop": 2,
+      "temporal": 2,
+      "comparative": 1
+    },
+    "difficulty_distribution": {
+      "easy": 1,
+      "medium": 4,
+      "hard": 5
+    },
+    "knowledge_domains": [
+      "geography",
+      "corporate_history",
+      "technology",
+      "demographics",
+      "temporal_reasoning"
+    ]
+  }
+}

@@ -1,0 +1,129 @@
+{
+  "metadata": {
+    "type": "expert_demonstrations",
+    "quality_level": "gold_standard"
+  },
+  "demonstrations": {
+    "plan": [
+      {
+        "input": {
+          "question": "What is the currency used in the country where the inventor of the World Wide Web was born?"
+        },
+        "output": [
+          {
+            "subgoal_id": 1,
+            "subgoal": "Who invented the World Wide Web?",
+            "dependencies": []
+          },
+          {
+            "subgoal_id": 2,
+            "subgoal": "Where was [entity from step 1] born?",
+            "dependencies": [
+              1
+            ]
+          },
+          {
+            "subgoal_id": 3,
+            "subgoal": "What country is [entity from step 2] in?",
+            "dependencies": [
+              2
+            ]
+          },
+          {
+            "subgoal_id": 4,
+            "subgoal": "What is the currency used in [entity from step 3]?",
+            "dependencies": [
+              3
+            ]
+          }
+        ],
+        "metadata": {
+          "is_expert": true,
+          "quality_score": 1.0,
+          "reasoning_complexity": "expert_level"
+        }
+      },
+      {
+        "input": {
+          "question": "What is the population of the city that serves as the capital of the state where MIT is located?"
+        },
+        "output": [
+          {
+            "subgoal_id": 1,
+            "subgoal": "In which state is MIT located?",
+            "dependencies": []
+          },
+          {
+            "subgoal_id": 2,
+            "subgoal": "What is the capital city of [entity from step 1]?",
+            "dependencies": [
+              1
+            ]
+          },
+          {
+            "subgoal_id": 3,
+            "subgoal": "What is the population of [entity from step 2]?",
+            "dependencies": [
+              2
+            ]
+          }
+        ],
+        "metadata": {
+          "is_expert": true,
+          "quality_score": 1.0,
+          "reasoning_complexity": "expert_level"
+        }
+      }
+    ],
+    "analysis": [
+      {
+        "input": {
+          "sub_question": "Who invented the World Wide Web?",
+          "documents": [
+            {
+              "title": "Tim Berners-Lee Biography",
+              "content": "Sir Timothy John Berners-Lee, known as Tim Berners-Lee, is an English computer scientist best known as the inventor of the World Wide Web. He made a proposal for an information management system in March 1989, and he implemented the first successful communication between a Hypertext Transfer Protocol (HTTP) client and server via the Internet in mid-November 1989."
+            }
+          ]
+        },
+        "output": {
+          "status": "yes",
+          "answer": "Tim Berners-Lee",
+          "analysis": "The document provides definitive and authoritative information identifying Tim Berners-Lee as the inventor of the World Wide Web. The biographical information includes his full name, nationality (English), profession (computer scientist), and specific historical details about his invention, including the March 1989 proposal and November 1989 first successful HTTP communication. This comprehensive information directly and completely answers the question with high confidence."
+        },
+        "metadata": {
+          "is_expert": true,
+          "quality_score": 1.0,
+          "analysis_depth": "expert_level"
+        }
+      }
+    ],
+    "rewrite": [
+      {
+        "input": {
+          "original_query": "What is the currency used in [entity from step 3]?",
+          "failure_info": "The documents identify the country but do not specify monetary system or currency information."
+        },
+        "output": {
+          "rewritten_query": "currency monetary system legal tender [entity from step 3] national currency official currency financial system money economic currency exchange rate monetary policy",
+          "strategy": "comprehensive_monetary_expansion",
+          "keywords": [
+            "currency",
+            "monetary",
+            "legal tender",
+            "national",
+            "official",
+            "financial",
+            "money",
+            "economic"
+          ]
+        },
+        "metadata": {
+          "is_expert": true,
+          "quality_score": 1.0,
+          "rewrite_sophistication": "expert_level"
+        }
+      }
+    ]
+  }
+}

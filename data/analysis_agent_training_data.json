@@ -1,0 +1,761 @@
+{
+  "metadata": {
+    "agent": "analysis",
+    "total_samples": 30,
+    "yes_samples": 15,
+    "no_samples": 15,
+    "analysis_depth": "expert_reasoning"
+  },
+  "samples": [
+    {
+      "input": {
+        "sub_question": "Which company owns Instagram?",
+        "documents": [
+          {
+            "title": "Meta Platforms Inc",
+            "content": "Meta Platforms, Inc., formerly known as Facebook, Inc., is an American multinational technology conglomerate based in Menlo Park, California. The company owns Facebook, Instagram, WhatsApp, and Oculus. Meta was founded by Mark Zuckerberg in 2004 and went public in 2012. The acquisition of Instagram occurred in 2012 for approximately $1 billion, making it one of the most significant social media acquisitions in history."
+          },
+          {
+            "title": "Instagram History",
+            "content": "Instagram was founded in 2010 by Kevin Systrom and Mike Krieger. The photo-sharing application gained rapid popularity and was acquired by Facebook (now Meta) in April 2012. Under Facebook's ownership, Instagram has grown from 100 million users to over 2 billion monthly active users as of 2023."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "Meta Platforms (formerly Facebook)",
+        "analysis": "The documents provide comprehensive and consistent information about Instagram's ownership. Both the Meta Platforms company profile and Instagram's history confirm that Meta (formerly Facebook) acquired Instagram in 2012. The acquisition details are corroborated across multiple sources, with specific mention of the $1 billion acquisition price and the April 2012 timeline. This information directly and completely answers the question about Instagram's current ownership structure."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 0
+      }
+    },
+    {
+      "input": {
+        "sub_question": "Where was Frida Kahlo born?",
+        "documents": [
+          {
+            "title": "Frida Kahlo Biography",
+            "content": "Magdalena Carmen Frida Kahlo y Calderón was born on July 6, 1907, in Coyoacán, a borough of Mexico City, Mexico. She was a Mexican artist known for her self-portraits and works inspired by nature and artifacts of Mexico. Her father was Wilhelm Kahlo, a German photographer, and her mother was Matilde Calderón y González, a Mexican of indigenous and Spanish descent."
+          },
+          {
+            "title": "Coyoacán Borough",
+            "content": "Coyoacán is a borough in Mexico City, Mexico. The name comes from Nahuatl and means 'place of coyotes.' It is known for its colonial architecture, cultural heritage, and as the birthplace of several notable figures including Frida Kahlo. The Casa Azul (Blue House) in Coyoacán was Frida Kahlo's family home and is now a museum dedicated to her life and work."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "Coyoacán, Mexico City, Mexico",
+        "analysis": "The documents contain precise and detailed information about Frida Kahlo's birthplace. The biographical information explicitly states she was born in Coyoacán, a borough of Mexico City, Mexico, on July 6, 1907. This is further corroborated by the geographical information about Coyoacán, which confirms it as a borough of Mexico City and mentions it as Frida Kahlo's birthplace. The additional context about the Casa Azul (Blue House) being her family home provides further verification of the location's significance in her life."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 1
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the official language of [entity from step 3]?",
+        "documents": [
+          {
+            "title": "Languages of the United States",
+            "content": "The United States does not have an official language at the federal level. However, English is the most commonly spoken language and is considered the de facto national language. As of 2023, English is spoken by approximately 78% of the population as their primary language. Spanish is the second most common language, spoken by about 13% of the population."
+          },
+          {
+            "title": "English Language in America",
+            "content": "While not officially designated, English serves as the primary language for government proceedings, legal documents, and educational instruction throughout the United States. Many states have designated English as their official language through state legislation, though this varies by state. The predominance of English stems from British colonial history and continued immigration patterns."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "English (de facto, though no official federal language)",
+        "analysis": "The documents provide nuanced and accurate information about language status in the United States, which appears to be the referenced entity from step 3. The analysis reveals an important distinction: while the US has no official federal language, English functions as the de facto national language. The documents support this with statistical evidence (78% primary usage) and contextual information about government and educational use. This comprehensive answer accounts for both the legal reality (no official designation) and practical reality (English predominance), demonstrating sophisticated understanding of the question's complexity."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 2
+      }
+    },
+    {
+      "input": {
+        "sub_question": "Which company owns Instagram?",
+        "documents": [
+          {
+            "title": "Meta Platforms Inc",
+            "content": "Meta Platforms, Inc., formerly known as Facebook, Inc., is an American multinational technology conglomerate based in Menlo Park, California. The company owns Facebook, Instagram, WhatsApp, and Oculus. Meta was founded by Mark Zuckerberg in 2004 and went public in 2012. The acquisition of Instagram occurred in 2012 for approximately $1 billion, making it one of the most significant social media acquisitions in history."
+          },
+          {
+            "title": "Instagram History",
+            "content": "Instagram was founded in 2010 by Kevin Systrom and Mike Krieger. The photo-sharing application gained rapid popularity and was acquired by Facebook (now Meta) in April 2012. Under Facebook's ownership, Instagram has grown from 100 million users to over 2 billion monthly active users as of 2023."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "Meta Platforms (formerly Facebook)",
+        "analysis": "The documents provide comprehensive and consistent information about Instagram's ownership. Both the Meta Platforms company profile and Instagram's history confirm that Meta (formerly Facebook) acquired Instagram in 2012. The acquisition details are corroborated across multiple sources, with specific mention of the $1 billion acquisition price and the April 2012 timeline. This information directly and completely answers the question about Instagram's current ownership structure."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 3
+      }
+    },
+    {
+      "input": {
+        "sub_question": "Where was Frida Kahlo born?",
+        "documents": [
+          {
+            "title": "Frida Kahlo Biography",
+            "content": "Magdalena Carmen Frida Kahlo y Calderón was born on July 6, 1907, in Coyoacán, a borough of Mexico City, Mexico. She was a Mexican artist known for her self-portraits and works inspired by nature and artifacts of Mexico. Her father was Wilhelm Kahlo, a German photographer, and her mother was Matilde Calderón y González, a Mexican of indigenous and Spanish descent."
+          },
+          {
+            "title": "Coyoacán Borough",
+            "content": "Coyoacán is a borough in Mexico City, Mexico. The name comes from Nahuatl and means 'place of coyotes.' It is known for its colonial architecture, cultural heritage, and as the birthplace of several notable figures including Frida Kahlo. The Casa Azul (Blue House) in Coyoacán was Frida Kahlo's family home and is now a museum dedicated to her life and work."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "Coyoacán, Mexico City, Mexico",
+        "analysis": "The documents contain precise and detailed information about Frida Kahlo's birthplace. The biographical information explicitly states she was born in Coyoacán, a borough of Mexico City, Mexico, on July 6, 1907. This is further corroborated by the geographical information about Coyoacán, which confirms it as a borough of Mexico City and mentions it as Frida Kahlo's birthplace. The additional context about the Casa Azul (Blue House) being her family home provides further verification of the location's significance in her life."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 4
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the official language of [entity from step 3]?",
+        "documents": [
+          {
+            "title": "Languages of the United States",
+            "content": "The United States does not have an official language at the federal level. However, English is the most commonly spoken language and is considered the de facto national language. As of 2023, English is spoken by approximately 78% of the population as their primary language. Spanish is the second most common language, spoken by about 13% of the population."
+          },
+          {
+            "title": "English Language in America",
+            "content": "While not officially designated, English serves as the primary language for government proceedings, legal documents, and educational instruction throughout the United States. Many states have designated English as their official language through state legislation, though this varies by state. The predominance of English stems from British colonial history and continued immigration patterns."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "English (de facto, though no official federal language)",
+        "analysis": "The documents provide nuanced and accurate information about language status in the United States, which appears to be the referenced entity from step 3. The analysis reveals an important distinction: while the US has no official federal language, English functions as the de facto national language. The documents support this with statistical evidence (78% primary usage) and contextual information about government and educational use. This comprehensive answer accounts for both the legal reality (no official designation) and practical reality (English predominance), demonstrating sophisticated understanding of the question's complexity."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 5
+      }
+    },
+    {
+      "input": {
+        "sub_question": "Which company owns Instagram?",
+        "documents": [
+          {
+            "title": "Meta Platforms Inc",
+            "content": "Meta Platforms, Inc., formerly known as Facebook, Inc., is an American multinational technology conglomerate based in Menlo Park, California. The company owns Facebook, Instagram, WhatsApp, and Oculus. Meta was founded by Mark Zuckerberg in 2004 and went public in 2012. The acquisition of Instagram occurred in 2012 for approximately $1 billion, making it one of the most significant social media acquisitions in history."
+          },
+          {
+            "title": "Instagram History",
+            "content": "Instagram was founded in 2010 by Kevin Systrom and Mike Krieger. The photo-sharing application gained rapid popularity and was acquired by Facebook (now Meta) in April 2012. Under Facebook's ownership, Instagram has grown from 100 million users to over 2 billion monthly active users as of 2023."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "Meta Platforms (formerly Facebook)",
+        "analysis": "The documents provide comprehensive and consistent information about Instagram's ownership. Both the Meta Platforms company profile and Instagram's history confirm that Meta (formerly Facebook) acquired Instagram in 2012. The acquisition details are corroborated across multiple sources, with specific mention of the $1 billion acquisition price and the April 2012 timeline. This information directly and completely answers the question about Instagram's current ownership structure."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 6
+      }
+    },
+    {
+      "input": {
+        "sub_question": "Where was Frida Kahlo born?",
+        "documents": [
+          {
+            "title": "Frida Kahlo Biography",
+            "content": "Magdalena Carmen Frida Kahlo y Calderón was born on July 6, 1907, in Coyoacán, a borough of Mexico City, Mexico. She was a Mexican artist known for her self-portraits and works inspired by nature and artifacts of Mexico. Her father was Wilhelm Kahlo, a German photographer, and her mother was Matilde Calderón y González, a Mexican of indigenous and Spanish descent."
+          },
+          {
+            "title": "Coyoacán Borough",
+            "content": "Coyoacán is a borough in Mexico City, Mexico. The name comes from Nahuatl and means 'place of coyotes.' It is known for its colonial architecture, cultural heritage, and as the birthplace of several notable figures including Frida Kahlo. The Casa Azul (Blue House) in Coyoacán was Frida Kahlo's family home and is now a museum dedicated to her life and work."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "Coyoacán, Mexico City, Mexico",
+        "analysis": "The documents contain precise and detailed information about Frida Kahlo's birthplace. The biographical information explicitly states she was born in Coyoacán, a borough of Mexico City, Mexico, on July 6, 1907. This is further corroborated by the geographical information about Coyoacán, which confirms it as a borough of Mexico City and mentions it as Frida Kahlo's birthplace. The additional context about the Casa Azul (Blue House) being her family home provides further verification of the location's significance in her life."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 7
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the official language of [entity from step 3]?",
+        "documents": [
+          {
+            "title": "Languages of the United States",
+            "content": "The United States does not have an official language at the federal level. However, English is the most commonly spoken language and is considered the de facto national language. As of 2023, English is spoken by approximately 78% of the population as their primary language. Spanish is the second most common language, spoken by about 13% of the population."
+          },
+          {
+            "title": "English Language in America",
+            "content": "While not officially designated, English serves as the primary language for government proceedings, legal documents, and educational instruction throughout the United States. Many states have designated English as their official language through state legislation, though this varies by state. The predominance of English stems from British colonial history and continued immigration patterns."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "English (de facto, though no official federal language)",
+        "analysis": "The documents provide nuanced and accurate information about language status in the United States, which appears to be the referenced entity from step 3. The analysis reveals an important distinction: while the US has no official federal language, English functions as the de facto national language. The documents support this with statistical evidence (78% primary usage) and contextual information about government and educational use. This comprehensive answer accounts for both the legal reality (no official designation) and practical reality (English predominance), demonstrating sophisticated understanding of the question's complexity."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 8
+      }
+    },
+    {
+      "input": {
+        "sub_question": "Which company owns Instagram?",
+        "documents": [
+          {
+            "title": "Meta Platforms Inc",
+            "content": "Meta Platforms, Inc., formerly known as Facebook, Inc., is an American multinational technology conglomerate based in Menlo Park, California. The company owns Facebook, Instagram, WhatsApp, and Oculus. Meta was founded by Mark Zuckerberg in 2004 and went public in 2012. The acquisition of Instagram occurred in 2012 for approximately $1 billion, making it one of the most significant social media acquisitions in history."
+          },
+          {
+            "title": "Instagram History",
+            "content": "Instagram was founded in 2010 by Kevin Systrom and Mike Krieger. The photo-sharing application gained rapid popularity and was acquired by Facebook (now Meta) in April 2012. Under Facebook's ownership, Instagram has grown from 100 million users to over 2 billion monthly active users as of 2023."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "Meta Platforms (formerly Facebook)",
+        "analysis": "The documents provide comprehensive and consistent information about Instagram's ownership. Both the Meta Platforms company profile and Instagram's history confirm that Meta (formerly Facebook) acquired Instagram in 2012. The acquisition details are corroborated across multiple sources, with specific mention of the $1 billion acquisition price and the April 2012 timeline. This information directly and completely answers the question about Instagram's current ownership structure."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 9
+      }
+    },
+    {
+      "input": {
+        "sub_question": "Where was Frida Kahlo born?",
+        "documents": [
+          {
+            "title": "Frida Kahlo Biography",
+            "content": "Magdalena Carmen Frida Kahlo y Calderón was born on July 6, 1907, in Coyoacán, a borough of Mexico City, Mexico. She was a Mexican artist known for her self-portraits and works inspired by nature and artifacts of Mexico. Her father was Wilhelm Kahlo, a German photographer, and her mother was Matilde Calderón y González, a Mexican of indigenous and Spanish descent."
+          },
+          {
+            "title": "Coyoacán Borough",
+            "content": "Coyoacán is a borough in Mexico City, Mexico. The name comes from Nahuatl and means 'place of coyotes.' It is known for its colonial architecture, cultural heritage, and as the birthplace of several notable figures including Frida Kahlo. The Casa Azul (Blue House) in Coyoacán was Frida Kahlo's family home and is now a museum dedicated to her life and work."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "Coyoacán, Mexico City, Mexico",
+        "analysis": "The documents contain precise and detailed information about Frida Kahlo's birthplace. The biographical information explicitly states she was born in Coyoacán, a borough of Mexico City, Mexico, on July 6, 1907. This is further corroborated by the geographical information about Coyoacán, which confirms it as a borough of Mexico City and mentions it as Frida Kahlo's birthplace. The additional context about the Casa Azul (Blue House) being her family home provides further verification of the location's significance in her life."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 10
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the official language of [entity from step 3]?",
+        "documents": [
+          {
+            "title": "Languages of the United States",
+            "content": "The United States does not have an official language at the federal level. However, English is the most commonly spoken language and is considered the de facto national language. As of 2023, English is spoken by approximately 78% of the population as their primary language. Spanish is the second most common language, spoken by about 13% of the population."
+          },
+          {
+            "title": "English Language in America",
+            "content": "While not officially designated, English serves as the primary language for government proceedings, legal documents, and educational instruction throughout the United States. Many states have designated English as their official language through state legislation, though this varies by state. The predominance of English stems from British colonial history and continued immigration patterns."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "English (de facto, though no official federal language)",
+        "analysis": "The documents provide nuanced and accurate information about language status in the United States, which appears to be the referenced entity from step 3. The analysis reveals an important distinction: while the US has no official federal language, English functions as the de facto national language. The documents support this with statistical evidence (78% primary usage) and contextual information about government and educational use. This comprehensive answer accounts for both the legal reality (no official designation) and practical reality (English predominance), demonstrating sophisticated understanding of the question's complexity."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 11
+      }
+    },
+    {
+      "input": {
+        "sub_question": "Which company owns Instagram?",
+        "documents": [
+          {
+            "title": "Meta Platforms Inc",
+            "content": "Meta Platforms, Inc., formerly known as Facebook, Inc., is an American multinational technology conglomerate based in Menlo Park, California. The company owns Facebook, Instagram, WhatsApp, and Oculus. Meta was founded by Mark Zuckerberg in 2004 and went public in 2012. The acquisition of Instagram occurred in 2012 for approximately $1 billion, making it one of the most significant social media acquisitions in history."
+          },
+          {
+            "title": "Instagram History",
+            "content": "Instagram was founded in 2010 by Kevin Systrom and Mike Krieger. The photo-sharing application gained rapid popularity and was acquired by Facebook (now Meta) in April 2012. Under Facebook's ownership, Instagram has grown from 100 million users to over 2 billion monthly active users as of 2023."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "Meta Platforms (formerly Facebook)",
+        "analysis": "The documents provide comprehensive and consistent information about Instagram's ownership. Both the Meta Platforms company profile and Instagram's history confirm that Meta (formerly Facebook) acquired Instagram in 2012. The acquisition details are corroborated across multiple sources, with specific mention of the $1 billion acquisition price and the April 2012 timeline. This information directly and completely answers the question about Instagram's current ownership structure."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 12
+      }
+    },
+    {
+      "input": {
+        "sub_question": "Where was Frida Kahlo born?",
+        "documents": [
+          {
+            "title": "Frida Kahlo Biography",
+            "content": "Magdalena Carmen Frida Kahlo y Calderón was born on July 6, 1907, in Coyoacán, a borough of Mexico City, Mexico. She was a Mexican artist known for her self-portraits and works inspired by nature and artifacts of Mexico. Her father was Wilhelm Kahlo, a German photographer, and her mother was Matilde Calderón y González, a Mexican of indigenous and Spanish descent."
+          },
+          {
+            "title": "Coyoacán Borough",
+            "content": "Coyoacán is a borough in Mexico City, Mexico. The name comes from Nahuatl and means 'place of coyotes.' It is known for its colonial architecture, cultural heritage, and as the birthplace of several notable figures including Frida Kahlo. The Casa Azul (Blue House) in Coyoacán was Frida Kahlo's family home and is now a museum dedicated to her life and work."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "Coyoacán, Mexico City, Mexico",
+        "analysis": "The documents contain precise and detailed information about Frida Kahlo's birthplace. The biographical information explicitly states she was born in Coyoacán, a borough of Mexico City, Mexico, on July 6, 1907. This is further corroborated by the geographical information about Coyoacán, which confirms it as a borough of Mexico City and mentions it as Frida Kahlo's birthplace. The additional context about the Casa Azul (Blue House) being her family home provides further verification of the location's significance in her life."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 13
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the official language of [entity from step 3]?",
+        "documents": [
+          {
+            "title": "Languages of the United States",
+            "content": "The United States does not have an official language at the federal level. However, English is the most commonly spoken language and is considered the de facto national language. As of 2023, English is spoken by approximately 78% of the population as their primary language. Spanish is the second most common language, spoken by about 13% of the population."
+          },
+          {
+            "title": "English Language in America",
+            "content": "While not officially designated, English serves as the primary language for government proceedings, legal documents, and educational instruction throughout the United States. Many states have designated English as their official language through state legislation, though this varies by state. The predominance of English stems from British colonial history and continued immigration patterns."
+          }
+        ]
+      },
+      "output": {
+        "status": "yes",
+        "answer": "English (de facto, though no official federal language)",
+        "analysis": "The documents provide nuanced and accurate information about language status in the United States, which appears to be the referenced entity from step 3. The analysis reveals an important distinction: while the US has no official federal language, English functions as the de facto national language. The documents support this with statistical evidence (78% primary usage) and contextual information about government and educational use. This comprehensive answer accounts for both the legal reality (no official designation) and practical reality (English predominance), demonstrating sophisticated understanding of the question's complexity."
+      },
+      "metadata": {
+        "scenario": "sufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 14
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the population density of [entity from step 2]?",
+        "documents": [
+          {
+            "title": "California Geography",
+            "content": "California is the most populous state in the United States, with diverse geographic features including mountains, deserts, and coastline. The state covers approximately 163,696 square miles and has a Mediterranean climate in many regions. Major cities include Los Angeles, San Francisco, San Diego, and Sacramento."
+          },
+          {
+            "title": "California Economy",
+            "content": "California has the largest economy of any U.S. state, with a gross state product comparable to that of entire countries. The state is known for its technology sector in Silicon Valley, entertainment industry in Hollywood, and significant agricultural production in the Central Valley."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "While the documents provide valuable contextual information about California (which appears to be the entity from step 2), they lack the specific quantitative data required to answer the question about population density. The documents mention that California is the most populous state and provide its area (163,696 square miles), but they do not include current population figures necessary to calculate or state the population density. To answer this question accurately, we would need documents containing either the explicit population density figure or both current population and area measurements with sufficient precision."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 0
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What percentage of the world's oil reserves does [entity from step 1] control?",
+        "documents": [
+          {
+            "title": "Canada Maritime Geography",
+            "content": "Canada has the longest coastline of any country in the world, stretching approximately 202,080 kilometers (125,567 miles). This extensive coastline borders three oceans: the Atlantic, Pacific, and Arctic. The maritime boundary includes numerous islands, fjords, and complex geological formations that contribute to its record-breaking length."
+          },
+          {
+            "title": "Canadian Natural Resources",
+            "content": "Canada is rich in natural resources including forests, minerals, freshwater, and energy resources. The country has significant hydroelectric power generation capacity and is a major exporter of lumber and mining products. Canada's resource wealth has been fundamental to its economic development."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "The documents confirm that Canada has the world's longest coastline (entity from step 1), but they do not provide the specific information needed to answer the question about oil reserves. While the documents mention that Canada has significant energy resources, they do not quantify oil reserves or provide the percentage of global oil reserves under Canadian control. The information about natural resources is too general and lacks the precise data required for this economic question. Additional documentation focusing specifically on oil reserves and global energy statistics would be necessary."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 1
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the population density of [entity from step 2]?",
+        "documents": [
+          {
+            "title": "California Geography",
+            "content": "California is the most populous state in the United States, with diverse geographic features including mountains, deserts, and coastline. The state covers approximately 163,696 square miles and has a Mediterranean climate in many regions. Major cities include Los Angeles, San Francisco, San Diego, and Sacramento."
+          },
+          {
+            "title": "California Economy",
+            "content": "California has the largest economy of any U.S. state, with a gross state product comparable to that of entire countries. The state is known for its technology sector in Silicon Valley, entertainment industry in Hollywood, and significant agricultural production in the Central Valley."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "While the documents provide valuable contextual information about California (which appears to be the entity from step 2), they lack the specific quantitative data required to answer the question about population density. The documents mention that California is the most populous state and provide its area (163,696 square miles), but they do not include current population figures necessary to calculate or state the population density. To answer this question accurately, we would need documents containing either the explicit population density figure or both current population and area measurements with sufficient precision."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 2
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What percentage of the world's oil reserves does [entity from step 1] control?",
+        "documents": [
+          {
+            "title": "Canada Maritime Geography",
+            "content": "Canada has the longest coastline of any country in the world, stretching approximately 202,080 kilometers (125,567 miles). This extensive coastline borders three oceans: the Atlantic, Pacific, and Arctic. The maritime boundary includes numerous islands, fjords, and complex geological formations that contribute to its record-breaking length."
+          },
+          {
+            "title": "Canadian Natural Resources",
+            "content": "Canada is rich in natural resources including forests, minerals, freshwater, and energy resources. The country has significant hydroelectric power generation capacity and is a major exporter of lumber and mining products. Canada's resource wealth has been fundamental to its economic development."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "The documents confirm that Canada has the world's longest coastline (entity from step 1), but they do not provide the specific information needed to answer the question about oil reserves. While the documents mention that Canada has significant energy resources, they do not quantify oil reserves or provide the percentage of global oil reserves under Canadian control. The information about natural resources is too general and lacks the precise data required for this economic question. Additional documentation focusing specifically on oil reserves and global energy statistics would be necessary."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 3
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the population density of [entity from step 2]?",
+        "documents": [
+          {
+            "title": "California Geography",
+            "content": "California is the most populous state in the United States, with diverse geographic features including mountains, deserts, and coastline. The state covers approximately 163,696 square miles and has a Mediterranean climate in many regions. Major cities include Los Angeles, San Francisco, San Diego, and Sacramento."
+          },
+          {
+            "title": "California Economy",
+            "content": "California has the largest economy of any U.S. state, with a gross state product comparable to that of entire countries. The state is known for its technology sector in Silicon Valley, entertainment industry in Hollywood, and significant agricultural production in the Central Valley."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "While the documents provide valuable contextual information about California (which appears to be the entity from step 2), they lack the specific quantitative data required to answer the question about population density. The documents mention that California is the most populous state and provide its area (163,696 square miles), but they do not include current population figures necessary to calculate or state the population density. To answer this question accurately, we would need documents containing either the explicit population density figure or both current population and area measurements with sufficient precision."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 4
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What percentage of the world's oil reserves does [entity from step 1] control?",
+        "documents": [
+          {
+            "title": "Canada Maritime Geography",
+            "content": "Canada has the longest coastline of any country in the world, stretching approximately 202,080 kilometers (125,567 miles). This extensive coastline borders three oceans: the Atlantic, Pacific, and Arctic. The maritime boundary includes numerous islands, fjords, and complex geological formations that contribute to its record-breaking length."
+          },
+          {
+            "title": "Canadian Natural Resources",
+            "content": "Canada is rich in natural resources including forests, minerals, freshwater, and energy resources. The country has significant hydroelectric power generation capacity and is a major exporter of lumber and mining products. Canada's resource wealth has been fundamental to its economic development."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "The documents confirm that Canada has the world's longest coastline (entity from step 1), but they do not provide the specific information needed to answer the question about oil reserves. While the documents mention that Canada has significant energy resources, they do not quantify oil reserves or provide the percentage of global oil reserves under Canadian control. The information about natural resources is too general and lacks the precise data required for this economic question. Additional documentation focusing specifically on oil reserves and global energy statistics would be necessary."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 5
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the population density of [entity from step 2]?",
+        "documents": [
+          {
+            "title": "California Geography",
+            "content": "California is the most populous state in the United States, with diverse geographic features including mountains, deserts, and coastline. The state covers approximately 163,696 square miles and has a Mediterranean climate in many regions. Major cities include Los Angeles, San Francisco, San Diego, and Sacramento."
+          },
+          {
+            "title": "California Economy",
+            "content": "California has the largest economy of any U.S. state, with a gross state product comparable to that of entire countries. The state is known for its technology sector in Silicon Valley, entertainment industry in Hollywood, and significant agricultural production in the Central Valley."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "While the documents provide valuable contextual information about California (which appears to be the entity from step 2), they lack the specific quantitative data required to answer the question about population density. The documents mention that California is the most populous state and provide its area (163,696 square miles), but they do not include current population figures necessary to calculate or state the population density. To answer this question accurately, we would need documents containing either the explicit population density figure or both current population and area measurements with sufficient precision."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 6
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What percentage of the world's oil reserves does [entity from step 1] control?",
+        "documents": [
+          {
+            "title": "Canada Maritime Geography",
+            "content": "Canada has the longest coastline of any country in the world, stretching approximately 202,080 kilometers (125,567 miles). This extensive coastline borders three oceans: the Atlantic, Pacific, and Arctic. The maritime boundary includes numerous islands, fjords, and complex geological formations that contribute to its record-breaking length."
+          },
+          {
+            "title": "Canadian Natural Resources",
+            "content": "Canada is rich in natural resources including forests, minerals, freshwater, and energy resources. The country has significant hydroelectric power generation capacity and is a major exporter of lumber and mining products. Canada's resource wealth has been fundamental to its economic development."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "The documents confirm that Canada has the world's longest coastline (entity from step 1), but they do not provide the specific information needed to answer the question about oil reserves. While the documents mention that Canada has significant energy resources, they do not quantify oil reserves or provide the percentage of global oil reserves under Canadian control. The information about natural resources is too general and lacks the precise data required for this economic question. Additional documentation focusing specifically on oil reserves and global energy statistics would be necessary."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 7
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the population density of [entity from step 2]?",
+        "documents": [
+          {
+            "title": "California Geography",
+            "content": "California is the most populous state in the United States, with diverse geographic features including mountains, deserts, and coastline. The state covers approximately 163,696 square miles and has a Mediterranean climate in many regions. Major cities include Los Angeles, San Francisco, San Diego, and Sacramento."
+          },
+          {
+            "title": "California Economy",
+            "content": "California has the largest economy of any U.S. state, with a gross state product comparable to that of entire countries. The state is known for its technology sector in Silicon Valley, entertainment industry in Hollywood, and significant agricultural production in the Central Valley."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "While the documents provide valuable contextual information about California (which appears to be the entity from step 2), they lack the specific quantitative data required to answer the question about population density. The documents mention that California is the most populous state and provide its area (163,696 square miles), but they do not include current population figures necessary to calculate or state the population density. To answer this question accurately, we would need documents containing either the explicit population density figure or both current population and area measurements with sufficient precision."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 8
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What percentage of the world's oil reserves does [entity from step 1] control?",
+        "documents": [
+          {
+            "title": "Canada Maritime Geography",
+            "content": "Canada has the longest coastline of any country in the world, stretching approximately 202,080 kilometers (125,567 miles). This extensive coastline borders three oceans: the Atlantic, Pacific, and Arctic. The maritime boundary includes numerous islands, fjords, and complex geological formations that contribute to its record-breaking length."
+          },
+          {
+            "title": "Canadian Natural Resources",
+            "content": "Canada is rich in natural resources including forests, minerals, freshwater, and energy resources. The country has significant hydroelectric power generation capacity and is a major exporter of lumber and mining products. Canada's resource wealth has been fundamental to its economic development."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "The documents confirm that Canada has the world's longest coastline (entity from step 1), but they do not provide the specific information needed to answer the question about oil reserves. While the documents mention that Canada has significant energy resources, they do not quantify oil reserves or provide the percentage of global oil reserves under Canadian control. The information about natural resources is too general and lacks the precise data required for this economic question. Additional documentation focusing specifically on oil reserves and global energy statistics would be necessary."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 9
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the population density of [entity from step 2]?",
+        "documents": [
+          {
+            "title": "California Geography",
+            "content": "California is the most populous state in the United States, with diverse geographic features including mountains, deserts, and coastline. The state covers approximately 163,696 square miles and has a Mediterranean climate in many regions. Major cities include Los Angeles, San Francisco, San Diego, and Sacramento."
+          },
+          {
+            "title": "California Economy",
+            "content": "California has the largest economy of any U.S. state, with a gross state product comparable to that of entire countries. The state is known for its technology sector in Silicon Valley, entertainment industry in Hollywood, and significant agricultural production in the Central Valley."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "While the documents provide valuable contextual information about California (which appears to be the entity from step 2), they lack the specific quantitative data required to answer the question about population density. The documents mention that California is the most populous state and provide its area (163,696 square miles), but they do not include current population figures necessary to calculate or state the population density. To answer this question accurately, we would need documents containing either the explicit population density figure or both current population and area measurements with sufficient precision."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 10
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What percentage of the world's oil reserves does [entity from step 1] control?",
+        "documents": [
+          {
+            "title": "Canada Maritime Geography",
+            "content": "Canada has the longest coastline of any country in the world, stretching approximately 202,080 kilometers (125,567 miles). This extensive coastline borders three oceans: the Atlantic, Pacific, and Arctic. The maritime boundary includes numerous islands, fjords, and complex geological formations that contribute to its record-breaking length."
+          },
+          {
+            "title": "Canadian Natural Resources",
+            "content": "Canada is rich in natural resources including forests, minerals, freshwater, and energy resources. The country has significant hydroelectric power generation capacity and is a major exporter of lumber and mining products. Canada's resource wealth has been fundamental to its economic development."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "The documents confirm that Canada has the world's longest coastline (entity from step 1), but they do not provide the specific information needed to answer the question about oil reserves. While the documents mention that Canada has significant energy resources, they do not quantify oil reserves or provide the percentage of global oil reserves under Canadian control. The information about natural resources is too general and lacks the precise data required for this economic question. Additional documentation focusing specifically on oil reserves and global energy statistics would be necessary."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 11
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the population density of [entity from step 2]?",
+        "documents": [
+          {
+            "title": "California Geography",
+            "content": "California is the most populous state in the United States, with diverse geographic features including mountains, deserts, and coastline. The state covers approximately 163,696 square miles and has a Mediterranean climate in many regions. Major cities include Los Angeles, San Francisco, San Diego, and Sacramento."
+          },
+          {
+            "title": "California Economy",
+            "content": "California has the largest economy of any U.S. state, with a gross state product comparable to that of entire countries. The state is known for its technology sector in Silicon Valley, entertainment industry in Hollywood, and significant agricultural production in the Central Valley."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "While the documents provide valuable contextual information about California (which appears to be the entity from step 2), they lack the specific quantitative data required to answer the question about population density. The documents mention that California is the most populous state and provide its area (163,696 square miles), but they do not include current population figures necessary to calculate or state the population density. To answer this question accurately, we would need documents containing either the explicit population density figure or both current population and area measurements with sufficient precision."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 12
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What percentage of the world's oil reserves does [entity from step 1] control?",
+        "documents": [
+          {
+            "title": "Canada Maritime Geography",
+            "content": "Canada has the longest coastline of any country in the world, stretching approximately 202,080 kilometers (125,567 miles). This extensive coastline borders three oceans: the Atlantic, Pacific, and Arctic. The maritime boundary includes numerous islands, fjords, and complex geological formations that contribute to its record-breaking length."
+          },
+          {
+            "title": "Canadian Natural Resources",
+            "content": "Canada is rich in natural resources including forests, minerals, freshwater, and energy resources. The country has significant hydroelectric power generation capacity and is a major exporter of lumber and mining products. Canada's resource wealth has been fundamental to its economic development."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "The documents confirm that Canada has the world's longest coastline (entity from step 1), but they do not provide the specific information needed to answer the question about oil reserves. While the documents mention that Canada has significant energy resources, they do not quantify oil reserves or provide the percentage of global oil reserves under Canadian control. The information about natural resources is too general and lacks the precise data required for this economic question. Additional documentation focusing specifically on oil reserves and global energy statistics would be necessary."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 13
+      }
+    },
+    {
+      "input": {
+        "sub_question": "What is the population density of [entity from step 2]?",
+        "documents": [
+          {
+            "title": "California Geography",
+            "content": "California is the most populous state in the United States, with diverse geographic features including mountains, deserts, and coastline. The state covers approximately 163,696 square miles and has a Mediterranean climate in many regions. Major cities include Los Angeles, San Francisco, San Diego, and Sacramento."
+          },
+          {
+            "title": "California Economy",
+            "content": "California has the largest economy of any U.S. state, with a gross state product comparable to that of entire countries. The state is known for its technology sector in Silicon Valley, entertainment industry in Hollywood, and significant agricultural production in the Central Valley."
+          }
+        ]
+      },
+      "output": {
+        "status": "no",
+        "answer": "",
+        "analysis": "While the documents provide valuable contextual information about California (which appears to be the entity from step 2), they lack the specific quantitative data required to answer the question about population density. The documents mention that California is the most populous state and provide its area (163,696 square miles), but they do not include current population figures necessary to calculate or state the population density. To answer this question accurately, we would need documents containing either the explicit population density figure or both current population and area measurements with sufficient precision."
+      },
+      "metadata": {
+        "scenario": "insufficient_information",
+        "quality_score": 1.0,
+        "sample_index": 14
+      }
+    }
+  ]
+}

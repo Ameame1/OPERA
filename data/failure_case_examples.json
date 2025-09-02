@@ -1,0 +1,250 @@
+{
+  "metadata": {
+    "type": "failure_case_examples",
+    "description": "Examples of system failures for robust GRPO training"
+  },
+  "failure_cases": [
+    {
+      "case_id": "fail_001",
+      "failure_type": "cascade_dependency_failure",
+      "question": "What is the birth year of the spouse of the person who discovered the element named after the planet discovered by William Herschel?",
+      "attempted_plan": [
+        {
+          "id": 1,
+          "subgoal": "Which planet was discovered by William Herschel?",
+          "dependencies": []
+        },
+        {
+          "id": 2,
+          "subgoal": "Which element is named after [entity from step 1]?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "id": 3,
+          "subgoal": "Who discovered [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        },
+        {
+          "id": 4,
+          "subgoal": "Who is the spouse of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        },
+        {
+          "id": 5,
+          "subgoal": "What is the birth year of [entity from step 4]?",
+          "dependencies": [
+            4
+          ]
+        }
+      ],
+      "failure_point": "step_2",
+      "failure_details": {
+        "step_1_result": "Uranus",
+        "step_2_failure": "Unable to find element named after Uranus in available documents",
+        "cascading_effect": "Steps 3-5 could not be executed due to step 2 failure"
+      },
+      "final_answer": "Unable to find answer",
+      "reward_score": 0.3,
+      "lessons": [
+        "Deep multi-hop questions may have missing intermediate information",
+        "Need better handling of rare entity connections",
+        "Cascade failures require early detection"
+      ]
+    },
+    {
+      "case_id": "fail_002",
+      "failure_type": "ambiguous_entity_resolution",
+      "question": "What is the population of Springfield where the company that makes the Simpsons is located?",
+      "attempted_plan": [
+        {
+          "id": 1,
+          "subgoal": "Which company makes the Simpsons?",
+          "dependencies": []
+        },
+        {
+          "id": 2,
+          "subgoal": "Where is [entity from step 1] located?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "id": 3,
+          "subgoal": "What is the population of Springfield in [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "failure_point": "step_3",
+      "failure_details": {
+        "step_1_result": "Fox Broadcasting Company",
+        "step_2_result": "Los Angeles, California",
+        "step_3_failure": "Multiple Springfields exist, unable to identify specific one from context",
+        "ambiguity": "33 cities named Springfield in the US"
+      },
+      "final_answer": "Unable to find answer",
+      "reward_score": 0.4,
+      "lessons": [
+        "Geographic ambiguity requires additional context",
+        "Plan should include disambiguation steps",
+        "Entity resolution needs geographic constraints"
+      ]
+    },
+    {
+      "case_id": "fail_003",
+      "failure_type": "temporal_mismatch",
+      "question": "Who was the CEO of Apple when the first Android phone was released?",
+      "attempted_plan": [
+        {
+          "id": 1,
+          "subgoal": "When was the first Android phone released?",
+          "dependencies": []
+        },
+        {
+          "id": 2,
+          "subgoal": "Who was the CEO of Apple in [entity from step 1]?",
+          "dependencies": [
+            1
+          ]
+        }
+      ],
+      "failure_point": "retrieval_mismatch",
+      "failure_details": {
+        "step_1_result": "2008",
+        "step_2_attempt": "Retrieved current CEO information instead of historical",
+        "temporal_issue": "Documents lack historical CEO timeline data",
+        "retrieved_info": "Tim Cook (current) instead of Steve Jobs (2008)"
+      },
+      "final_answer": "Tim Cook",
+      "correct_answer": "Steve Jobs",
+      "reward_score": 0.2,
+      "lessons": [
+        "Temporal queries require time-aware retrieval",
+        "Historical information needs special handling",
+        "Current vs historical data distinction critical"
+      ]
+    },
+    {
+      "case_id": "fail_004",
+      "failure_type": "rewrite_degradation",
+      "question": "What is the motto of the university where the inventor of CRISPR teaches?",
+      "attempted_plan": [
+        {
+          "id": 1,
+          "subgoal": "Who invented CRISPR?",
+          "dependencies": []
+        },
+        {
+          "id": 2,
+          "subgoal": "Where does [entity from step 1] teach?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "id": 3,
+          "subgoal": "What is the motto of [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        }
+      ],
+      "failure_point": "rewrite_spiral",
+      "failure_details": {
+        "step_1_failure": "Multiple inventors claimed for CRISPR",
+        "rewrite_attempts": [
+          {
+            "attempt": 1,
+            "query": "CRISPR inventor discoverer scientist Jennifer Doudna Emmanuelle Charpentier",
+            "result": "Still ambiguous, multiple names found"
+          },
+          {
+            "attempt": 2,
+            "query": "CRISPR-Cas9 gene editing technology primary inventor Nobel Prize",
+            "result": "Retrieved prize information but not definitive inventor"
+          }
+        ],
+        "degradation": "Each rewrite made query less focused"
+      },
+      "final_answer": "Unable to find answer",
+      "reward_score": 0.25,
+      "lessons": [
+        "Some questions have inherently ambiguous premises",
+        "Rewrite strategy should maintain focus",
+        "Multiple valid answers need different handling"
+      ]
+    },
+    {
+      "case_id": "fail_005",
+      "failure_type": "context_loss",
+      "question": "What is the market cap of the parent company of the subsidiary that owns the brand that makes the iPhone?",
+      "attempted_plan": [
+        {
+          "id": 1,
+          "subgoal": "Which brand makes the iPhone?",
+          "dependencies": []
+        },
+        {
+          "id": 2,
+          "subgoal": "Which subsidiary owns [entity from step 1]?",
+          "dependencies": [
+            1
+          ]
+        },
+        {
+          "id": 3,
+          "subgoal": "What is the parent company of [entity from step 2]?",
+          "dependencies": [
+            2
+          ]
+        },
+        {
+          "id": 4,
+          "subgoal": "What is the market cap of [entity from step 3]?",
+          "dependencies": [
+            3
+          ]
+        }
+      ],
+      "failure_point": "context_confusion",
+      "failure_details": {
+        "step_1_result": "Apple",
+        "step_2_confusion": "Apple is not owned by a subsidiary, it IS the company",
+        "context_loss": "Plan assumed unnecessary corporate hierarchy",
+        "oversimplification_needed": "Question unnecessarily complex for simple answer"
+      },
+      "final_answer": "Unable to find answer",
+      "correct_approach": "Direct query: 'What is Apple's market cap?'",
+      "reward_score": 0.35,
+      "lessons": [
+        "Over-decomposition can introduce errors",
+        "Need to recognize when questions are overcomplicated",
+        "Entity relationship assumptions can be wrong"
+      ]
+    }
+  ],
+  "failure_statistics": {
+    "total_cases": 5,
+    "failure_types": {
+      "cascade_dependency": 1,
+      "ambiguous_entity": 1,
+      "temporal_mismatch": 1,
+      "rewrite_degradation": 1,
+      "context_loss": 1
+    },
+    "average_reward": 0.3,
+    "common_patterns": [
+      "Missing intermediate information",
+      "Entity ambiguity",
+      "Temporal confusion",
+      "Over-decomposition"
+    ]
+  }
+}
