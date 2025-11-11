@@ -40,6 +40,17 @@ Multi-Agent Progressive Group Relative Policy Optimization with role-specific re
   <p><i>Figure 2: MAPGRPO training framework with progressive agent optimization and multi-dimensional rewards</i></p>
 </div>
 
+---
+
+> **🎯 Important Note**
+>
+> This work introduces novel approaches to **multi-agent collaboration** and **retrieval-augmented question answering**, including:
+> - A hierarchical three-agent architecture with systematic planning-execution decoupling
+> - Multi-Agent Progressive Group Relative Policy Optimization (MAPGRPO) training framework
+> - Role-specific reward functions for reinforcement learning in RAG systems
+>
+> If you find our **reward design**, **architectural patterns**, or **training methodologies** useful for your research, we kindly ask you to [cite our work](#-citation).
+
 ## 📊 Performance
 
 OPERA achieves state-of-the-art results on multi-hop QA benchmarks:
@@ -210,15 +221,6 @@ training:
 ```
 
 ## 📝 Citation
-
-> **🎯 Important Note**
->
-> This work introduces novel approaches to **multi-agent collaboration** and **retrieval-augmented question answering**, including:
-> - A hierarchical three-agent architecture with systematic planning-execution decoupling
-> - Multi-Agent Progressive Group Relative Policy Optimization (MAPGRPO) training framework
-> - Role-specific reward functions for reinforcement learning in RAG systems
->
-> If you find our **reward design**, **architectural patterns**, or **training methodologies** useful for your research, we kindly ask you to cite our work.
 
 **GitHub Repository:** [https://github.com/Ameame1/OPERA](https://github.com/Ameame1/OPERA)
 
