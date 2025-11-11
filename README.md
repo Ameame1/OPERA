@@ -9,6 +9,10 @@
 
 🔗 **Visit our project homepage: [https://ameame1.github.io/OPERA/](https://ameame1.github.io/OPERA/)**
 
+## 📢 News
+
+- **[2025-11-08]** 🎉 Our paper has been accepted by **AAAI 2026 Main Track**!
+
 ## 🎯 Overview
 
 OPERA is a reinforcement learning-enhanced framework for reasoning-centric multi-hop retrieval that introduces a hierarchical three-agent architecture to systematically decouple strategic planning from tactical execution.
@@ -135,6 +139,8 @@ OPERA/
 ```
 
 ## 🎓 Training
+
+Our training framework is built upon [TRL (Transformer Reinforcement Learning)](https://github.com/huggingface/trl), HuggingFace's library for training transformer language models with reinforcement learning.
 
 ### MAPGRPO Training Pipeline
 
