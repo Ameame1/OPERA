@@ -44,7 +44,7 @@ Multi-Agent Progressive Group Relative Policy Optimization with role-specific re
 
 > **🎯 Important Note**
 >
-> This work introduces novel approaches to **multi-agent collaboration** and **retrieval-augmented question answering**, including:
+> Multi-agent systems have demonstrated significant contributions across various domains, and researchers from both academia and industry are actively exploring their potential. This work introduces novel approaches to **multi-agent collaboration** and **retrieval-augmented question answering**, including:
 > - A hierarchical three-agent architecture with systematic planning-execution decoupling
 > - Multi-Agent Progressive Group Relative Policy Optimization (MAPGRPO) training framework
 > - Role-specific reward functions for reinforcement learning in RAG systems
