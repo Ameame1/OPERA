@@ -211,9 +211,16 @@ training:
 
 ## 📝 Citation
 
-**Note:** This paper provides various insights into multi-agent collaboration and solutions in the retrieval-augmented QA domain. If our reward functions and design/training approaches are helpful to your work, please cite us. Thank you.
+> **🎯 Important Note**
+>
+> This work introduces novel approaches to **multi-agent collaboration** and **retrieval-augmented question answering**, including:
+> - A hierarchical three-agent architecture with systematic planning-execution decoupling
+> - Multi-Agent Progressive Group Relative Policy Optimization (MAPGRPO) training framework
+> - Role-specific reward functions for reinforcement learning in RAG systems
+>
+> If you find our **reward design**, **architectural patterns**, or **training methodologies** useful for your research, we kindly ask you to cite our work.
 
-GitHub Repository: [https://github.com/Ameame1/OPERA](https://github.com/Ameame1/OPERA)
+**GitHub Repository:** [https://github.com/Ameame1/OPERA](https://github.com/Ameame1/OPERA)
 
 If you use OPERA in your research, please cite:
 
