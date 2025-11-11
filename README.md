@@ -153,6 +153,8 @@ OPERA/
 
 Our training framework is built upon [TRL (Transformer Reinforcement Learning)](https://github.com/huggingface/trl), HuggingFace's library for training transformer language models with reinforcement learning.
 
+MAPGRPO is an enhanced variant of [GRPO (Group Relative Policy Optimization)](https://arxiv.org/abs/2501.12948) introduced by DeepSeek, with progressive multi-agent training and role-specific reward functions.
+
 ### MAPGRPO Training Pipeline
 
 ```python
