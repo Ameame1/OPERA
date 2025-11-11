@@ -23,6 +23,7 @@
                 <li><a href="#results">Results</a></li>
                 <li><a href="#code">Code</a></li>
                 <li><a href="#paper">Paper</a></li>
+                <li><a href="#citation">Citation</a></li>
             </ul>
         </div>
     </nav>
@@ -597,6 +598,71 @@ trainer.train_rewrite_agent(
             <p class="team-note">
                 <i class="fas fa-info-circle"></i> Author information is anonymized for double-blind review
             </p>
+        </div>
+    </section>
+
+    <!-- Important Note & Citation Section -->
+    <section id="citation" class="section section-alt">
+        <div class="container">
+            <h2 class="section-title">📝 Citation</h2>
+
+            <!-- Important Note -->
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2.5rem; border-radius: 12px; margin-bottom: 3rem; color: white; box-shadow: 0 10px 40px rgba(0,0,0,0.15);">
+                <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">🎯 Important Note</h3>
+                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
+                    Multi-agent systems have demonstrated significant contributions across various domains, and researchers from both academia and industry are actively exploring their potential.
+                    This work introduces novel approaches to <strong>multi-agent collaboration</strong> and <strong>retrieval-augmented question answering</strong>, including:
+                </p>
+                <ul style="list-style: none; padding-left: 0; margin-bottom: 1.5rem;">
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <i class="fas fa-check-circle" style="position: absolute; left: 0; top: 0.25rem; color: #fbbf24;"></i>
+                        A hierarchical three-agent architecture with systematic planning-execution decoupling
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <i class="fas fa-check-circle" style="position: absolute; left: 0; top: 0.25rem; color: #fbbf24;"></i>
+                        Multi-Agent Progressive Group Relative Policy Optimization (MAPGRPO) training framework
+                    </li>
+                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                        <i class="fas fa-check-circle" style="position: absolute; left: 0; top: 0.25rem; color: #fbbf24;"></i>
+                        Role-specific reward functions for reinforcement learning in RAG systems
+                    </li>
+                </ul>
+                <p style="font-size: 1.1rem; line-height: 1.8;">
+                    If you find our <strong>reward design</strong>, <strong>architectural patterns</strong>, or <strong>training methodologies</strong> useful for your research, we kindly ask you to cite our work.
+                </p>
+            </div>
+
+            <!-- Citation Details -->
+            <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary-color);">BibTeX Citation</h3>
+                <div style="margin-bottom: 2rem;">
+                    <p style="margin-bottom: 1rem; color: #4a5568;">
+                        <strong>GitHub Repository:</strong>
+                        <a href="https://github.com/Ameame1/OPERA" style="color: var(--primary-color); text-decoration: none;">
+                            https://github.com/Ameame1/OPERA
+                        </a>
+                    </p>
+                </div>
+                <pre style="background: #1e293b; padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code class="language-bibtex" style="color: #e2e8f0; font-family: 'Courier New', monospace;">@article{opera2025,
+  title={OPERA: Orchestrated Planner-Executor Reasoning Architecture
+         for Reasoning-Centric Retrieval},
+  author={Anonymous},
+  journal={arXiv preprint arXiv:2508.16438},
+  year={2025},
+  url={https://arxiv.org/abs/2508.16438}
+}</code></pre>
+            </div>
+
+            <!-- Acknowledgements -->
+            <div style="margin-top: 2rem; padding: 2rem; background: #f8f9fa; border-radius: 12px; border-left: 4px solid var(--primary-color);">
+                <h4 style="margin-bottom: 1rem; color: var(--dark-color);">🙏 Acknowledgements</h4>
+                <p style="color: #4a5568; line-height: 1.8;">
+                    This research is supported by the National Key R&D Program of China (No. 2023YFC3303800).
+                    Our training framework is built upon <a href="https://github.com/huggingface/trl" style="color: var(--primary-color);">TRL (Transformer Reinforcement Learning)</a>,
+                    HuggingFace's library for training transformer language models with reinforcement learning.
+                    We thank the open-source community for their valuable contributions and the anonymous reviewers for their insightful feedback.
+                </p>
+            </div>
         </div>
     </section>
 
