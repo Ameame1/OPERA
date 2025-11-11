@@ -211,6 +211,10 @@ training:
 
 ## 📝 Citation
 
+**写在最前面：** 本论文提供了多种思路在目前的multi-agents协作，以及检索QA领域的一些解决方案。如果本论文的奖励函数和设计/训练逻辑对你们有帮助，请引用我们，谢谢。
+
+GitHub Repository: [https://github.com/Ameame1/OPERA](https://github.com/Ameame1/OPERA)
+
 If you use OPERA in your research, please cite:
 
 ```bibtex
