@@ -796,6 +796,13 @@ body {
 .team-member p {
     color: var(--text-light);
     font-size: 1rem;
+    margin-bottom: 0.25rem;
+}
+
+.team-member .member-affiliation {
+    font-size: 0.875rem;
+    color: var(--text-light);
+    font-style: italic;
 }
 
 .team-note {
