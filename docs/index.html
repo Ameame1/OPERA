@@ -373,6 +373,250 @@ for epoch in range(E3):
                     </div>
                 </div>
             </div>
+
+            <!-- Ablation Studies Section -->
+            <div style="margin-top: 4rem;">
+                <h3 style="margin-bottom: 2rem; color: var(--dark-color); font-size: 1.75rem; text-align: center;">Ablation Studies</h3>
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-color); max-width: 800px; margin-left: auto; margin-right: auto;">
+                    We conduct comprehensive ablation studies on MuSiQue, the most challenging dataset, to understand the contribution of each component and training method.
+                </p>
+                
+                <div style="overflow-x: auto; margin-bottom: 2rem;">
+                    <table style="width: 100%; border-collapse: collapse; background: white; box-shadow: var(--shadow-md); border-radius: 8px; overflow: hidden;">
+                        <thead style="background: var(--primary-color); color: white;">
+                            <tr>
+                                <th style="padding: 1rem; text-align: left;">Configuration</th>
+                                <th style="padding: 1rem; text-align: center;">EM (%)</th>
+                                <th style="padding: 1rem; text-align: center;">F1 (%)</th>
+                                <th style="padding: 1rem; text-align: left;">Key Finding</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: #eff6ff;">
+                                <td style="padding: 0.75rem 1rem; font-weight: bold; border-bottom: 1px solid #e5e7eb;">OPERA (MAPGRPO) - Full</td>
+                                <td style="padding: 0.75rem; text-align: center; font-weight: bold; border-bottom: 1px solid #e5e7eb;">39.7</td>
+                                <td style="padding: 0.75rem; text-align: center; font-weight: bold; border-bottom: 1px solid #e5e7eb;">51.9</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Complete system with all components</td>
+                            </tr>
+                            <tr style="background: #fef2f2;">
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">w/o Plan Agent</td>
+                                <td style="padding: 0.75rem; text-align: center; color: #dc2626; border-bottom: 1px solid #e5e7eb;">17.1</td>
+                                <td style="padding: 0.75rem; text-align: center; color: #dc2626; border-bottom: 1px solid #e5e7eb;">25.3</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Catastrophic drop, worse than CoT baseline</td>
+                            </tr>
+                            <tr style="background: #fef3c7;">
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">w/o Rewrite Agent</td>
+                                <td style="padding: 0.75rem; text-align: center; color: #d97706; border-bottom: 1px solid #e5e7eb;">34.5</td>
+                                <td style="padding: 0.75rem; text-align: center; color: #d97706; border-bottom: 1px solid #e5e7eb;">47.2</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Significant impact on retrieval quality</td>
+                            </tr>
+                            <tr style="background: #fef2f2;">
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">w/o Both Agents</td>
+                                <td style="padding: 0.75rem; text-align: center; color: #dc2626; border-bottom: 1px solid #e5e7eb;">16.7</td>
+                                <td style="padding: 0.75rem; text-align: center; color: #dc2626; border-bottom: 1px solid #e5e7eb;">24.8</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Worst performance, components are interdependent</td>
+                            </tr>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">OPERA (CoT)</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">21.2</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">26.4</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Baseline with prompt engineering only</td>
+                            </tr>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">OPERA (SFT)</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">24.3</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">31.7</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Supervised fine-tuning improves over CoT</td>
+                            </tr>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">OPERA (GRPO)</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">34.8</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">46.1</td>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Standard GRPO provides significant gains</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 12px; color: white; margin-top: 2rem;">
+                    <h4 style="margin-bottom: 1rem; font-size: 1.25rem;">💡 Key Takeaway</h4>
+                    <p style="font-size: 1.05rem; line-height: 1.8;">
+                        Architecture design has a larger impact than training methods. Removing the Plan Agent causes performance to drop below the untrained CoT baseline (17.1% vs 21.2%), 
+                        demonstrating that specialized architectural components are essential. MAPGRPO's improvement from 34.8% (GRPO) to 39.7% shows that role-specific rewards 
+                        enable better coordination across agents.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Cross-Model Evaluation Section -->
+            <div style="margin-top: 4rem;">
+                <h3 style="margin-bottom: 2rem; color: var(--dark-color); font-size: 1.75rem; text-align: center;">Architecture Scalability Across Model Sizes</h3>
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-color); max-width: 800px; margin-left: auto; margin-right: auto;">
+                    OPERA's architecture shows consistent benefits across different model scales, from 7B to 70B parameters.
+                </p>
+                
+                <div style="overflow-x: auto; margin-bottom: 2rem;">
+                    <table style="width: 100%; border-collapse: collapse; background: white; box-shadow: var(--shadow-md); border-radius: 8px; overflow: hidden;">
+                        <thead style="background: var(--primary-color); color: white;">
+                            <tr>
+                                <th rowspan="2" style="padding: 1rem; text-align: left; border-right: 1px solid rgba(255,255,255,0.2);">Model</th>
+                                <th colspan="2" style="padding: 0.5rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.2);">HotpotQA</th>
+                                <th colspan="2" style="padding: 0.5rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.2);">2WikiMultiHopQA</th>
+                                <th colspan="2" style="padding: 0.5rem 1rem; text-align: center;">MuSiQue</th>
+                            </tr>
+                            <tr>
+                                <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">EM (%)</th>
+                                <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">F1 (%)</th>
+                                <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">EM (%)</th>
+                                <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">F1 (%)</th>
+                                <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">EM (%)</th>
+                                <th style="padding: 0.5rem;">F1 (%)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Qwen2.5-7B + OPERA CoT</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">44.9</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">58.5</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">42.3</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">50.7</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">21.2</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">26.4</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">LLama3.1-8B + OPERA CoT</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">43.2</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">56.8</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">40.1</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">48.2</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">19.7</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">24.1</td>
+                            </tr>
+                            <tr style="background: #f9fafb;">
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Qwen3-8B + OPERA CoT</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">47.7</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">61.3</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">45.6</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">53.9</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">30.2</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">37.8</td>
+                            </tr>
+                            <tr>
+                                <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">LLama3.1-70B + OPERA CoT</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">54.9</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">67.1</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">52.8</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">60.3</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">34.1</td>
+                                <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">42.5</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Out-of-Domain Evaluation Section -->
+            <div style="margin-top: 4rem;">
+                <h3 style="margin-bottom: 2rem; color: var(--dark-color); font-size: 1.75rem; text-align: center;">Generalization: Out-of-Domain Evaluation</h3>
+                <p style="text-align: center; margin-bottom: 2rem; color: var(--text-color); max-width: 800px; margin-left: auto; margin-right: auto;">
+                    We evaluate OPERA's generalization capability on both single-hop (NaturalQuestions) and multi-hop (MultiHopRAG) tasks outside the training distribution.
+                </p>
+                
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-bottom: 2rem;">
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-color);">NaturalQuestions (Single-Hop)</h4>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid #e5e7eb;">
+                                    <th style="padding: 0.5rem; text-align: left;">Method</th>
+                                    <th style="padding: 0.5rem; text-align: center;">EM (%)</th>
+                                    <th style="padding: 0.5rem; text-align: center;">F1 (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.5rem;">OPERA (CoT)</td>
+                                    <td style="padding: 0.5rem; text-align: center;">23.1</td>
+                                    <td style="padding: 0.5rem; text-align: center;">31.4</td>
+                                </tr>
+                                <tr style="background: #fef2f2;">
+                                    <td style="padding: 0.5rem;">OPERA (SFT)</td>
+                                    <td style="padding: 0.5rem; text-align: center; color: #dc2626;">19.5</td>
+                                    <td style="padding: 0.5rem; text-align: center; color: #dc2626;">27.8</td>
+                                </tr>
+                                <tr style="background: #eff6ff;">
+                                    <td style="padding: 0.5rem; font-weight: bold;">OPERA (MAPGRPO)</td>
+                                    <td style="padding: 0.5rem; text-align: center; font-weight: bold;">36.6</td>
+                                    <td style="padding: 0.5rem; text-align: center; font-weight: bold;">45.2</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top: 1rem; font-size: 0.875rem; color: #6b7280;">
+                            MAPGRPO preserves flexibility for single-hop queries, while SFT overfits to multi-hop patterns.
+                        </p>
+                    </div>
+                    
+                    <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+                        <h4 style="margin-bottom: 1rem; color: var(--primary-color);">MultiHopRAG (Multi-Hop)</h4>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <thead>
+                                <tr style="border-bottom: 2px solid #e5e7eb;">
+                                    <th style="padding: 0.5rem; text-align: left;">Method</th>
+                                    <th style="padding: 0.5rem; text-align: center;">EM (%)</th>
+                                    <th style="padding: 0.5rem; text-align: center;">F1 (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td style="padding: 0.5rem;">OPERA (CoT)</td>
+                                    <td style="padding: 0.5rem; text-align: center;">42.3</td>
+                                    <td style="padding: 0.5rem; text-align: center;">53.7</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 0.5rem;">OPERA (SFT)</td>
+                                    <td style="padding: 0.5rem; text-align: center;">48.9</td>
+                                    <td style="padding: 0.5rem; text-align: center;">59.4</td>
+                                </tr>
+                                <tr style="background: #eff6ff;">
+                                    <td style="padding: 0.5rem; font-weight: bold;">OPERA (MAPGRPO)</td>
+                                    <td style="padding: 0.5rem; text-align: center; font-weight: bold;">55.7</td>
+                                    <td style="padding: 0.5rem; text-align: center; font-weight: bold;">66.8</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <p style="margin-top: 1rem; font-size: 0.875rem; color: #6b7280;">
+                            All methods improve on multi-hop tasks, with MAPGRPO showing the strongest performance.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dataset Information Section -->
+            <div style="margin-top: 4rem; background: white; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-md);">
+                <h3 style="margin-bottom: 1.5rem; color: var(--dark-color); font-size: 1.5rem;">📊 Dataset Information</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">
+                    <div style="padding: 1.5rem; background: #f9fafb; border-radius: 8px; border-left: 4px solid #6366f1;">
+                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">HotpotQA</h4>
+                        <p style="font-size: 1.5rem; font-weight: bold; color: var(--dark-color); margin-bottom: 0.25rem;">90K</p>
+                        <p style="font-size: 0.875rem; color: #6b7280;">Two-hop reasoning questions</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: #f9fafb; border-radius: 8px; border-left: 4px solid #ec4899;">
+                        <h4 style="color: #ec4899; margin-bottom: 0.5rem;">2WikiMultiHopQA</h4>
+                        <p style="font-size: 1.5rem; font-weight: bold; color: var(--dark-color); margin-bottom: 0.25rem;">150K</p>
+                        <p style="font-size: 0.875rem; color: #6b7280;">Multi-hop with diverse patterns</p>
+                    </div>
+                    <div style="padding: 1.5rem; background: #f9fafb; border-radius: 8px; border-left: 4px solid #8b5cf6;">
+                        <h4 style="color: #8b5cf6; margin-bottom: 0.5rem;">MuSiQue</h4>
+                        <p style="font-size: 1.5rem; font-weight: bold; color: var(--dark-color); margin-bottom: 0.25rem;">25K</p>
+                        <p style="font-size: 0.875rem; color: #6b7280;">Complex compositional reasoning</p>
+                    </div>
+                </div>
+                <div style="margin-top: 2rem; padding: 1.5rem; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 8px; color: white;">
+                    <h4 style="margin-bottom: 0.5rem;">Pre-scored Training Dataset</h4>
+                    <p style="margin-bottom: 0.5rem;"><strong>Total:</strong> 30,000 scored samples from 3,000 unique questions (10-15 candidates per question)</p>
+                    <p style="font-size: 0.875rem;"><strong>Composition:</strong> MuSiQue (60%), HotpotQA (25%), 2WikiMultiHopQA (15%)</p>
+                </div>
+            </div>
         </div>
     </section>
 
