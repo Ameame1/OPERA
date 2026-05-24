@@ -1,0 +1,21 @@
+name: opera
+channels:
+  - pytorch
+  - nvidia
+  - conda-forge
+dependencies:
+  - python=3.10
+  - "numpy<2"
+  # GPU FAISS is installed through conda; PyPI does not provide faiss-gpu.
+  - faiss-gpu
+  - pip
+  - pip:
+      - "torch==2.12.0"
+      - "FlagEmbedding>=1.2.11"
+      - "transformers>=4.37,<5"
+      - "accelerate>=0.26"
+      - "sentencepiece>=0.1.99"
+      - "protobuf>=4.25"
+      - "requests>=2.31"
+      - "tqdm>=4.66"
+      - "pyarrow>=14.0"

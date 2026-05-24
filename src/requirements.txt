@@ -1,0 +1,18 @@
+# Core runtime
+numpy>=1.24,<2.0
+tqdm>=4.66
+requests>=2.31
+
+# Retrieval
+FlagEmbedding>=1.2.11
+# PyPI only provides CPU FAISS here. For the default GPU retriever, use environment.yml
+# or install a CUDA-compatible FAISS build manually.
+faiss-cpu>=1.8.0
+pyarrow>=14.0
+
+# Local Hugging Face inference backend. 2.12+ is needed for Blackwell sm_120 on GPU0.
+torch>=2.12
+transformers>=4.37,<5
+accelerate>=0.26
+sentencepiece>=0.1.99
+protobuf>=4.25

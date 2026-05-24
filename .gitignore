@@ -1,0 +1,21 @@
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+src/runs/
+src/eval_runs/
+src/tuning_runs/
+src/logs/
+src/.conda_env/
+
+# The 1.78M retrieval index is distributed separately.
+src/indexes/
+*.index
+*.faiss
+*.meta
+*.pkl
+
+# Evaluation splits are not redistributed; rebuild via scripts/build_eval_sets.py.
+src/eval_sets/
