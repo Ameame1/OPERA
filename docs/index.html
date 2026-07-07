@@ -1,501 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OPERA: Orchestrated Planner-Executor Reasoning Architecture</title>
-    <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="OPERA: A Reinforcement Learning–Enhanced Orchestrated Planner-Executor Architecture for Reasoning-Oriented Multi-Hop Retrieval. AAAI 2026.">
+<title>OPERA — Reasoning-Oriented Multi-Hop Retrieval (AAAI 2026)</title>
+<style>
+:root{
+  --red:#C41230; --red-dark:#9E0E27; --ink:#1F1F1F; --gray:#58585B; --muted:#767679;
+  --rule:#DBDBDB; --bg:#FFFFFF; --bg-soft:#F5F5F4; --bg-band:#FAF9F8;
+  --good:#0E7A3C; --good-soft:#EAF5EE; --bad:#C41230; --bad-soft:#FBEEF0;
+  --maxw:1180px;
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:76px}
+@media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important} }
+body{
+  margin:0;background:var(--bg);color:var(--ink);
+  font:16.5px/1.7 "Helvetica Neue",Helvetica,"Segoe UI",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--red);text-decoration:none}
+a:hover{text-decoration:underline}
+img{max-width:100%;height:auto}
+:focus-visible{outline:3px solid var(--red);outline-offset:2px}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+/* ===== masthead ===== */
+.masthead{position:sticky;top:0;z-index:60;background:var(--red);color:#fff;box-shadow:0 1px 4px rgba(0,0,0,.18)}
+.masthead .row{display:flex;align-items:center;gap:26px;max-width:var(--maxw);margin:0 auto;padding:0 28px;height:58px}
+.brand{font-size:1.35rem;font-weight:800;letter-spacing:.04em;color:#fff}
+.brand small{font-weight:400;opacity:.85;letter-spacing:0;margin-left:10px;font-size:.78rem}
+.mnav{margin-left:auto;display:flex;gap:22px;overflow-x:auto}
+.mnav a{color:#fff;font-size:.86rem;font-weight:600;letter-spacing:.02em;white-space:nowrap;opacity:.92}
+.mnav a:hover{opacity:1;text-decoration:underline}
+
+/* ===== breadcrumb ===== */
+.crumb{background:var(--bg-soft);border-bottom:1px solid var(--rule)}
+.crumb .wrap{padding-top:9px;padding-bottom:9px;font-size:.8rem;color:var(--muted)}
+.crumb a{color:var(--muted)}
+
+/* ===== layout with side nav ===== */
+.page{display:grid;grid-template-columns:230px 1fr;gap:52px;max-width:var(--maxw);margin:0 auto;padding:0 28px}
+.sidenav{position:sticky;top:82px;align-self:start;padding:26px 0;font-size:.88rem}
+.sidenav .ttl{font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--muted);text-transform:uppercase;margin:0 0 10px}
+.sidenav a{display:block;padding:7px 14px;color:var(--gray);border-left:3px solid transparent;line-height:1.4}
+.sidenav a:hover{color:var(--red);text-decoration:none;border-left-color:var(--rule)}
+main{min-width:0;padding:34px 0 40px}
+
+/* ===== typography ===== */
+h1{font-size:clamp(2.6rem,5.5vw,3.9rem);line-height:1.06;margin:18px 0 6px;font-weight:800;letter-spacing:-.01em}
+.redline{width:76px;height:5px;background:var(--red);border:0;margin:18px 0 22px}
+.lead{font-size:1.28rem;line-height:1.55;color:var(--ink);font-weight:600;max-width:44em}
+.sub{font-size:1.02rem;color:var(--gray);max-width:47em}
+h2{font-size:1.72rem;font-weight:800;margin:0 0 6px;letter-spacing:-.005em}
+h3{font-size:1.12rem;font-weight:700;margin:1.4em 0 .4em}
+section{padding:44px 0 6px;border-top:1px solid var(--rule);margin-top:44px}
+section:first-of-type{border-top:0;margin-top:0;padding-top:8px}
+.eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;color:var(--red);text-transform:uppercase;margin:0 0 8px}
+p{margin:.65em 0}
+.small{font-size:.85rem;color:var(--muted)}
+
+/* meta / authors */
+.authors{margin:14px 0 2px;font-size:.98rem;line-height:1.85}
+.authors b{font-weight:700}
+.affils{font-size:.85rem;color:var(--muted);line-height:1.7}
+.btns{display:flex;flex-wrap:wrap;gap:12px;margin:22px 0 4px}
+.btn{display:inline-block;padding:11px 24px;font-size:.92rem;font-weight:700;letter-spacing:.02em;border-radius:3px;border:2px solid var(--red)}
+.btn.solid{background:var(--red);color:#fff}
+.btn.solid:hover{background:var(--red-dark);border-color:var(--red-dark);text-decoration:none}
+.btn.ghost{color:var(--red);background:#fff}
+.btn.ghost:hover{background:var(--bad-soft);text-decoration:none}
+.badge{display:inline-block;background:var(--red);color:#fff;font-size:.74rem;font-weight:700;letter-spacing:.08em;
+  padding:3px 12px;border-radius:2px;text-transform:uppercase;vertical-align:6px;margin-left:12px}
+
+/* news band */
+.news{background:var(--bg-band);border:1px solid var(--rule);border-left:6px solid var(--red);padding:16px 22px;margin:28px 0 0}
+.news b{color:var(--red)}
+
+/* figure cards */
+.figcard{border:1px solid var(--rule);background:#fff;padding:18px;margin:26px 0 6px}
+.figcard img{display:block;width:100%}
+.figcard figcaption{font-size:.86rem;color:var(--muted);line-height:1.6;margin-top:12px;border-top:1px solid var(--rule);padding-top:10px}
+.figcard figcaption b{color:var(--ink)}
+
+/* dos & don'ts grid */
+.ddgrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:24px 0 4px}
+.dd{border:1px solid var(--rule)}
+.dd .hd{display:flex;align-items:center;gap:10px;padding:11px 18px;font-weight:800;font-size:.95rem;letter-spacing:.02em}
+.dd.bad .hd{background:var(--bad-soft);color:var(--bad);border-bottom:1px solid var(--rule)}
+.dd.good .hd{background:var(--good-soft);color:var(--good);border-bottom:1px solid var(--rule)}
+.dd .hd .ic{font-size:1.15rem}
+.dd ul{margin:0;padding:14px 20px 16px 36px}
+.dd li{margin:9px 0;font-size:.94rem;line-height:1.65;color:var(--gray)}
+.dd li b{color:var(--ink)}
+
+/* component cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin:24px 0 4px}
+.card{border:1px solid var(--rule);border-top:4px solid var(--red);padding:18px 20px;background:#fff}
+.card h4{margin:0 0 6px;font-size:1.02rem;font-weight:800}
+.card .who{font-size:.76rem;font-weight:700;letter-spacing:.06em;color:var(--red);text-transform:uppercase}
+.card p{font-size:.9rem;color:var(--gray);line-height:1.65;margin:.4em 0 0}
+.flow{counter-reset:step;margin:20px 0 4px;padding:0;list-style:none;border:1px solid var(--rule)}
+.flow li{counter-increment:step;display:flex;gap:16px;align-items:baseline;padding:12px 18px;border-top:1px solid var(--rule);font-size:.95rem;color:var(--gray)}
+.flow li:first-child{border-top:0}
+.flow li::before{content:counter(step);flex:none;width:30px;height:30px;border-radius:50%;background:var(--red);color:#fff;
+  font-weight:800;font-size:.85rem;display:grid;place-items:center;align-self:center}
+.flow li b{color:var(--ink)}
+
+/* stat band */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--rule);border:1px solid var(--rule);margin:26px 0 4px}
+.stat{background:#fff;padding:22px 18px;text-align:center}
+.stat .v{font-size:2.3rem;font-weight:800;color:var(--red);line-height:1.1;font-variant-numeric:tabular-nums}
+.stat .v small{font-size:1.1rem}
+.stat .k{font-size:.85rem;color:var(--gray);margin-top:6px;line-height:1.5}
+
+/* results table */
+.tblwrap{overflow-x:auto;margin:24px 0 4px;border:1px solid var(--rule)}
+table.res{width:100%;border-collapse:collapse;font-size:.9rem;min-width:720px;font-variant-numeric:tabular-nums}
+.res th,.res td{padding:9px 14px;text-align:right;border-bottom:1px solid var(--rule)}
+.res th:first-child,.res td:first-child{text-align:left}
+.res thead th{background:var(--bg-soft);font-size:.8rem;letter-spacing:.04em;text-transform:uppercase;color:var(--gray);border-bottom:2px solid var(--ink)}
+.res tr.ours td{background:var(--bad-soft);font-weight:800}
+.res tr.ours td:first-child{color:var(--red)}
+.res td .d{color:var(--good);font-size:.78rem;font-weight:700}
+.res tbody tr:last-child td{border-bottom:0}
+
+/* demo grid */
+.demos{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin:24px 0 4px}
+.demos .figcard{margin:0}
+
+/* downloads */
+.dl{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin:24px 0 4px}
+.dl a{display:block;border:1px solid var(--rule);padding:20px;color:var(--ink);background:#fff;border-bottom:4px solid var(--red)}
+.dl a:hover{background:var(--bg-band);text-decoration:none}
+.dl .ic{font-size:1.6rem}
+.dl h4{margin:8px 0 4px;font-size:.98rem;font-weight:800}
+.dl p{font-size:.82rem;color:var(--muted);margin:0;line-height:1.55}
+
+/* citation */
+pre.bib{background:var(--bg-soft);border:1px solid var(--rule);padding:18px 22px;overflow-x:auto;
+  font:13px/1.7 "SF Mono",Consolas,Menlo,monospace;color:var(--ink);margin:18px 0 12px;white-space:pre}
+.copy{border:2px solid var(--red);background:#fff;color:var(--red);font-weight:700;font-size:.86rem;
+  padding:8px 18px;border-radius:3px;cursor:pointer}
+.copy:hover{background:var(--bad-soft)}
+
+/* question band */
+.qband{background:var(--bg-soft);border-top:1px solid var(--rule);margin-top:56px}
+.qband .wrap{padding:40px 28px;display:flex;flex-wrap:wrap;align-items:center;gap:22px;justify-content:space-between}
+.qband h2{margin:0}
+footer{background:var(--ink);color:#BDBDBD;font-size:.82rem}
+footer .wrap{padding:26px 28px;display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between}
+footer a{color:#fff}
+
+@media (max-width:960px){
+  .page{grid-template-columns:1fr;gap:0}
+  .sidenav{display:none}
+  .cards,.dl{grid-template-columns:1fr 1fr}
+  .stats{grid-template-columns:1fr 1fr}
+  .ddgrid,.demos{grid-template-columns:1fr}
+}
+@media (max-width:600px){ .cards,.dl{grid-template-columns:1fr} }
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">
-                <h1>OPERA</h1>
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#abstract">Abstract</a></li>
-                <li><a href="#architecture">Architecture</a></li>
-                <li><a href="#training">Training</a></li>
-                <li><a href="#results">Results</a></li>
-                <li><a href="#citation">Citation</a></li>
-            </ul>
-        </div>
+
+<header class="masthead">
+  <div class="row">
+    <span class="brand">OPERA<small>Orchestrated Planner-Executor Reasoning Architecture</small></span>
+    <nav class="mnav" aria-label="Section navigation">
+      <a href="#overview">Overview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#training">Training</a>
+      <a href="#results">Results</a>
+      <a href="#downloads">Downloads</a>
+      <a href="#citation">Citation</a>
     </nav>
+  </div>
+</header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="container">
-            <div class="hero-content">
-                <h1 class="hero-title">OPERA</h1>
-                <h2 class="hero-subtitle">Orchestrated Planner-Executor Reasoning Architecture</h2>
-                <p class="hero-description">
-                    A Reinforcement Learning-Enhanced Framework for Reasoning-Oriented Multi-Hop Retrieval
-                </p>
-                <div class="hero-badges">
-                    <span class="badge badge-conference">AAAI 2026</span>
-                    <span class="badge badge-status">Main Track</span>
-                </div>
-                <div class="hero-buttons">
-                    <a href="https://arxiv.org/pdf/2508.16438" class="btn btn-primary" target="_blank">
-                        <i class="fas fa-file-pdf"></i> Read Paper
-                    </a>
-                    <a href="#results" class="btn btn-outline">
-                        <i class="fas fa-chart-bar"></i> See Results
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
+<div class="crumb"><div class="wrap"><a href="https://github.com/Ameame1" rel="noopener">Ameame1</a> &nbsp;›&nbsp; <a href="https://github.com/Ameame1/OPERA" rel="noopener">OPERA</a> &nbsp;›&nbsp; Project Page</div></div>
 
-    <!-- Abstract Section -->
-    <section id="abstract" class="section">
-        <div class="container">
-            <h2 class="section-title">Abstract</h2>
-            
-            <div class="abstract-text" style="max-width: 1000px; margin: 0 auto; text-align: justify; line-height: 1.8;">
-                <p style="font-size: 1.05rem; color: #4a5568;">
-                    Recent advances in large language models (LLMs) and dense retrievers have driven significant progress in retrieval-augmented generation (RAG). 
-                    However, existing approaches face significant challenges in complex reasoning-oriented multi-hop retrieval tasks:
-                </p>
-                
-                <div style="margin: 2rem 0; padding-left: 2rem;">
-                    <p style="margin-bottom: 1rem; color: #2d3748;">
-                        <strong>1) Ineffective reasoning-oriented planning:</strong> Prior methods struggle to generate robust multi-step plans for complex queries, 
-                        as rule-based decomposers perform poorly on out-of-template questions.
-                    </p>
-                    <p style="margin-bottom: 1rem; color: #2d3748;">
-                        <strong>2) Suboptimal reasoning-driven retrieval:</strong> Related methods employ limited query reformulation, 
-                        leading to iterative retrieval loops that often fail to locate golden documents.
-                    </p>
-                    <p style="margin-bottom: 1rem; color: #2d3748;">
-                        <strong>3) Insufficient reasoning-guided filtering:</strong> Prevailing methods lack the fine-grained reasoning 
-                        to effectively filter salient information from noisy results, hindering utilization of retrieved knowledge.
-                    </p>
-                </div>
-                
-                <p style="font-size: 1.05rem; color: #4a5568; margin-bottom: 1.5rem;">
-                    Fundamentally, these limitations all stem from the weak coupling between retrieval and reasoning in current RAG architectures. 
-                    We introduce the <strong>Orchestrated Planner-Executor Reasoning Architecture (OPERA)</strong>, a novel reasoning-driven retrieval framework. 
-                    OPERA's Goal Planning Module (GPM) decomposes questions into sub-goals, which are executed by a Reason-Execute Module (REM) 
-                    with specialized components for precise reasoning and effective retrieval. To train OPERA, we propose 
-                    Multi-Agents Progressive Group Relative Policy Optimization (MAPGRPO), a novel variant of GRPO. 
-                    Experiments on complex multi-hop benchmarks show OPERA's superior performance, validating both the MAPGRPO method and OPERA's design.
-                </p>
-                
-            </div>
-            
-            <!-- Full-width Image Section -->
-            <div class="overview-image" style="width: 100%; max-width: 1400px; margin: 3rem auto; padding: 0 1rem;">
-                <img src="figures/OPERA-Figure-1-7.png" alt="OPERA Overview" style="width: 100%; height: auto; border-radius: 12px; box-shadow: 0 8px 30px rgba(0,0,0,0.12);">
-                <p class="image-caption" style="font-size: 1.1rem; margin-top: 1.5rem; text-align: center; color: #6b7280;">OPERA's MAPGRPO training framework and performance comparison</p>
-            </div>
-        </div>
-    </section>
+<div class="page">
+<nav class="sidenav" aria-label="On this page">
+  <p class="ttl">On this page</p>
+  <a href="#overview">Overview</a>
+  <a href="#paradigm">Why OPERA</a>
+  <a href="#architecture">Architecture</a>
+  <a href="#training">MAPGRPO Training</a>
+  <a href="#demo">Demonstrations</a>
+  <a href="#results">Results</a>
+  <a href="#downloads">Downloads</a>
+  <a href="#citation">Citation</a>
+</nav>
 
-    <!-- Architecture Section -->
-    <section id="architecture" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Architecture</h2>
-            <div class="architecture-diagram">
-                <img src="figures/OPERA-Figure-2-2.png" alt="OPERA Architecture">
-            </div>
-            <div class="architecture-grid">
-                <div class="architecture-module">
-                    <div class="module-icon">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Goal Planning Module (GPM)</h3>
-                    <p><strong>Plan Agent:</strong> Decomposes complex queries into executable sub-goals with placeholder dependencies for strategic multi-hop reasoning.</p>
-                </div>
-                <div class="architecture-module">
-                    <div class="module-icon">
-                        <i class="fas fa-cogs"></i>
-                    </div>
-                    <h3>Reason-Execute Module (REM)</h3>
-                    <p><strong>Analysis-Answer Agent:</strong> Performs information sufficiency assessment and precise answer extraction from retrieved documents.</p>
-                    <p><strong>Rewrite Agent:</strong> Reformulates queries adaptively when information is insufficient.</p>
-                </div>
-                <div class="architecture-module">
-                    <div class="module-icon">
-                        <i class="fas fa-database"></i>
-                    </div>
-                    <h3>Trajectory Memory Component</h3>
-                    <p>Records complete execution traces with action rationales for enhanced interpretability and debugging.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<main>
+<section id="top" style="padding-top:8px">
+  <h1>OPERA<span class="badge">AAAI 2026</span></h1>
+  <hr class="redline">
+  <p class="lead">A Reinforcement Learning–Enhanced Orchestrated Planner-Executor Architecture for Reasoning-Oriented Multi-Hop Retrieval.</p>
+  <p class="sub">Existing RAG pipelines retrieve first and reason after. OPERA fuses the two: a hierarchical
+  three-agent architecture <b>reasons while retrieving</b> — every retrieval step is shaped by the current
+  reasoning state, and every reasoning step drives the next retrieval — trained end-to-end with a new
+  multi-agent variant of GRPO.</p>
+  <p class="authors">
+    <b>Yu Liu</b><sup>1,2</sup> · Yanbing Liu<sup>1,2</sup> · Fangfang Yuan<sup>1</sup> · Cong Cao<sup>1</sup> ·
+    Youbang Sun<sup>4</sup> · Kun Peng<sup>1,2</sup> · Weizhuo Chen<sup>1,2</sup> · Jianjun Li<sup>3</sup> ·
+    <b>Zhiyuan Ma</b><sup>3&dagger;</sup>
+  </p>
+  <p class="affils">
+    <sup>1</sup>Institute of Information Engineering, Chinese Academy of Sciences ·
+    <sup>2</sup>School of Cyber Security, University of Chinese Academy of Sciences ·
+    <sup>3</sup>Huazhong University of Science and Technology ·
+    <sup>4</sup>Tsinghua University · <sup>&dagger;</sup>Corresponding author
+  </p>
+  <div class="btns">
+    <a class="btn solid" href="https://arxiv.org/pdf/2508.16438" rel="noopener">Read the Paper (arXiv)</a>
+    <a class="btn ghost" href="https://github.com/Ameame1/OPERA" rel="noopener">View the Code</a>
+    <a class="btn ghost" href="https://huggingface.co/datasets/Ameame1002/OPERA" rel="noopener">🤗 Dataset &amp; Index</a>
+  </div>
+  <div class="news">🎉 <b>News · 2025-11-08</b> — OPERA has been accepted to the <b>AAAI 2026 Main Track</b>.
+  <span class="small">Also the first PhD work of the first author — thanks to everyone who helped along the way.</span></div>
+</section>
 
-    <!-- Interactive Visualizations Section -->
-    <section id="interactive-viz" class="section">
-        <div class="container">
-            <h2 class="section-title">Interactive Demonstration</h2>
-            
-            <!-- Interactive Query Decomposition Demo -->
-            <div class="query-demo" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2rem; border-radius: 12px; margin-bottom: 3rem; color: white;">
-                <h3 style="text-align: center; margin-bottom: 2rem;">Interactive Query Decomposition Demo</h3>
-                <div style="max-width: 800px; margin: 0 auto;">
-                    <div style="background: rgba(255,255,255,0.1); padding: 1.5rem; border-radius: 8px; margin-bottom: 1.5rem;">
-                        <h4 style="margin-bottom: 1rem;">Complex Query:</h4>
-                        <p id="demo-query" style="font-size: 1.1rem; line-height: 1.6;">
-                            "What is the GDP per capita of the country where the headquarters of the company that acquired GitHub is located?"
-                        </p>
-                    </div>
-                    
-                    <button id="decompose-btn" style="background: white; color: #667eea; padding: 0.75rem 2rem; border: none; border-radius: 8px; font-size: 1rem; font-weight: bold; cursor: pointer; margin-bottom: 1.5rem;">
-                        🔍 Decompose Query
-                    </button>
-                    
-                    <div id="decomposition-steps" style="display: none;">
-                        <!-- Steps will be revealed by JavaScript -->
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="overview">
+  <p class="eyebrow">Overview</p>
+  <h2>Retrieval and reasoning belong in the same loop</h2>
+  <p>Consider: <em>“What was the previous occupation of the person who succeeded the founder of the company
+  that acquired WhatsApp?”</em> Answering demands a precise sequence of retrievals and inferences, each depending
+  on the last. Conventional retrieve-then-reason pipelines break down here for three reasons: rule-based
+  decomposers produce brittle plans, query reformulation is too shallow to escape failed-retrieval loops, and
+  golden documents drown in noisy top-<i>k</i> results. All three trace back to one root cause — <b>weak coupling
+  between retrieval and reasoning</b>.</p>
+  <figure class="figcard">
+    <img src="figures/OPERA-Figure-1-7.png" alt="OPERA MAPGRPO training framework: role-specific rewards for Rewrite, Analysis-Answer and Plan agents; batch composition with expert injection; benchmark gains on HotpotQA, 2WikiMultiHopQA and MuSiQue.">
+    <figcaption><b>The complete picture.</b> Top &amp; center: MAPGRPO trains the three agents sequentially with
+    role-specific rewards and judges — a mixed online/offline batch (7/8 generated by the policy, 1/8 best
+    pre-scored sample) stabilises early training. Bottom: the three failure modes of conventional RAG on a real
+    multi-hop question. Right: resulting gains — EM 45.7&nbsp;→&nbsp;57.3 on HotpotQA, 44.3&nbsp;→&nbsp;60.2 on
+    2WikiMultiHopQA, 24.3&nbsp;→&nbsp;39.7 on MuSiQue.</figcaption>
+  </figure>
+</section>
 
-    <!-- Training Mechanism Section -->
-    <section id="training" class="section" style="background: #f8f9fa;">
-        <div class="container">
-            <h2 class="section-title">🎯 MAPGRPO Training Mechanism</h2>
-            <p style="text-align: center; color: #666; margin-bottom: 2rem; max-width: 900px; margin-left: auto; margin-right: auto;">
-                Progressive multi-agent training with pre-scored dataset from DeepSeek R1, high-score sample selection, 
-                and role-specific evaluation methods for each specialized agent.
-            </p>
-            
-            <!-- Embedded Training Visualization -->
-            <div style="width: 100%; height: 900px; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
-                <iframe src="opera_training_mechanism.html" 
-                        style="width: 100%; height: 100%; border: none;"
-                        title="OPERA Training Mechanism Visualization">
-                </iframe>
-            </div>
-            
-            <div style="margin-top: 2rem; text-align: center;">
-                <a href="opera_training_mechanism.html" target="_blank" class="btn btn-outline" style="text-decoration: none;">
-                    <i class="fas fa-external-link-alt"></i> View Full Screen
-                </a>
-            </div>
-        </div>
-    </section>
+<section id="paradigm">
+  <p class="eyebrow">Why OPERA</p>
+  <h2>Retrieve-then-reason vs. reason-while-retrieving</h2>
+  <div class="ddgrid">
+    <div class="dd bad">
+      <div class="hd"><span class="ic">✕</span> CONVENTIONAL RAG</div>
+      <ul>
+        <li><b>Static plans.</b> Rule-based or planner-first decomposition collapses on out-of-template questions and cannot adapt mid-flight.</li>
+        <li><b>Blind retries.</b> Failed retrievals trigger shallow query tweaks, looping without ever reaching the golden documents.</li>
+        <li><b>Noise wins.</b> Even when the right document is fetched, coarse filtering leaves it buried in noisy top-<i>k</i> context.</li>
+      </ul>
+    </div>
+    <div class="dd good">
+      <div class="hd"><span class="ic">✓</span> OPERA</div>
+      <ul>
+        <li><b>Reasoned plans.</b> A dedicated Plan Agent decomposes the question into ordered sub-goals with explicit placeholder dependencies.</li>
+        <li><b>Reasoned retrieval.</b> A specialised Rewrite Agent reformulates the query <em>only</em> when evidence is judged insufficient — trained on retrieval effectiveness (NDCG) itself.</li>
+        <li><b>Reasoned filtering.</b> The Analysis-Answer Agent assesses sufficiency and extracts the precise answer before the pipeline moves on; a Trajectory Memory Component records the rationale of every action.</li>
+      </ul>
+    </div>
+  </div>
+</section>
 
-    <!-- Results Section -->
-    <section id="results" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">Experimental Results</h2>
-            <p style="text-align: center; margin-bottom: 2rem; color: var(--text-color);">
-                Performance on three multi-hop reasoning benchmarks. All methods use Qwen2.5-7B as backbone.
-            </p>
-            
-            <!-- Main Results Table -->
-            <div style="overflow-x: auto; margin-bottom: 3rem;">
-                <table style="width: 100%; border-collapse: collapse; background: white; box-shadow: var(--shadow-md); border-radius: 8px; overflow: hidden;">
-                    <thead style="background: var(--primary-color); color: white;">
-                        <tr>
-                            <th rowspan="2" style="padding: 1rem; text-align: left; border-right: 1px solid rgba(255,255,255,0.2);">Method</th>
-                            <th colspan="2" style="padding: 0.5rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.2);">HotpotQA</th>
-                            <th colspan="2" style="padding: 0.5rem 1rem; text-align: center; border-right: 1px solid rgba(255,255,255,0.2);">2WikiMultiHopQA</th>
-                            <th colspan="2" style="padding: 0.5rem 1rem; text-align: center;">Musique</th>
-                        </tr>
-                        <tr>
-                            <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">EM (%)</th>
-                            <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">F1 (%)</th>
-                            <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">EM (%)</th>
-                            <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">F1 (%)</th>
-                            <th style="padding: 0.5rem; border-right: 1px solid rgba(255,255,255,0.2);">EM (%)</th>
-                            <th style="padding: 0.5rem;">F1 (%)</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr style="background: #f9fafb;">
-                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Qwen2.5-7B (No Retrieval)</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">18.5</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">26.8</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">16.2</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">23.7</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">4.1</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">9.1</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Single-Step RAG</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">31.5</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">44.2</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">25.9</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">37.6</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">14.1</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">18.4</td>
-                        </tr>
-                        <tr style="background: #f9fafb;">
-                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">IRCoT</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">42.7</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">54.8</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">43.3</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">56.2</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">18.8</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">23.9</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">OPERA (CoT)</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">44.9</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">58.5</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">42.3</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">50.7</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">21.2</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">32.1</td>
-                        </tr>
-                        <tr style="background: #f9fafb;">
-                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">Adaptive-RAG</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">45.7</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">56.9</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">30.1</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">39.3</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">24.3</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">35.7</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 0.75rem 1rem; border-bottom: 1px solid #e5e7eb;">BGM</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">41.5</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">53.8</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb; text-decoration: underline;">44.3</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">55.8</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">19.6</td>
-                            <td style="padding: 0.75rem; text-align: center; border-bottom: 1px solid #e5e7eb;">26.8</td>
-                        </tr>
-                        <tr style="background: #eff6ff;">
-                            <td style="padding: 0.75rem 1rem; font-weight: bold; color: var(--primary-color);">OPERA (MAPGRPO)</td>
-                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">57.3<sup style="font-size: 0.7em;">(+11.6)</sup></td>
-                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">69.5<sup style="font-size: 0.7em;">(+11.0)</sup></td>
-                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">60.2<sup style="font-size: 0.7em;">(+15.9)</sup></td>
-                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">72.7<sup style="font-size: 0.7em;">(+16.5)</sup></td>
-                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">39.7<sup style="font-size: 0.7em;">(+15.4)</sup></td>
-                            <td style="padding: 0.75rem; text-align: center; font-weight: bold; color: var(--primary-color);">58.0<sup style="font-size: 0.7em;">(+22.3)</sup></td>
-                        </tr>
-                    </tbody>
-                </table>
-                <p style="text-align: center; margin-top: 0.5rem; font-size: 0.875rem; color: #6b7280;">
-                    <em>Numbers in parentheses show improvement over best baseline (underlined values)</em>
-                </p>
-            </div>
+<section id="architecture">
+  <p class="eyebrow">Architecture</p>
+  <h2>Two modules, three specialised agents</h2>
+  <div class="cards">
+    <div class="card">
+      <span class="who">GPM · Goal Planning Module</span>
+      <h4>Plan Agent <span class="small">(Qwen2.5-7B)</span></h4>
+      <p>Decomposes a multi-hop question into coherent, executable sub-goals with placeholder dependencies —
+      strategy, decided once and revised only when execution demands it.</p>
+    </div>
+    <div class="card">
+      <span class="who">REM · Reason-Execute Module</span>
+      <h4>Analysis-Answer Agent <span class="small">(Qwen2.5-7B)</span></h4>
+      <p>Judges whether retrieved evidence suffices (φ), and if so extracts a precise answer for the current
+      sub-goal — reasoning-guided filtering instead of blind top-<i>k</i> stuffing.</p>
+    </div>
+    <div class="card">
+      <span class="who">REM · Reason-Execute Module</span>
+      <h4>Rewrite Agent <span class="small">(Qwen2.5-3B)</span></h4>
+      <p>Activates only on insufficiency: reformulates the query from the reasoning state and feedback, then hands
+      back to retrieval — turning failed lookups into successful ones.</p>
+    </div>
+  </div>
+  <ol class="flow">
+    <li><b>Plan.</b> The Plan Agent decomposes the question into ordered sub-goals.</li>
+    <li><b>Retrieve.</b> BGE-M3 fetches top-5 evidence from the merged 1.78M-document FAISS index.</li>
+    <li><b>Analyse &amp; answer.</b> The Analysis-Answer Agent answers the sub-goal when evidence is sufficient.</li>
+    <li><b>Rewrite on failure.</b> The Rewrite Agent reformulates the query only after insufficient evidence.</li>
+    <li><b>Synthesise.</b> Executed sub-goal answers are combined into the final answer; the TMC keeps the full audit trail.</li>
+  </ol>
+  <figure class="figcard">
+    <img src="figures/OPERA-Figure-2-2.png" alt="OPERA architecture walkthrough on a live example: the Plan Agent emits a JSON plan with dependencies; the Analysis-Answer Agent reasons over retrieved evidence; the Rewrite Agent refines the query after feedback.">
+    <figcaption><b>One question, end to end.</b> The Plan Agent emits a structured JSON plan (right) whose second
+    sub-goal depends on the first; the REM executes each sub-goal — reasoning, retrieving, and refining the query
+    (“1962 Nobel Prize DNA Watson Crick winners”) when the first attempt lacks laureate names.</figcaption>
+  </figure>
+</section>
 
-            <!-- Key Findings -->
-            <div class="performance-summary">
-                <div class="summary-item">
-                    <div class="summary-value">25.4%</div>
-                    <div class="summary-label">Relative improvement on HotpotQA</div>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-value">63.4%</div>
-                    <div class="summary-label">Relative improvement on Musique</div>
-                </div>
-                <div class="summary-item">
-                    <div class="summary-value">39.7%</div>
-                    <div class="summary-label">EM score on challenging Musique dataset</div>
-                </div>
-            </div>
+<section id="training">
+  <p class="eyebrow">MAPGRPO</p>
+  <h2>Train each agent for the job it actually does</h2>
+  <p><b>Multi-Agents Progressive Group Relative Policy Optimization</b> extends GRPO to a team of heterogeneous
+  agents: agents are optimised <b>sequentially</b> — Plan, then Analysis-Answer, then Rewrite — each conditioned on
+  its already-trained predecessors, with a reward tailored to its role:</p>
+  <div class="cards">
+    <div class="card"><span class="who">Stage 1</span><h4>Plan quality</h4><p>Accuracy 30% · coherence 25% · executability 25% · dependency 10% · efficiency 10% — judged against pre-scored golden plans.</p></div>
+    <div class="card"><span class="who">Stage 2</span><h4>Reasoning accuracy</h4><p>0.65 × answer EM + 0.25 × sufficiency judgement + 0.10 × format — precise credit for precise answers.</p></div>
+    <div class="card"><span class="who">Stage 3</span><h4>Retrieval effectiveness</h4><p>√NDCG@k against golden documents + format compliance — the reward <em>is</em> the retrieval outcome.</p></div>
+  </div>
+  <p>Two ingredients keep training stable: <b>expert injection</b> (each group of G=8 candidates includes the best
+  sample from a DeepSeek-R1 pre-scored pool, provably reducing policy-gradient variance) and group-relative
+  advantages with a KL constraint. MAPGRPO converges to local optima at rate 𝒪(1/√T).</p>
+</section>
 
-            <!-- Key Insights -->
-            <div style="margin-top: 3rem; padding: 2rem; background: white; border-radius: 12px; box-shadow: var(--shadow-md);">
-                <h3 style="margin-bottom: 1.5rem; color: var(--dark-color);">Key Insights</h3>
-                <div style="space-y: 1rem;">
-                    <div style="margin-bottom: 1rem;">
-                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">🎯 Performance Scales with Difficulty</h4>
-                        <p>OPERA shows larger improvements on more challenging datasets—63.4% relative improvement on Musique versus 25.4% on HotpotQA, suggesting our approach excels at complex multi-hop reasoning.</p>
-                    </div>
-                    <div style="margin-bottom: 1rem;">
-                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">🚀 Outperforms RL Baselines</h4>
-                        <p>While BGM achieves only 19.6% EM on Musique, OPERA reaches 39.7% EM, demonstrating that specialized agent architecture provides benefits beyond RL optimization alone.</p>
-                    </div>
-                    <div>
-                        <h4 style="color: var(--primary-color); margin-bottom: 0.5rem;">📊 Consistent Improvements</h4>
-                        <p>OPERA achieves state-of-the-art results across different reasoning patterns—comparison, entity traversal, and compositional reasoning—showing broad applicability.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+<section id="demo">
+  <p class="eyebrow">Demonstrations</p>
+  <h2>See the loop run</h2>
+  <div class="demos">
+    <figure class="figcard">
+      <img src="opera_demo.gif" alt="Animated demo of the OPERA pipeline decomposing and answering a multi-hop question">
+      <figcaption><b>Pipeline demo.</b> Plan → retrieve → analyse → rewrite → synthesise on a live question.
+      <a href="opera_demo_animation.html">Open the interactive version →</a></figcaption>
+    </figure>
+    <figure class="figcard">
+      <img src="opera_core_demo.gif" alt="Animated demo of the MAPGRPO training mechanism with role-specific rewards">
+      <figcaption><b>Training mechanism.</b> How MAPGRPO scores candidate groups per agent.
+      <a href="opera_training_mechanism.html">Open the interactive version →</a></figcaption>
+    </figure>
+  </div>
+</section>
 
-    <!-- Important Note & Citation Section -->
-    <section id="citation" class="section section-alt">
-        <div class="container">
-            <h2 class="section-title">📝 Citation</h2>
+<section id="results">
+  <p class="eyebrow">Results</p>
+  <h2>State of the art on three multi-hop benchmarks</h2>
+  <div class="stats">
+    <div class="stat"><div class="v">57.3<small>%</small></div><div class="k">EM on HotpotQA<br><span class="small">best baseline 45.7</span></div></div>
+    <div class="stat"><div class="v">60.2<small>%</small></div><div class="k">EM on 2WikiMultiHopQA<br><span class="small">best baseline 44.3</span></div></div>
+    <div class="stat"><div class="v">39.7<small>%</small></div><div class="k">EM on MuSiQue<br><span class="small">best baseline 24.3</span></div></div>
+    <div class="stat"><div class="v">+63.4<small>%</small></div><div class="k">relative EM gain<br><span class="small">on the hardest benchmark</span></div></div>
+  </div>
+  <div class="tblwrap">
+  <table class="res">
+    <thead><tr><th>Method</th><th>Type</th><th colspan="2">HotpotQA<br>EM / F1</th><th colspan="2">2WikiMultiHopQA<br>EM / F1</th><th colspan="2">MuSiQue<br>EM / F1</th></tr></thead>
+    <tbody>
+      <tr><td>Qwen2.5-7B (no retrieval)</td><td>Single LLM</td><td>18.5</td><td>26.8</td><td>16.2</td><td>23.7</td><td>4.1</td><td>9.1</td></tr>
+      <tr><td>Single-Step RAG</td><td>Naive RAG</td><td>31.5</td><td>44.2</td><td>25.9</td><td>37.6</td><td>14.1</td><td>18.4</td></tr>
+      <tr><td>IRCoT</td><td>CoT</td><td>42.7</td><td>54.8</td><td>43.3</td><td>56.2</td><td>18.8</td><td>23.9</td></tr>
+      <tr><td>OPERA (CoT only)</td><td>CoT</td><td>44.9</td><td>58.5</td><td>42.3</td><td>50.7</td><td>21.2</td><td>32.1</td></tr>
+      <tr><td>Adaptive-RAG</td><td>SFT</td><td>45.7</td><td>56.9</td><td>30.1</td><td>39.3</td><td>24.3</td><td>35.7</td></tr>
+      <tr><td>BGM</td><td>RL</td><td>41.5</td><td>53.8</td><td>44.3</td><td>55.8</td><td>19.6</td><td>26.8</td></tr>
+      <tr class="ours"><td>OPERA (MAPGRPO)</td><td>RL</td><td>57.3 <span class="d">+11.6</span></td><td>69.5 <span class="d">+11.0</span></td><td>60.2 <span class="d">+15.9</span></td><td>72.7 <span class="d">+16.5</span></td><td>39.7 <span class="d">+15.4</span></td><td>58.0 <span class="d">+22.3</span></td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">Deltas vs. the best baseline per column. All SFT/RL methods trained on the same mixed dataset; identical Qwen2.5 backbones and FAISS retrieval throughout.</p>
+  <h3>What the ablations say</h3>
+  <p>On MuSiQue, <b>architecture beats training</b>: removing the Plan Agent collapses EM from 39.7 to 17.1 —
+  below the untrained CoT baseline — and removing Plan &amp; Rewrite together lands at 16.7. Training follows a
+  clean staircase: CoT 21.2 → SFT 24.3 → GRPO 34.8 → <b>MAPGRPO 39.7 EM</b>. Out of domain, MAPGRPO keeps its
+  flexibility where SFT overfits: 36.6 EM on single-hop NQ (SFT: 19.5) and 55.7 EM on MultiHopRAG.</p>
+</section>
 
-            <!-- Important Note -->
-            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 2.5rem; border-radius: 12px; margin-bottom: 3rem; color: white; box-shadow: 0 10px 40px rgba(0,0,0,0.15);">
-                <h3 style="margin-bottom: 1.5rem; font-size: 1.5rem;">🎯 Important Note</h3>
-                <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1.5rem;">
-                    Multi-agent systems have demonstrated significant contributions across various domains, and researchers from both academia and industry are actively exploring their potential.
-                    This work introduces novel approaches to <strong>multi-agent collaboration</strong> and <strong>retrieval-augmented question answering</strong>, including:
-                </p>
-                <ul style="list-style: none; padding-left: 0; margin-bottom: 1.5rem;">
-                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
-                        <i class="fas fa-check-circle" style="position: absolute; left: 0; top: 0.25rem; color: #fbbf24;"></i>
-                        A hierarchical three-agent architecture with systematic planning-execution decoupling
-                    </li>
-                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
-                        <i class="fas fa-check-circle" style="position: absolute; left: 0; top: 0.25rem; color: #fbbf24;"></i>
-                        Multi-Agent Progressive Group Relative Policy Optimization (MAPGRPO) training framework
-                    </li>
-                    <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
-                        <i class="fas fa-check-circle" style="position: absolute; left: 0; top: 0.25rem; color: #fbbf24;"></i>
-                        Role-specific reward functions for reinforcement learning in RAG systems
-                    </li>
-                </ul>
-                <p style="font-size: 1.1rem; line-height: 1.8;">
-                    If you find our <strong>reward design</strong>, <strong>architectural patterns</strong>, or <strong>training methodologies</strong> useful for your research, we kindly ask you to cite our work.
-                </p>
-            </div>
+<section id="downloads">
+  <p class="eyebrow">Downloads</p>
+  <h2>Everything you need to build on OPERA</h2>
+  <div class="dl">
+    <a href="https://arxiv.org/pdf/2508.16438" rel="noopener"><span class="ic">📄</span><h4>Paper</h4><p>arXiv:2508.16438 — extended version with appendices, proofs and case studies.</p></a>
+    <a href="https://github.com/Ameame1/OPERA" rel="noopener"><span class="ic">💻</span><h4>Code</h4><p>Inference pipeline release: three agents, BGE-M3 retriever, evaluation scripts, index rebuild utilities.</p></a>
+    <a href="https://huggingface.co/datasets/Ameame1002/OPERA" rel="noopener"><span class="ic">🤗</span><h4>Dataset &amp; Index</h4><p>OPERA Index on Hugging Face — the merged 1.78M-document knowledge base.</p></a>
+    <a href="opera_demo_animation.html"><span class="ic">🎬</span><h4>Interactive demos</h4><p>Step-through animations of the pipeline and the MAPGRPO training mechanism.</p></a>
+  </div>
+</section>
 
-            <!-- Citation Details -->
-            <div style="background: white; padding: 2.5rem; border-radius: 12px; box-shadow: var(--shadow-md);">
-                <h3 style="margin-bottom: 1.5rem; color: var(--primary-color);">BibTeX Citation</h3>
-                <div style="margin-bottom: 2rem;">
-                    <p style="margin-bottom: 1rem; color: #4a5568;">
-                        <strong>GitHub Repository:</strong>
-                        <a href="https://github.com/Ameame1/OPERA" style="color: var(--primary-color); text-decoration: none;">
-                            https://github.com/Ameame1/OPERA
-                        </a>
-                    </p>
-                </div>
-                <pre style="background: #1e293b; padding: 1.5rem; border-radius: 8px; overflow-x: auto;"><code class="language-bibtex" style="color: #e2e8f0; font-family: 'Courier New', monospace;">@article{opera2025,
-  title={OPERA: Orchestrated Planner-Executor Reasoning Architecture
-         for Reasoning-Centric Retrieval},
-  author={Anonymous},
-  journal={arXiv preprint arXiv:2508.16438},
-  year={2025},
-  url={https://arxiv.org/pdf/2508.16438}
-}</code></pre>
-            </div>
+<section id="citation">
+  <p class="eyebrow">Citation</p>
+  <h2>Cite OPERA</h2>
+<pre class="bib" id="bib">@inproceedings{liu2026opera,
+  author    = {Liu, Yu and Liu, Yanbing and Yuan, Fangfang and Cao, Cong and Sun, Youbang
+               and Peng, Kun and Chen, Weizhuo and Li, Jianjun and Ma, Zhiyuan},
+  title     = {{OPERA}: A Reinforcement Learning-Enhanced Orchestrated Planner-Executor
+               Architecture for Reasoning-Oriented Multi-Hop Retrieval},
+  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)},
+  year      = {2026}
+}</pre>
+  <button class="copy" id="copybib">Copy BibTeX</button>
+</section>
+</main>
+</div><!-- /page -->
 
-            <!-- Acknowledgements -->
-            <div style="margin-top: 2rem; padding: 2rem; background: #f8f9fa; border-radius: 12px; border-left: 4px solid var(--primary-color);">
-                <h4 style="margin-bottom: 1rem; color: var(--dark-color);">🙏 Acknowledgements</h4>
-                <p style="color: #4a5568; line-height: 1.8;">
-                    Our training framework is built upon <a href="https://github.com/huggingface/trl" style="color: var(--primary-color);">TRL (Transformer Reinforcement Learning)</a>,
-                    HuggingFace's library for training transformer language models with reinforcement learning.
-                    MAPGRPO is an enhanced variant of <a href="https://arxiv.org/abs/2501.12948" style="color: var(--primary-color);">GRPO (Group Relative Policy Optimization)</a> introduced by DeepSeek,
-                    with progressive multi-agent training and role-specific reward functions.
-                </p>
-            </div>
-        </div>
-    </section>
+<div class="qband">
+  <div class="wrap">
+    <div>
+      <h2>Have questions? We have answers.</h2>
+      <p class="sub" style="margin:.4em 0 0">Open an issue on GitHub, or reach the authors directly.</p>
+    </div>
+    <div class="btns" style="margin:0">
+      <a class="btn solid" href="https://github.com/Ameame1/OPERA/issues" rel="noopener">Open an Issue</a>
+      <a class="btn ghost" href="mailto:liuyu@iie.ac.cn">liuyu@iie.ac.cn</a>
+    </div>
+  </div>
+</div>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h4>OPERA</h4>
-                    <p>Orchestrated Planner-Executor Reasoning Architecture</p>
-                </div>
-                <div class="footer-section">
-                    <h4>Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="https://github.com/Ameame1/OPERA">GitHub Repository</a></li>
-                        <li><a href="https://arxiv.org/pdf/2508.16438">arXiv Paper</a></li>
-                        <li><a href="#results">Results</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h4>Contact</h4>
-                    <p>For questions about this research, please contact:</p>
-                    <p style="margin-top: 0.5rem;">
-                        <a href="mailto:liuyu@iie.ac.cn" style="color: #60a5fa;">liuyu@iie.ac.cn</a><br>
-                        <a href="mailto:mzyth@tsinghua.edu.cn" style="color: #60a5fa;">mzyth@tsinghua.edu.cn</a>
-                    </p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 OPERA Research Team. All rights reserved.</p>
-            </div>
-        </div>
-    </footer>
+<footer>
+  <div class="wrap">
+    <span>OPERA · AAAI 2026 · Institute of Information Engineering, CAS / UCAS / HUST / Tsinghua</span>
+    <span>Supported by the National Key R&amp;D Program of China &amp; NSFC · <a href="https://github.com/Ameame1/OPERA" rel="noopener">github.com/Ameame1/OPERA</a></span>
+  </div>
+</footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-bash.min.js"></script>
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-
-        // Add active class to navigation on scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (scrollY >= (sectionTop - 200)) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-        
-        // Query Decomposition Demo
-        const decomposeBtn = document.getElementById('decompose-btn');
-        const stepsContainer = document.getElementById('decomposition-steps');
-        
-        if (decomposeBtn && stepsContainer) {
-            decomposeBtn.addEventListener('click', function() {
-                const steps = [
-                    { step: 1, text: "Which company acquired GitHub?", icon: "🏢" },
-                    { step: 2, text: "Where is [company from step 1] headquartered?", icon: "📍" },
-                    { step: 3, text: "What country is [location from step 2] in?", icon: "🌍" },
-                    { step: 4, text: "What is the GDP per capita of [country from step 3]?", icon: "💰" }
-                ];
-                
-                stepsContainer.style.display = 'block';
-                stepsContainer.innerHTML = '';
-                
-                steps.forEach((step, i) => {
-                    setTimeout(() => {
-                        const stepDiv = document.createElement('div');
-                        stepDiv.style.cssText = 'background: rgba(255,255,255,0.1); padding: 1rem; border-radius: 8px; margin-bottom: 1rem; opacity: 0; transform: translateY(20px); transition: all 0.5s ease;';
-                        stepDiv.innerHTML = `
-                            <div style="display: flex; align-items: center; gap: 1rem;">
-                                <span style="font-size: 2rem;">${step.icon}</span>
-                                <div>
-                                    <h5 style="margin: 0; color: #fbbf24;">Step ${step.step}</h5>
-                                    <p style="margin: 0.25rem 0 0 0;">${step.text}</p>
-                                </div>
-                            </div>
-                        `;
-                        stepsContainer.appendChild(stepDiv);
-                        
-                        setTimeout(() => {
-                            stepDiv.style.opacity = '1';
-                            stepDiv.style.transform = 'translateY(0)';
-                        }, 50);
-                    }, i * 500);
-                });
-                
-                this.textContent = '✅ Decomposition Complete!';
-                this.disabled = true;
-                
-                setTimeout(() => {
-                    this.textContent = '🔍 Decompose Query';
-                    this.disabled = false;
-                }, 5000);
-            });
-        }
-    </script>
+<script>
+(function(){
+  var btn = document.getElementById('copybib');
+  btn.addEventListener('click', function(){
+    var t = document.getElementById('bib').textContent;
+    function done(ok){ btn.textContent = ok ? 'Copied ✓' : 'Select & copy manually'; setTimeout(function(){ btn.textContent = 'Copy BibTeX'; }, 2000); }
+    if (navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(t).then(function(){ done(true); }, function(){ done(false); });
+    } else { done(false); }
+  });
+})();
+</script>
 </body>
 </html>
