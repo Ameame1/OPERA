@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="OPERA: A Reinforcement Learning–Enhanced Orchestrated Planner-Executor Architecture for Reasoning-Oriented Multi-Hop Retrieval. AAAI 2026.">
 <title>OPERA — Reasoning-Oriented Multi-Hop Retrieval (AAAI 2026)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700;8..60,800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <style>
 :root{
   --red:#C41230; --red-dark:#9E0E27; --ink:#1F1F1F; --gray:#58585B; --muted:#767679;
@@ -17,9 +20,10 @@ html{scroll-behavior:smooth;scroll-padding-top:76px}
 @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} *{transition:none!important} }
 body{
   margin:0;background:var(--bg);color:var(--ink);
-  font:16.5px/1.7 "Helvetica Neue",Helvetica,"Segoe UI",Arial,sans-serif;
-  -webkit-font-smoothing:antialiased;
+  font:16.5px/1.72 "Inter","Helvetica Neue","Segoe UI",Arial,sans-serif;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
 }
+h1,h2,h3,.lead{font-family:"Source Serif 4",Georgia,"Times New Roman",serif}
 a{color:var(--red);text-decoration:none}
 a:hover{text-decoration:underline}
 img{max-width:100%;height:auto}
@@ -49,9 +53,9 @@ img{max-width:100%;height:auto}
 main{min-width:0;padding:34px 0 40px}
 
 /* ===== typography ===== */
-h1{font-size:clamp(2.6rem,5.5vw,3.9rem);line-height:1.06;margin:18px 0 6px;font-weight:800;letter-spacing:-.01em}
+h1{font-size:clamp(2.7rem,5.5vw,4.1rem);line-height:1.04;margin:14px 0 6px;font-weight:800;letter-spacing:0}
 .redline{width:76px;height:5px;background:var(--red);border:0;margin:18px 0 22px}
-.lead{font-size:1.28rem;line-height:1.55;color:var(--ink);font-weight:600;max-width:44em}
+.lead{font-size:1.34rem;line-height:1.55;color:var(--ink);font-weight:600;max-width:42em}
 .sub{font-size:1.02rem;color:var(--gray);max-width:47em}
 h2{font-size:1.72rem;font-weight:800;margin:0 0 6px;letter-spacing:-.005em}
 h3{font-size:1.12rem;font-weight:700;margin:1.4em 0 .4em}
@@ -73,6 +77,47 @@ p{margin:.65em 0}
 .btn.ghost:hover{background:var(--bad-soft);text-decoration:none}
 .badge{display:inline-block;background:var(--red);color:#fff;font-size:.74rem;font-weight:700;letter-spacing:.08em;
   padding:3px 12px;border-radius:2px;text-transform:uppercase;vertical-align:6px;margin-left:12px}
+
+/* university logos */
+.unis{display:flex;flex-wrap:wrap;align-items:center;gap:36px;margin:4px 0 22px}
+.unis img{height:62px;width:auto;display:block}
+
+/* walkthrough */
+.wt{border:1px solid var(--rule);margin:24px 0 4px;background:#fff}
+.wt-q{padding:16px 22px;border-bottom:1px solid var(--rule);background:var(--bg-soft);font-size:1.02rem}
+.wt-q .lbl{display:inline-block;background:var(--red);color:#fff;font-size:.7rem;font-weight:800;letter-spacing:.08em;
+  padding:2px 10px;border-radius:2px;text-transform:uppercase;margin-right:12px;vertical-align:1px}
+.wt-body{display:grid;grid-template-columns:250px 1fr}
+.wt-steps{list-style:none;margin:0;padding:10px 0;border-right:1px solid var(--rule)}
+.wt-steps li{display:flex;gap:13px;align-items:center;padding:13px 20px;cursor:pointer;border-left:4px solid transparent}
+.wt-steps li .n{flex:none;width:30px;height:30px;border-radius:50%;border:2px solid var(--rule);color:var(--muted);
+  display:grid;place-items:center;font-weight:800;font-size:.82rem;font-family:"Inter",sans-serif}
+.wt-steps li .t b{display:block;font-size:.95rem;color:var(--gray)}
+.wt-steps li .t span{font-size:.74rem;color:var(--muted);letter-spacing:.03em;text-transform:uppercase;font-weight:600}
+.wt-steps li.on{border-left-color:var(--red);background:var(--bad-soft)}
+.wt-steps li.on .n{background:var(--red);border-color:var(--red);color:#fff}
+.wt-steps li.on .t b{color:var(--ink)}
+.wt-steps li.done .n{border-color:var(--good);color:var(--good)}
+.wt-panels{position:relative;min-height:290px}
+.wt-p{display:none;padding:24px 28px;font-size:.95rem;color:var(--gray);line-height:1.7}
+.wt-p.on{display:block;animation:wtin .35s ease}
+@keyframes wtin{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion: reduce){ .wt-p.on{animation:none} }
+.wt-p .chip{display:inline-block;border:1.5px solid var(--rule);background:var(--bg-soft);border-radius:999px;
+  padding:2px 14px;font:600 .82rem/1.7 "JetBrains Mono",monospace;color:var(--ink)}
+.wt-p .chip.q{border-color:var(--red);color:var(--red);background:var(--bad-soft)}
+.wt-p .doc{border:1px solid var(--rule);border-left:4px solid var(--rule);padding:10px 16px;margin:12px 0;font-size:.9rem;background:var(--bg-band)}
+.wt-p .doc.hit{border-left-color:var(--good);background:var(--good-soft)}
+.wt-p .verdict{font-weight:800}
+.wt-p .verdict.no{color:var(--red)} .wt-p .verdict.ok{color:var(--good)}
+.wt-p code{font:600 .85em/1.6 "JetBrains Mono",monospace;background:var(--bg-soft);border:1px solid var(--rule);border-radius:4px;padding:0 .4em}
+.wt-ctl{display:flex;align-items:center;gap:14px;padding:12px 22px;border-top:1px solid var(--rule);background:var(--bg-soft)}
+.wt-ctl button{border:2px solid var(--red);background:#fff;color:var(--red);font:700 .84rem/1 "Inter",sans-serif;
+  padding:8px 16px;border-radius:3px;cursor:pointer}
+.wt-ctl button:hover{background:var(--bad-soft)}
+.wt-dots{display:flex;gap:8px;margin-left:auto}
+.wt-dots i{width:9px;height:9px;border-radius:50%;background:var(--rule)}
+.wt-dots i.on{background:var(--red)}
 
 /* news band */
 .news{background:var(--bg-band);border:1px solid var(--rule);border-left:6px solid var(--red);padding:16px 22px;margin:28px 0 0}
@@ -140,7 +185,7 @@ table.res{width:100%;border-collapse:collapse;font-size:.9rem;min-width:720px;fo
 
 /* citation */
 pre.bib{background:var(--bg-soft);border:1px solid var(--rule);padding:18px 22px;overflow-x:auto;
-  font:13px/1.7 "SF Mono",Consolas,Menlo,monospace;color:var(--ink);margin:18px 0 12px;white-space:pre}
+  font:13px/1.75 "JetBrains Mono","SF Mono",Consolas,Menlo,monospace;color:var(--ink);margin:18px 0 12px;white-space:pre}
 .copy{border:2px solid var(--red);background:#fff;color:var(--red);font-weight:700;font-size:.86rem;
   padding:8px 18px;border-radius:3px;cursor:pointer}
 .copy:hover{background:var(--bad-soft)}
@@ -173,7 +218,6 @@ footer a{color:#fff}
       <a href="#architecture">Architecture</a>
       <a href="#training">Training</a>
       <a href="#results">Results</a>
-      <a href="#downloads">Downloads</a>
       <a href="#citation">Citation</a>
     </nav>
   </div>
@@ -188,14 +232,19 @@ footer a{color:#fff}
   <a href="#paradigm">Why OPERA</a>
   <a href="#architecture">Architecture</a>
   <a href="#training">MAPGRPO Training</a>
-  <a href="#demo">Demonstrations</a>
+  <a href="#demo">Walkthrough</a>
   <a href="#results">Results</a>
-  <a href="#downloads">Downloads</a>
   <a href="#citation">Citation</a>
 </nav>
 
 <main>
 <section id="top" style="padding-top:8px">
+  <div class="unis">
+    <img src="figures/logos/iie.png" alt="Institute of Information Engineering, Chinese Academy of Sciences">
+    <img src="figures/logos/cas.png" alt="Chinese Academy of Sciences">
+    <img src="figures/logos/hust.png" alt="Huazhong University of Science and Technology">
+    <img src="figures/logos/tsinghua.png" alt="Tsinghua University">
+  </div>
   <h1>OPERA<span class="badge">AAAI 2026</span></h1>
   <hr class="redline">
   <p class="lead">A Reinforcement Learning–Enhanced Orchestrated Planner-Executor Architecture for Reasoning-Oriented Multi-Hop Retrieval.</p>
@@ -320,19 +369,55 @@ footer a{color:#fff}
 </section>
 
 <section id="demo">
-  <p class="eyebrow">Demonstrations</p>
-  <h2>See the loop run</h2>
-  <div class="demos">
-    <figure class="figcard">
-      <img src="opera_demo.gif" alt="Animated demo of the OPERA pipeline decomposing and answering a multi-hop question">
-      <figcaption><b>Pipeline demo.</b> Plan → retrieve → analyse → rewrite → synthesise on a live question.
-      <a href="opera_demo_animation.html">Open the interactive version →</a></figcaption>
-    </figure>
-    <figure class="figcard">
-      <img src="opera_core_demo.gif" alt="Animated demo of the MAPGRPO training mechanism with role-specific rewards">
-      <figcaption><b>Training mechanism.</b> How MAPGRPO scores candidate groups per agent.
-      <a href="opera_training_mechanism.html">Open the interactive version →</a></figcaption>
-    </figure>
+  <p class="eyebrow">Walkthrough</p>
+  <h2>Watch one question run the loop</h2>
+  <div class="wt">
+    <div class="wt-q"><span class="lbl">Question</span>What university did the Nobel Prize winner who discovered the structure of DNA attend for their undergraduate studies?</div>
+    <div class="wt-body">
+      <ol class="wt-steps" id="wtsteps">
+        <li class="on"><span class="n">1</span><span class="t"><b>Plan</b><span>GPM · Plan Agent</span></span></li>
+        <li><span class="n">2</span><span class="t"><b>Retrieve</b><span>BGE-M3 · top-5</span></span></li>
+        <li><span class="n">3</span><span class="t"><b>Analyse</b><span>REM · sufficiency φ</span></span></li>
+        <li><span class="n">4</span><span class="t"><b>Rewrite</b><span>REM · query refine</span></span></li>
+        <li><span class="n">5</span><span class="t"><b>Synthesise</b><span>final answer</span></span></li>
+      </ol>
+      <div class="wt-panels" id="wtpanels">
+        <div class="wt-p on">
+          <p>The Plan Agent decomposes the question into an ordered, dependency-aware plan:</p>
+          <div class="doc"><b>Sub-goal 1.</b> Who discovered the structure of DNA and won the Nobel Prize for it? <code>expected: entity</code></div>
+          <div class="doc"><b>Sub-goal 2.</b> What university did <code>[people from step 1]</code> attend for their undergraduate studies? <code>depends on: 1</code></div>
+          <p class="small">Strategy is fixed up front — placeholders wire later steps to earlier answers.</p>
+        </div>
+        <div class="wt-p">
+          <p>BGE-M3 searches the 1.78M-document index for sub-goal 1:</p>
+          <p><span class="chip q">DNA structure discovery Nobel Prize</span></p>
+          <div class="doc">“The 1962 Nobel Prize was awarded for discoveries concerning the molecular structure of DNA…”</div>
+          <p class="small">Top-5 evidence returned to the Reason-Execute Module.</p>
+        </div>
+        <div class="wt-p">
+          <p>The Analysis-Answer Agent reasons over the evidence before answering:</p>
+          <div class="doc">Found the <b>1962 prize</b> — but the passages never name the laureates.</div>
+          <p><span class="verdict no">φ = insufficient</span> — instead of guessing, the sub-goal is handed to the Rewrite Agent with feedback: <em>need laureate names</em>.</p>
+        </div>
+        <div class="wt-p">
+          <p>The Rewrite Agent reformulates from the reasoning state, not by blind paraphrase:</p>
+          <p><span class="chip q">1962 Nobel Prize DNA Watson Crick winners</span></p>
+          <div class="doc hit">Retrieval hit → <b>Watson, Crick, Wilkins</b> · 1962 Nobel Prize ✓</div>
+          <p><span class="verdict ok">Sub-goal 1 answered.</span> <span class="small">The refined query is rewarded by √NDCG@k during MAPGRPO training — retrieval effectiveness is the reward.</span></p>
+        </div>
+        <div class="wt-p">
+          <p>Sub-goal 2 executes with the placeholder resolved to <code>Watson, Crick, Wilkins</code>, retrieving each laureate’s undergraduate institution.</p>
+          <div class="doc hit">Executed sub-goal answers are synthesised into the final answer.</div>
+          <p><span class="verdict ok">Done.</span> The Trajectory Memory Component keeps the full audit trail — every plan, query, verdict and rationale.</p>
+        </div>
+      </div>
+    </div>
+    <div class="wt-ctl">
+      <button id="wtprev" aria-label="Previous step">‹ Prev</button>
+      <button id="wtnext" aria-label="Next step">Next ›</button>
+      <button id="wtplay" aria-pressed="true">Pause</button>
+      <div class="wt-dots" id="wtdots"><i class="on"></i><i></i><i></i><i></i><i></i></div>
+    </div>
   </div>
 </section>
 
@@ -367,45 +452,27 @@ footer a{color:#fff}
   flexibility where SFT overfits: 36.6 EM on single-hop NQ (SFT: 19.5) and 55.7 EM on MultiHopRAG.</p>
 </section>
 
-<section id="downloads">
-  <p class="eyebrow">Downloads</p>
-  <h2>Everything you need to build on OPERA</h2>
-  <div class="dl">
-    <a href="https://arxiv.org/pdf/2508.16438" rel="noopener"><span class="ic">📄</span><h4>Paper</h4><p>arXiv:2508.16438 — extended version with appendices, proofs and case studies.</p></a>
-    <a href="https://github.com/Ameame1/OPERA" rel="noopener"><span class="ic">💻</span><h4>Code</h4><p>Inference pipeline release: three agents, BGE-M3 retriever, evaluation scripts, index rebuild utilities.</p></a>
-    <a href="https://huggingface.co/datasets/Ameame1002/OPERA" rel="noopener"><span class="ic">🤗</span><h4>Dataset &amp; Index</h4><p>OPERA Index on Hugging Face — the merged 1.78M-document knowledge base.</p></a>
-    <a href="opera_demo_animation.html"><span class="ic">🎬</span><h4>Interactive demos</h4><p>Step-through animations of the pipeline and the MAPGRPO training mechanism.</p></a>
-  </div>
-</section>
+
 
 <section id="citation">
   <p class="eyebrow">Citation</p>
   <h2>Cite OPERA</h2>
-<pre class="bib" id="bib">@inproceedings{liu2026opera,
-  author    = {Liu, Yu and Liu, Yanbing and Yuan, Fangfang and Cao, Cong and Sun, Youbang
-               and Peng, Kun and Chen, Weizhuo and Li, Jianjun and Ma, Zhiyuan},
-  title     = {{OPERA}: A Reinforcement Learning-Enhanced Orchestrated Planner-Executor
-               Architecture for Reasoning-Oriented Multi-Hop Retrieval},
-  booktitle = {Proceedings of the AAAI Conference on Artificial Intelligence (AAAI)},
-  year      = {2026}
+<pre class="bib" id="bib">@misc{liu2025opera,
+  title         = {{OPERA}: A Reinforcement Learning--Enhanced Orchestrated Planner-Executor
+                   Architecture for Reasoning-Oriented Multi-Hop Retrieval},
+  author        = {Yu Liu and Yanbing Liu and Fangfang Yuan and Cong Cao and Youbang Sun
+                   and Kun Peng and Weizhuo Chen and Jianjun Li and Zhiyuan Ma},
+  year          = {2025},
+  eprint        = {2508.16438},
+  archivePrefix = {arXiv},
+  url           = {https://arxiv.org/abs/2508.16438}
 }</pre>
   <button class="copy" id="copybib">Copy BibTeX</button>
 </section>
 </main>
 </div><!-- /page -->
 
-<div class="qband">
-  <div class="wrap">
-    <div>
-      <h2>Have questions? We have answers.</h2>
-      <p class="sub" style="margin:.4em 0 0">Open an issue on GitHub, or reach the authors directly.</p>
-    </div>
-    <div class="btns" style="margin:0">
-      <a class="btn solid" href="https://github.com/Ameame1/OPERA/issues" rel="noopener">Open an Issue</a>
-      <a class="btn ghost" href="mailto:liuyu@iie.ac.cn">liuyu@iie.ac.cn</a>
-    </div>
-  </div>
-</div>
+
 
 <footer>
   <div class="wrap">
@@ -416,6 +483,37 @@ footer a{color:#fff}
 
 <script>
 (function(){
+  var steps = Array.prototype.slice.call(document.querySelectorAll('#wtsteps li'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('#wtpanels .wt-p'));
+  var dots = Array.prototype.slice.call(document.querySelectorAll('#wtdots i'));
+  var cur = 0, timer = null;
+  var reduce = false;
+  try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch(e){}
+  function show(i){
+    cur = (i + steps.length) % steps.length;
+    steps.forEach(function(el, j){
+      el.classList.toggle('on', j === cur);
+      el.classList.toggle('done', j < cur);
+    });
+    panels.forEach(function(el, j){ el.classList.toggle('on', j === cur); });
+    dots.forEach(function(el, j){ el.classList.toggle('on', j === cur); });
+  }
+  function start(){
+    if (timer || reduce) return;
+    timer = setInterval(function(){ show(cur + 1); }, 3400);
+    playBtn.textContent = 'Pause'; playBtn.setAttribute('aria-pressed','true');
+  }
+  function stop(){
+    if (timer){ clearInterval(timer); timer = null; }
+    playBtn.textContent = 'Play'; playBtn.setAttribute('aria-pressed','false');
+  }
+  var playBtn = document.getElementById('wtplay');
+  document.getElementById('wtprev').addEventListener('click', function(){ stop(); show(cur - 1); });
+  document.getElementById('wtnext').addEventListener('click', function(){ stop(); show(cur + 1); });
+  playBtn.addEventListener('click', function(){ timer ? stop() : start(); });
+  steps.forEach(function(el, j){ el.addEventListener('click', function(){ stop(); show(j); }); });
+  if (!reduce) start(); else stop();
+
   var btn = document.getElementById('copybib');
   btn.addEventListener('click', function(){
     var t = document.getElementById('bib').textContent;
