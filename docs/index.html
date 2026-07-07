@@ -79,8 +79,10 @@ p{margin:.65em 0}
   padding:3px 12px;border-radius:2px;text-transform:uppercase;vertical-align:6px;margin-left:12px}
 
 /* university logos */
-.unis{display:flex;flex-wrap:wrap;align-items:center;gap:36px;margin:4px 0 22px}
-.unis img{height:62px;width:auto;display:block}
+.titlerow{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px 36px}
+.unis{display:flex;flex-wrap:wrap;align-items:center;gap:30px;margin:14px 0 0}
+.unis img{height:66px;width:auto;display:block}
+@media (max-width:960px){ .unis img{height:52px} .unis{gap:20px} }
 
 /* walkthrough */
 .wt{border:1px solid var(--rule);margin:24px 0 4px;background:#fff}
@@ -239,13 +241,15 @@ footer a{color:#fff}
 
 <main>
 <section id="top" style="padding-top:8px">
-  <div class="unis">
-    <img src="figures/logos/iie.png" alt="Institute of Information Engineering, Chinese Academy of Sciences">
-    <img src="figures/logos/cas.png" alt="Chinese Academy of Sciences">
-    <img src="figures/logos/hust.png" alt="Huazhong University of Science and Technology">
-    <img src="figures/logos/tsinghua.png" alt="Tsinghua University">
+  <div class="titlerow">
+    <h1>OPERA<span class="badge">AAAI 2026</span></h1>
+    <div class="unis">
+      <img src="figures/logos/iie.png" alt="Institute of Information Engineering, Chinese Academy of Sciences">
+      <img src="figures/logos/cas.png" alt="Chinese Academy of Sciences">
+      <img src="figures/logos/hust.png" alt="Huazhong University of Science and Technology">
+      <img src="figures/logos/tsinghua.png" alt="Tsinghua University">
+    </div>
   </div>
-  <h1>OPERA<span class="badge">AAAI 2026</span></h1>
   <hr class="redline">
   <p class="lead">A Reinforcement Learning–Enhanced Orchestrated Planner-Executor Architecture for Reasoning-Oriented Multi-Hop Retrieval.</p>
   <p class="sub">Existing RAG pipelines retrieve first and reason after. OPERA fuses the two: a hierarchical
